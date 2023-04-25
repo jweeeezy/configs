@@ -6,7 +6,7 @@
 #    By: jwillert@student.42heilbronn.de            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/25 20:06:35 by jwillert          #+#    #+#              #
-#    Updated: 2023/04/25 20:23:59 by jwillert         ###   ########           #
+#    Updated: 2023/04/25 20:24:33 by jwillert         ###   ########           #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,3 +30,5 @@ upload:
 download:
 				git pull
 				for file in $(_FILES); do cp $$file ~/; done
+dl:				download
+up:				upload
