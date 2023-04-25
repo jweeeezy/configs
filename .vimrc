@@ -35,8 +35,8 @@ let color_active = "black"
 let color_nonactive = "black"
 
     "   Font Colors
-let color_font_nonactive = "249"
-let color_font_active = "123"
+let color_font_nonactive =249
+let color_font_active =123
 
 "   Set a marker for 80 chars width
 set colorcolumn=80
@@ -44,31 +44,21 @@ execute "hi ColorColumn ctermbg="123
 
 execute "hi VertSplit ctermfg=".color_nonactive
 execute "hi VertSplit ctermbg=".color_nonactive
-execute "hi VertSplit guifg=".color_nonactive
-execute "hi VertSplit guibg=".color_nonactive
 
 execute "hi StatusLine ctermfg=".color_font_active
 execute "hi StatusLine ctermbg=".color_active 
-execute "hi StatusLine guifg=".color_font_active
-execute "hi StatusLine guibg=".color_active
 execute "hi StatusLine cterm=NONE"
 
 execute "hi StatusLineNC ctermfg=".color_font_nonactive
 execute "hi StatusLineNC ctermbg=".color_nonactive
-execute "hi StatusLineNC guifg=".color_font_nonactive
-execute "hi StatusLineNC guibg=".color_nonactive
 execute "hi StatusLineNc cterm=NONE"
 
 execute "hi StatusLineTerm ctermfg=".color_font_active
 execute "hi StatusLineTerm ctermbg=".color_active
-execute "hi StatusLineTerm guifg=".color_font_active
-execute "hi StatusLineTerm guibg="color_nonactive
 execute "hi StatusLineTerm cterm=NONE"
 
 execute "hi StatusLineTermNC ctermfg=".color_font_nonactive
 execute "hi StatusLineTermNC ctermbg=".color_nonactive
-execute "hi StatusLineTermNC guifg=".color_font_nonactive
-execute "hi StatusLineTermNC guibg=".color_nonactive
 execute "hi StatusLineTermNC cterm=NONE"
 
 execute "hi LineNr ctermfg="123
