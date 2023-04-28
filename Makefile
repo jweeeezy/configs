@@ -6,16 +6,18 @@
 #    By: jwillert@student.42heilbronn.de            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/25 20:06:35 by jwillert          #+#    #+#              #
-#    Updated: 2023/04/25 20:24:33 by jwillert         ###   ########           #
+#    Updated: 2023/04/28 12:44:54 by jwillert         ###   ########           #
 #                                                                              #
 # **************************************************************************** #
 
 #	Variables
 HOME_DIR	=	~/
 FILES		=	$(HOME_DIR).zshrc\
-				$(HOME_DIR).vimrc
+				$(HOME_DIR).vimrc\
+				#$(HOME_DIR).bashrc
 _FILES		=	.zshrc\
-				.vimrc
+				.vimrc\
+				#.bashrc
 HOSTNAME	=	$(shell hostname)
 USERNAME	=	$(shell whoami)
 TIMESTAMP	=	$(shell date)
