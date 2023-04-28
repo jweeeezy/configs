@@ -6,7 +6,7 @@ alias debug_mem="export DEBUG_FLAG='-g -fsanitize=address'"
 alias debug_g="export DEBUG_FLAG='-g'"
 alias debug_off="export DEBUG_FLAG="
 alias debug_help="cat ~/.zshrc | grep DEBUG_FLAG"
-alias debug="cat ~/.zshrc | grep DEBUG_FLAG"
+alias debug="echo Current: [$DEBUG_FLAG];cat ~/.zshrc | grep DEBUG_FLAG"
 
 alias francinette=/Users/jwillert/francinette/tester.sh
 alias paco=/Users/jwillert/francinette/tester.sh
