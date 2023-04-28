@@ -1,12 +1,12 @@
 alias norm='norminette'
 
 alias debug_all="export DEBUG_FLAG='-g -DDEBUG=1 -fsanitize=address'"
-alias debug_mem="export DEBUG_FLAG='-g -fsanitize=address'"
 alias debug_simple="export DEBUG_FLAG='-g -DDEBUG=1'"
+alias debug_mem="export DEBUG_FLAG='-g -fsanitize=address'"
 alias debug_g="export DEBUG_FLAG='-g'"
 alias debug_off="export DEBUG_FLAG="
-alias debug_options="cat ~/.zshrc | grep DEBUG_FLAG"
 alias debug_help="cat ~/.zshrc | grep DEBUG_FLAG"
+alias debug="cat ~/.zshrc | grep DEBUG_FLAG"
 
 alias francinette=/Users/jwillert/francinette/tester.sh
 alias paco=/Users/jwillert/francinette/tester.sh
