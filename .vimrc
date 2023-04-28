@@ -4,6 +4,8 @@ let g:mail42 = '@student.42heilbronn.de'
 syntax enable
 command! SS :mksession! ~/session.vim
 command! SSO :source ~/session.vim
+set autoindent
+set smartindent
 set encoding=utf8
 set nobackup
 set nowb
