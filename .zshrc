@@ -5,6 +5,7 @@ alias debug_leaks="export DEBUG_FLAG='-g =fsanitize=address'"
 alias debug_simple="export DEBUG_FLAG='-g -DDEBUG=1'"
 alias debug_g="export DEBUG_FLAG='-g'"
 alias debug_off="export DEBUG_FLAG="
+alias debug="echo current: '<'$DEBUG_FLAG'>'; cat ~/.zshrc | grep DEBUG_FLAG"
 
 alias francinette=/Users/jwillert/francinette/tester.sh
 alias paco=/Users/jwillert/francinette/tester.sh
