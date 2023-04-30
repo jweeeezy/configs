@@ -1,7 +1,7 @@
 alias norm='norminette'
 
 alias debug_all="export DEBUG_FLAG='-g -DDEBUG=1 -fsanitize=address'"
-alias debug_leaks="export DEBUG_FLAG='-g =fsanitize=address'"
+alias debug_mem="export -g -fsanitize=address"
 alias debug_simple="export DEBUG_FLAG='-g -DDEBUG=1'"
 alias debug_g="export DEBUG_FLAG='-g'"
 alias debug_off="export DEBUG_FLAG="
