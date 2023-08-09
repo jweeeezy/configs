@@ -12,13 +12,14 @@ alias francinette=/Users/jwillert/francinette/tester.sh
 alias paco=/Users/jwillert/francinette/tester.sh
 
 alias 42dir="cd ~/Documents/42Projects/"
+alias 42tooldir="cd ~/Documents/_42toolbox/"
 alias Sidedir="cd ~/Documents/SideProjects/"
-alias 42tool="cd ~/Documents/_42toolbox/"
 
 alias mstest="bash /Users/jwillert/42_minishell_tester/tester.sh"
 
-alias setcwd='export CWD="$PWD"'
-alias cwd='cd "$CWD"'
+alias setcwd='echo "$PWD" > ~/.cwd'
+alias cwd='cd "$(cat ~/.cwd)"'
+
 alias getbrew='rm -rf $HOME/.brew && rm -rf $HOME/goinfre/.brew \
 	&& git clone --depth=1 \
 	https://github.com/Homebrew/brew $HOME/goinfre/.brew && brew update'
