@@ -6,7 +6,7 @@
 #    By: jwillert@student.42heilbronn.de            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/25 20:06:35 by jwillert          #+#    #+#              #
-#    Updated: 2023/04/28 12:44:54 by jwillert         ###   ########           #
+#    Updated: 2023/08/23 07:10:10 by jwillert         ###   ########           #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ TIMESTAMP	=	$(shell date)
 
 #	Targets
 upload:
-				for file in $(FILES); do cp $$file ./; done
+				for file in $(FILES); do cp $$file ./ ; done
 				git add $(_FILES)
 				git add Makefile
 				git commit -m "$(HOSTNAME) $(USERNAME) $(TIMESTAMP)"
