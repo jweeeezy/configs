@@ -15,7 +15,7 @@ alias 42dir="cd ~/Documents/42Projects/"
 alias 42tooldir="cd ~/Documents/_42toolbox/"
 alias Sidedir="cd ~/Documents/SideProjects/"
 
-alias mstest="bash /Users/jwillert/42_minishell_tester/tester.sh"
+alias nvim="~/.nvim/bin/nvim"
 
 alias setcwd='echo "$PWD" > ~/.cwd'
 alias cwd='cd "$(cat ~/.cwd)"'
