@@ -18,8 +18,26 @@ Plugin 'preservim/tagbar'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'derekwyatt/vim-fswitch'
 Plugin 'derekwyatt/vim-protodef'
+Plugin 'ycm-core/YouCompleteMe'
 call vundle#end()
 filetype plugin indent on
+
+"	YCM	Autocompletion Plugin
+let g:ycm_filetype_whitelist = { 'cpp':1, 'h':2, 'hpp':3, 'c':4, 'cxx':5 }
+" Close preview window after completing the insertion
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+" Max number of completion suggestions 
+let g:ycm_max_num_candidates = 20
+" Max number of identifier-based suggestion
+let g:ycm_max_num_identifier_candidates = 10
+" Enable completion menu
+let g:ycm_auto_trigger = 1
+nmap <silent> <C-q> <plug>(YCMHover)
+nmap <silent> <C-a> <plug>(YCMHover)
+let g:ycm_key_list_stop_completion = ['<C-w>']
+"inoremap <C-m> <C-y>
+highlight Pmenu ctermfg=255 ctermbg=237
 
 "   PULLING PROTOTYPES Plugin
 " Pull in prototypes
@@ -127,7 +145,7 @@ set relativenumber
 set splitbelow splitright
 set fillchars+=vert:\
 set mouse=a
-set termwinsize=12x0
+"set termwinsize=12x0
 
 "	own Theme
 "   Set colors
