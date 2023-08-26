@@ -31,7 +31,7 @@ function! FormatWithClangFormat()
 endfunction
 command! ClangFormat call FormatWithClangFormat()
 "	Clang-Format Key Binding
-nnoremap <C-w> :ClangFormat<CR>
+nnoremap <C-e> :ClangFormat<CR>
 
 "	YCM	Autocompletion Plugin
 let g:ycm_filetype_whitelist = { 'cpp':1, 'h':2, 'hpp':3, 'c':4, 'cxx':5 }
@@ -189,3 +189,46 @@ execute "hi EndOfBuffer ctermfg=black ctermbg=black"
 "   Set a marker for 80 chars width
 set colorcolumn=80
 execute "hi ColorColumn ctermbg="123
+
+
+"	Own header
+function! InsertHeader()
+" Prompt the user
+let l:response = input("Insert header? (any key/n): ")
+
+" Check response and return if 'n' is chosen
+if l:response ==# 'n'
+	return
+endif
+
+call append(0, "// " . repeat("=", 74) . " //")
+call append(1, "// " . repeat(" ", 30) . "42 | Heilbronn" . repeat(" ", 30) . " //")
+call append(2, "// " . repeat("=", 74) . " //")
+call append(3, "// " . repeat(" ", 74) . " //")
+call append(4, "// name:  jakob willert (jwillert)" . repeat(" ", 43) . " //")
+call append(5, "// mail:  jwillert@student.42heilbronn.de" . repeat(" ", 36) . " //")
+call append(6, "// file:  " . repeat (" ", 67) . " //")
+call append(7, "// " . repeat(" ", 74) . " //")
+call append(8, "// " . repeat("-", 74) . " //")
+call append(9, "")
+call append(10, "")
+call append(11, "")
+call append(12, "")
+call append(13, "")
+call setline(15, "// " . repeat("-", 74) . " //")
+execute "normal 11G"
+endfunction
+
+function! UpdateFileName()
+  " Get the first line of the file
+  let l:firstLine = getline(2)
+  
+  " Check if the first line matches the unique header line
+	if match(l:firstLine, 'Heilbronn') != -1
+		let l:filename = expand('%:t')
+		call setline(7, "// file:  " . l:filename . repeat(" ", 68 - len(l:filename)) . "//")
+  endif
+endfunction
+
+autocmd BufNewFile * call InsertHeader()
+autocmd BufWritePre * call UpdateFileName()
