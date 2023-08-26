@@ -22,6 +22,17 @@ Plugin 'ycm-core/YouCompleteMe'
 call vundle#end()
 filetype plugin indent on
 
+"	Clang-Format Command Settings
+function! FormatWithClangFormat()
+  let l:formatprg_backup=&formatprg
+  set formatprg=clang-format\ -style=file
+  normal gggqG
+  let &formatprg=l:formatprg_backup
+endfunction
+command! ClangFormat call FormatWithClangFormat()
+"	Clang-Format Key Binding
+nnoremap <C-w> :ClangFormat<CR>
+
 "	YCM	Autocompletion Plugin
 let g:ycm_filetype_whitelist = { 'cpp':1, 'h':2, 'hpp':3, 'c':4, 'cxx':5 }
 " Close preview window after completing the insertion
