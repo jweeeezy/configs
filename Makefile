@@ -12,11 +12,13 @@
 
 #	Variables
 HOME_DIR	=	~/
-FILES		=	$(HOME_DIR).zshrc\
-				$(HOME_DIR).vimrc\
+FILES		=	$(HOME_DIR).zshrc \
+				$(HOME_DIR).vimrc \
+				$(HOME_DIR).clang-format \
 				#$(HOME_DIR).bashrc
-_FILES		=	.zshrc\
-				.vimrc\
+_FILES		=	.zshrc \
+				.vimrc \
+				.clang-format \
 				#.bashrc
 HOSTNAME	=	$(shell hostname)
 USERNAME	=	$(shell whoami)
