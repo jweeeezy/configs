@@ -6,10 +6,22 @@ https://dane-bulat.medium.com/vim-setting-up-a-build-system-and-code-completion-
 
 # needed for vim plugins:
 
-'''sudo apt-get install ctags'''
+'''
+sudo apt-get install ctags
+'''
 
-'''mkdir -p ~/.vim/bundle'''
-'''cd ~/.vim/bundle'''
-'''git clone https://github.com/VundleVim/Vundle.vim.git Vundle.vim'''
+'''
+mkdir -p ~/.vim/bundle
+'''
 
-'''make download'''
+'''
+cd ~/.vim/bundle
+'''
+
+'''
+git clone https://github.com/VundleVim/Vundle.vim.git Vundle.vim
+'''
+
+'''
+make download
+'''
