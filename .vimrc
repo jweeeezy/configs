@@ -192,7 +192,6 @@ execute "hi ColorColumn ctermbg="123
 
 
 "	Own header
-function! InsertHeader()
 " Prompt the user
 "let l:response = input("Insert header? (any key/n): ")
 
@@ -201,6 +200,7 @@ function! InsertHeader()
 	"return
 "endif
 
+function! InsertHeader()
 call append(0, "// " . repeat("=", 74) . " //")
 call append(1, "// " . repeat(" ", 30) . "42 | Heilbronn" . repeat(" ", 30) . " //")
 call append(2, "// " . repeat("=", 74) . " //")
@@ -232,3 +232,28 @@ endfunction
 
 nnoremap <C-i> :call InsertHeader()<CR>
 autocmd BufWritePre * call UpdateFileName()
+
+function! MakeHPP()
+    " Get the name of the current file without extension
+    call InsertHeader()
+    let l:filename = expand("%:t:r")
+
+    " Define content for header file
+    let l:header_content = [
+        \ "#ifndef " . toupper(l:filename) . "_HPP",
+        \ "# define " . toupper(l:filename) . "_HPP",
+        \ "",
+        \ "class " . l:filename . " {",
+        \ "public:",
+        \ "    " . l:filename . "();",
+        \ "    " . l:filename . "(const " . l:filename . "& src);",
+        \ "    ~" . l:filename . "();",
+        \ "    " . l:filename . "& operator=(const " . l:filename . "& rhs);",
+        \ "};",
+        \ "",
+        \ "#endif"
+    \ ]
+
+    " Write header content to the current buffer
+    call setline(line('.'), l:header_content)
+endfunction
