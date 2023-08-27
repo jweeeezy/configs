@@ -12,7 +12,7 @@ alias francinette=/Users/jwillert/francinette/tester.sh
 alias paco=/Users/jwillert/francinette/tester.sh
 
 alias 42dir="cd ~/Documents/42Projects/"
-alias 42tooldir="cd ~/Documents/_42toolbox/"
+alias 42tools="cd ~/Documents/_42toolbox/"
 alias Sidedir="cd ~/Documents/SideProjects/"
 
 alias nvim="~/.nvim/bin/nvim"
@@ -23,6 +23,8 @@ alias cwd='cd "$(cat ~/.cwd)"'
 alias cje='echo "\n$DATE\t-\t" >> ~/Documents/coding_journal/README.md; \
 	vim -c "normal G$a" ~/Documents/coding_journal/README.md'
 alias cj="cat ~/Documents/coding_journal/README.md"
+
+alias insertcpp='cp ~/Documents/configs/templates/cpp/* ./'
 
 alias getbrew='rm -rf $HOME/.brew && rm -rf $HOME/goinfre/.brew \
 	&& git clone --depth=1 \
