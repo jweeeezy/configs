@@ -21,3 +21,25 @@ git clone https://github.com/VundleVim/Vundle.vim.git Vundle.vim
 ```
 make download
 ```
+
+# needed for automisation
+
+add to shell config
+```
+alias insertcpp='cp ~/path-to-configs/templates/cpp/* ./'
+```
+
+add function to vimscript
+like clang-format <this-file>
+```
+function! FormatWithClangFormat()
+  let l:formatprg_backup=&formatprg
+  set formatprg=clang-format\ -style=file
+  normal gggqG
+  let &formatprg=l:formatprg_backup
+endfunction
+command! ClangFormat call FormatWithClangFormat()
+"	Clang-Format Key Binding
+nnoremap <C-e> :ClangFormat<CR>
+```
+
