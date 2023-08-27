@@ -224,7 +224,7 @@ function! UpdateFileName()
   let l:firstLine = getline(2)
   
   " Check if the first line matches the unique header line
-	if match(l:firstLine, 'Heilbronn') != -1
+	if match(l:firstLine, '42 | Heilbronn') != -1
 		let l:filename = expand('%:t')
 		call setline(7, "// file:  " . l:filename . repeat(" ", 68 - len(l:filename)) . "//")
   endif
