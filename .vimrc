@@ -194,12 +194,12 @@ execute "hi ColorColumn ctermbg="123
 "	Own header
 function! InsertHeader()
 " Prompt the user
-let l:response = input("Insert header? (any key/n): ")
+"let l:response = input("Insert header? (any key/n): ")
 
 " Check response and return if 'n' is chosen
-if l:response ==# 'n'
-	return
-endif
+"if l:response ==# 'n'
+	"return
+"endif
 
 call append(0, "// " . repeat("=", 74) . " //")
 call append(1, "// " . repeat(" ", 30) . "42 | Heilbronn" . repeat(" ", 30) . " //")
