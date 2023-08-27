@@ -66,7 +66,7 @@ nmap <c-b> :vsplit <bar> :wincmd l <bar> :FSRight<CR>
 
 "   NERDTREE Plugin settings
 nmap <c-n> :NERDTreeToggle<CR>
-let NERDTreeShowBookmarks = 1   " Show the bookmarks table
+let NERDTreeShowBookmarks = 0   " Show the bookmarks table
 let NERDTreeShowHidden = 1      " Show hidden files
 let NERDTreeShowLineNumbers = 0 " Hide line numbers
 let NERDTreeMinimalMenu = 1     " Use the minimal menu (m)
@@ -230,5 +230,5 @@ function! UpdateFileName()
   endif
 endfunction
 
-autocmd BufNewFile * call InsertHeader()
+nnoremap <C-i> :call InsertHeader()<CR>
 autocmd BufWritePre * call UpdateFileName()
