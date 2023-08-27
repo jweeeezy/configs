@@ -20,10 +20,15 @@ alias nvim="~/.nvim/bin/nvim"
 alias setcwd='echo "$PWD" > ~/.cwd'
 alias cwd='cd "$(cat ~/.cwd)"'
 
+alias cje='echo "\n$DATE\t-\t" >> ~/Documents/coding_journal/README.md; \
+	vim -c "normal G$a" ~/Documents/coding_journal/README.md'
+alias cj="cat ~/Documents/coding_journal/README.md"
+
 alias getbrew='rm -rf $HOME/.brew && rm -rf $HOME/goinfre/.brew \
 	&& git clone --depth=1 \
 	https://github.com/Homebrew/brew $HOME/goinfre/.brew && brew update'
 
+export DATE=$(date +"%m/%d/%Y")
 export USER='jwillert'
 export MAIL='@student.42heilbronn.de'
 export PATH=$HOME/goinfre/.brew/bin:$PATH
