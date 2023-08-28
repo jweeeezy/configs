@@ -1,6 +1,6 @@
 "   Enables syntax highlighting
 syntax enable
->>>
+
 let mapleader = ","
 
 " PLUGIN MANAGER
@@ -204,22 +204,22 @@ execute "hi ColorColumn ctermbg="123
 "endif
 
 function! InsertHeader()
-call append(0, "// " . repeat("=", 74) . " //")
-call append(1, "// " . repeat(" ", 30) . "42 | Heilbronn" . repeat(" ", 30) . " //")
-call append(2, "// " . repeat("=", 74) . " //")
-call append(3, "// " . repeat(" ", 74) . " //")
-call append(4, "// name:  jakob willert (jwillert)" . repeat(" ", 43) . " //")
-call append(5, "// mail:  jwillert@student.42heilbronn.de" . repeat(" ", 36) . " //")
-call append(6, "// file:  " . repeat (" ", 67) . " //")
-call append(7, "// " . repeat(" ", 74) . " //")
-call append(8, "// " . repeat("-", 74) . " //")
-call append(9, "")
-call append(10, "")
-call append(11, "")
-call append(12, "")
-call append(13, "")
-call setline(15, "// " . repeat("-", 74) . " //")
-execute "normal 11G"
+  call append(0, "// " . repeat("=", 74) . " //")
+  call append(1, "// " . repeat(" ", 30) . "42 | Heilbronn" . repeat(" ", 30) . " //")
+  call append(2, "// " . repeat("=", 74) . " //")
+  call append(3, "// " . repeat(" ", 74) . " //")
+  call append(4, "// name:  jakob willert (jwillert)" . repeat(" ", 43) . " //")
+  call append(5, "// mail:  jwillert@student.42heilbronn.de" . repeat(" ", 36) . " //")
+  call append(6, "// file:  " . repeat (" ", 67) . " //")
+  call append(7, "// " . repeat(" ", 74) . " //")
+  call append(8, "// " . repeat("-", 74) . " //")
+  call append(9, "")
+  call append(10, "")
+  call append(11, "")
+  call append(12, "")
+  call append(13, "")
+  call setline(15, "// " . repeat("-", 74) . " //")
+  execute "normal 11G"
 endfunction
 nnoremap <leader>i :call InsertHeader()<CR>
 
@@ -227,10 +227,10 @@ function! UpdateFileName()
   " Get the first line of the file
   let l:firstLine = getline(2)
   
-  " Check if the first line matches the unique header line
-	if match(l:firstLine, '42 | Heilbronn') != -1
-		let l:filename = expand('%:t')
-		call setline(7, "// file:  " . l:filename . repeat(" ", 68 - len(l:filename)) . "//")
+" Check if the first line matches the unique header line
+  if match(l:firstLine, '42 | Heilbronn') != -1
+    let l:filename = expand('%:t')
+    call setline(7, "// file:  " . l:filename . repeat(" ", 68 - len(l:filename)) . "//")
   endif
 endfunction
 autocmd BufWritePre * call UpdateFileName()
