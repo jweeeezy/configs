@@ -1,5 +1,7 @@
 "   Enables syntax highlighting
 syntax enable
+>>>
+let mapleader = ","
 
 " PLUGIN MANAGER
 set nocompatible
@@ -50,11 +52,12 @@ let g:ycm_key_list_stop_completion = ['<C-w>']
 "inoremap <C-m> <C-y>
 highlight Pmenu ctermfg=255 ctermbg=237
 
-"   PULLING PROTOTYPES Plugin
+"   PROTODEF Plugin
 " Pull in prototypes
 nmap <buffer> <silent> <leader> ,PP
 " Pull in prototypes without namespace definition"
 nmap <buffer> <silent> <leader> ,PN
+
 "   AUTOPAIR Plugin
 "   Set CTRL+P to toggle AutoPair Plugin
 let g:AutoPairsShortcutToggle = '<C-P>'
@@ -153,6 +156,7 @@ set shiftwidth=4
 set tabstop=4
 set number
 set relativenumber
+nnoremap <c-w>v :vertical terminal<cr>
 set splitbelow splitright
 set fillchars+=vert:\
 set mouse=a
@@ -190,7 +194,6 @@ execute "hi EndOfBuffer ctermfg=black ctermbg=black"
 set colorcolumn=80
 execute "hi ColorColumn ctermbg="123
 
-
 "	Own header
 " Prompt the user
 "let l:response = input("Insert header? (any key/n): ")
@@ -218,6 +221,7 @@ call append(13, "")
 call setline(15, "// " . repeat("-", 74) . " //")
 execute "normal 11G"
 endfunction
+nnoremap <leader>i :call InsertHeader()<CR>
 
 function! UpdateFileName()
   " Get the first line of the file
@@ -229,31 +233,49 @@ function! UpdateFileName()
 		call setline(7, "// file:  " . l:filename . repeat(" ", 68 - len(l:filename)) . "//")
   endif
 endfunction
-
-nnoremap <C-i> :call InsertHeader()<CR>
 autocmd BufWritePre * call UpdateFileName()
 
-function! MakeHPP()
-    " Get the name of the current file without extension
-    call InsertHeader()
-    let l:filename = expand("%:t:r")
+function! MakeClassHeader()
+  let l:ClassName = input("Insert ClassName or q/n: ")
+  if l:ClassName ==# 'n'
+    return
+  endif
+  if l:ClassName ==# 'q'
+    return
+  endif
+  execute 'vsp | e ' l:ClassName . '.hpp'
+  " Get the name of the current file without extension
+  call InsertHeader()
+  let l:filename = expand("%:t:r")
 
-    " Define content for header file
-    let l:header_content = [
-        \ "#ifndef " . toupper(l:filename) . "_HPP",
-        \ "# define " . toupper(l:filename) . "_HPP",
-        \ "",
-        \ "class " . l:filename . " {",
-        \ "public:",
-        \ "    " . l:filename . "();",
-        \ "    " . l:filename . "(const " . l:filename . "& src);",
-        \ "    ~" . l:filename . "();",
-        \ "    " . l:filename . "& operator=(const " . l:filename . "& rhs);",
-        \ "};",
-        \ "",
-        \ "#endif"
-    \ ]
-
-    " Write header content to the current buffer
-    call setline(line('.'), l:header_content)
+  " Define content for header file
+  let l:header_content = [
+      \ "#ifndef " . toupper(l:filename) . "_HPP",
+      \ "# define " . toupper(l:filename) . "_HPP",
+      \ "",
+      \ "class " . l:filename . " {",
+      \ "public:",
+      \ "",
+      \ "    " . l:filename . "();",
+      \ "    " . l:filename . "(const " . l:filename . "& src);",
+      \ "    ~" . l:filename . "();",
+      \ "    " . l:filename . "& operator=(const " . l:filename . "& rhs);",
+      \ "",
+      \ "};",
+      \ "",
+      \ "#endif"
+  \ ]
+  " Write header content to the current buffer
+  call setline(line('.'), l:header_content)
+  execute ':w'
 endfunction
+nnoremap <leader>ch :call MakeClassHeader()<CR>
+
+function! MakeClassSource()
+  let l:filename = expand("%:t:r")
+  execute 'vsp | e ' . l:filename . '.cpp'
+  call InsertHeader()
+  normal 3dd,PP
+  execute ':w'
+endfunction
+nnoremap <leader>cs :call MakeClassSource()<CR>

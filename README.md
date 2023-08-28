@@ -7,6 +7,10 @@ https://dane-bulat.medium.com/vim-setting-up-a-build-system-and-code-completion-
 # needed for vim plugins:
 
 ```
+sudo apt-get install ack
+```
+
+```
 sudo apt-get install ctags
 ```
 ```
