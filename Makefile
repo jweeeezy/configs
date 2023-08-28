@@ -15,11 +15,11 @@ HOME_DIR	=	~/
 FILES		=	$(HOME_DIR).zshrc \
 				$(HOME_DIR).vimrc \
 				$(HOME_DIR).clang-format \
-				#$(HOME_DIR).bashrc
+				$(HOME_DIR).bashrc
 _FILES		=	.zshrc \
 				.vimrc \
 				.clang-format \
-				#.bashrc
+				.bashrc
 HOSTNAME	=	$(shell hostname)
 USERNAME	=	$(shell whoami)
 TIMESTAMP	=	$(shell date)
