@@ -253,13 +253,15 @@ function! MakeClassHeader()
       \ "#ifndef " . toupper(l:filename) . "_HPP",
       \ "# define " . toupper(l:filename) . "_HPP",
       \ "",
-      \ "class " . l:filename . " {",
-      \ "public:",
+      \ "class " . l:filename, 
+      \ "{",
       \ "",
-      \ "    " . l:filename . "();",
-      \ "    " . l:filename . "(const " . l:filename . "& src);",
-      \ "    ~" . l:filename . "();",
-      \ "    " . l:filename . "& operator=(const " . l:filename . "& rhs);",
+      \ "\tpublic:",
+      \ "",
+      \ "\t\t" . l:filename . "();",
+      \ "\t\t" . l:filename . "(const " . l:filename . "& src);",
+      \ "\t\t~" . l:filename . "();",
+      \ "\t\t" . l:filename . "& operator=(const " . l:filename . "& rhs);",
       \ "",
       \ "};",
       \ "",
@@ -279,3 +281,7 @@ function! MakeClassSource()
   execute ':w'
 endfunction
 nnoremap <leader>cs :call MakeClassSource()<CR>
+
+nnoremap <leader>arr :windo wincmd = <CR>
+nnoremap <leader>v s<c-w>h<c-w>h
+

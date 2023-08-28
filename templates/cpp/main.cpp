@@ -8,6 +8,8 @@
 //                                                                            //
 // -------------------------------------------------------------------------- //
 
+#include <cstdlib>	// needed for MACROS
+
 #define EXPECTED_ARGC 2
 
 int	main(int argc, char **argv)

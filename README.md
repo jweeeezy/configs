@@ -6,13 +6,14 @@ https://dane-bulat.medium.com/vim-setting-up-a-build-system-and-code-completion-
 
 # needed for vim plugins:
 
-```
-sudo apt-get install ack
-```
+PYTHON3
+CTAGS
+ACK
+LLVM
+CLANGD
+CLANG-FORMAT
 
-```
-sudo apt-get install ctags
-```
+bundle directory in vim folder
 ```
 mkdir -p ~/.vim/bundle
 ```
@@ -22,28 +23,8 @@ cd ~/.vim/bundle
 ```
 git clone https://github.com/VundleVim/Vundle.vim.git Vundle.vim
 ```
-```
-make download
-```
 
-# needed for automisation
-
-add to shell config
+inside YouCompleteMe directory
 ```
-alias insertcpp='cp ~/path-to-configs/templates/cpp/* ./'
+python3 installer.py --clangd-completer
 ```
-
-add function to vimscript
-like clang-format <this-file>
-```
-function! FormatWithClangFormat()
-  let l:formatprg_backup=&formatprg
-  set formatprg=clang-format\ -style=file
-  normal gggqG
-  let &formatprg=l:formatprg_backup
-endfunction
-command! ClangFormat call FormatWithClangFormat()
-"	Clang-Format Key Binding
-nnoremap <C-e> :ClangFormat<CR>
-```
-
