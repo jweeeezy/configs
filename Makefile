@@ -6,7 +6,7 @@
 #    By: jwillert@student.42heilbronn.de            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/25 20:06:35 by jwillert          #+#    #+#              #
-#    Updated: 2023/08/27 22:12:56 by jwillert         ###   ########           #
+#    Updated: 2023/08/29 21:33:49 by jwillert         ###   ########           #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,6 @@ upload:
 				git push
 download:
 				git pull
-				for file in $(_FILES); do cp $$file ~/; done
+				for file in $(_FILES); do cp $$file ~/.; done
 dl:				download
 up:				upload
