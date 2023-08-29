@@ -3,7 +3,7 @@ syntax enable
 
 let mapleader = ","
 
-" PLUGIN MANAGER
+"	PLUGIN MANAGER
 set nocompatible
 filetype off
 " Set the runtime path to include Vundle and initialize

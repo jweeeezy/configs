@@ -36,9 +36,12 @@ alias 42dir="cd ~/Documents/42Projects/"
 alias 42tools="cd ~/Documents/_42toolbox/"
 alias Sidedir="cd ~/Documents/SideProjects/"
 alias config="cd ~/Documents/configs/"
-alias cje='echo "\n$DATE\t-\t" >> ~/Documents/coding_journal/README.md; \
-	vim -c "normal G$a" ~/Documents/coding_journal/README.md'
+alias cjdir='cd ~/Documents/coding_journal'
+
+alias cje="cjdir && zsh ~/Documents/coding_journal/coding_journal_edit_and_push.sh && cd -"
+
 alias cj="cat ~/Documents/coding_journal/README.md"
+
 alias insert_templ_cpp='cp ~/Documents/configs/templates/cpp/* ./'
 
 #alias cd="printf 🐢; cd"
