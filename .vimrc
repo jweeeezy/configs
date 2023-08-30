@@ -61,6 +61,7 @@ nmap <buffer> <silent> <leader> ,PN
 "   AUTOPAIR Plugin
 "   Set CTRL+P to toggle AutoPair Plugin
 let g:AutoPairsShortcutToggle = '<C-P>'
+normal <c-p>
 
 "   FSWITCH Plugin
 au! BufEnter *.cpp let b:fswitchdst = 'hpp,h'
@@ -214,12 +215,8 @@ function! InsertHeader()
   call append(7, "// " . repeat(" ", 74) . " //")
   call append(8, "// " . repeat("-", 74) . " //")
   call append(9, "")
-  call append(10, "")
-  call append(11, "")
-  call append(12, "")
-  call append(13, "")
-  call setline(15, "// " . repeat("-", 74) . " //")
-  execute "normal 11G"
+  call setline(12, "// " . repeat("-", 74) . " //")
+  execute "normal 9"
 endfunction
 nnoremap <leader>i :call InsertHeader()<CR>
 
@@ -268,8 +265,9 @@ function! MakeClassHeader()
       \ "#endif"
   \ ]
   " Write header content to the current buffer
-  call setline(line('.'), l:header_content)
-  execute ':w'
+"  call setline(line('.'), l:header_content)
+ call append(line('.') - 1, l:header_content)
+ execute ':w'
 endfunction
 nnoremap <leader>ch :call MakeClassHeader()<CR>
 

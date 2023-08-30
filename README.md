@@ -9,9 +9,9 @@ https://dane-bulat.medium.com/vim-setting-up-a-build-system-and-code-completion-
 PYTHON3
 CTAGS
 ACK
-LLVM
+LLVM         (brew install llvm)
 CLANGD
-CLANG-FORMAT
+CLANG-FORMAT (brew install clang-format)
 
 bundle directory in vim folder
 ```
