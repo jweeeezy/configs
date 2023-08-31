@@ -51,6 +51,10 @@ nmap <silent> <C-a> <plug>(YCMHover)
 let g:ycm_key_list_stop_completion = ['<C-w>']
 "inoremap <C-m> <C-y>
 highlight Pmenu ctermfg=255 ctermbg=237
+let g:ycm_enable_diagnostic_signs = 1
+"set signcolumn=no
+highlight SyntasticError ctermbg=196 ctermfg=15
+highlight SyntasticWarning ctermfg=15
 
 "   PROTODEF Plugin
 " Pull in prototypes
@@ -282,4 +286,3 @@ nnoremap <leader>cs :call MakeClassSource()<CR>
 
 nnoremap <leader>arr :windo wincmd = <CR>
 nnoremap <leader>v s<c-w>h<c-w>h
-
