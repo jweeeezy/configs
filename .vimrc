@@ -53,8 +53,9 @@ let g:ycm_key_list_stop_completion = ['<C-w>']
 highlight Pmenu ctermfg=255 ctermbg=237
 let g:ycm_enable_diagnostic_signs = 1
 "set signcolumn=no
+highlight SyntasticErrorSign ctermbg=196 ctermfg=15
 highlight SyntasticError ctermbg=196 ctermfg=15
-highlight SyntasticWarning ctermfg=15
+highlight SyntasticWarning ctermbg=11 ctermfg=0
 
 "   PROTODEF Plugin
 " Pull in prototypes
