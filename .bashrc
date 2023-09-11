@@ -32,6 +32,9 @@ export USER='jwillert'
 export MAIL='@student.42heilbronn.de'
 #42dir
 
+alias insert_templ_cpp='cp ~/configs/templates/cpp/* ./'
+
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
