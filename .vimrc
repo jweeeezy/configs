@@ -280,7 +280,7 @@ function! MakeClassSource()
   let l:filename = expand("%:t:r")
   execute 'vsp | e ' . l:filename . '.cpp'
   call InsertHeader()
-  normal 3dd,PP
+  normal ,PP
   execute ':w'
 endfunction
 nnoremap <leader>cs :call MakeClassSource()<CR>
