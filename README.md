@@ -28,3 +28,14 @@ inside YouCompleteMe directory
 ```
 python3 installer.py --clangd-completer
 ```
+
+# installed on school macs
+
+```
+brew install tree
+```
+
+```
+brew install vim
+```
+
