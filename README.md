@@ -36,6 +36,14 @@ brew install tree
 ```
 
 ```
+brew install ack
+```
+
+```
+brew install ctags
+```
+
+```
 brew install vim
 ```
 
