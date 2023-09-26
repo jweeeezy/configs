@@ -32,6 +32,11 @@ python3 installer.py --clangd-completer
 # installed on school macs
 
 ```
+getbrew
+(zsh alias)
+```
+
+```
 brew install tree
 ```
 
@@ -46,4 +51,3 @@ brew install ctags
 ```
 brew install vim
 ```
-
