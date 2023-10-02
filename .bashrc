@@ -12,12 +12,19 @@ fi
 
 alias norm='norminette'
 
+#	Config files
+alias vimrc='vim ~/.vimrc'
+alias bashrc='vim ~/.bashrc'
+
+#	Debug compilation helpers
 alias debug_all="export DEBUG_FLAG='-g -DDEBUG=1 -fsanitize=address'"
 alias debug_mem="export DEBUG_FLAG='-g -fsanitize=address'"
 alias debug_simple="export DEBUG_FLAG='-g -DDEBUG=1'"
 alias debug_g="export DEBUG_FLAG='-g'"
+alias debug_d="export DEBUG_FLAG='-DDEBUG=1'"
 alias debug_off="export DEBUG_FLAG="
-alias debug='echo $DEBUG_FLAG ; cat ~/.zshrc | grep DEBUG_FLAG'
+alias debug='echo "CURRENT DEBUG OPTIONS:"; echo [ $DEBUG_FLAG ]; \
+	echo ;cat ~/.zshrc | grep DEBUG_FLAG'
 
 alias 42dir="cd ~/42Projects/"
 alias Sidedir="cd ~/SideProjects/"
