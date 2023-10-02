@@ -149,9 +149,9 @@ set nohlsearch
 nnoremap <c-h> :set hlsearch!<cr>
 
 "	General settings for vim
-" set expandtab		" use spaces instead of tabbing
-" set smarttab
-set autoindent
+set expandtab		" use spaces instead of tabbing
+"set smarttab
+"set autoindent
 set smartindent
 set encoding=utf8
 set nobackup
