@@ -51,3 +51,50 @@ brew install ctags
 ```
 brew install vim
 ```
+
+# installed on ubuntu
+
+Update vim (add dependency)
+```
+sudo add-apt-repository ppa:jonathonf/vim
+sudo apt-get install vim
+```
+
+Git
+```
+sudo apt-get install git
+```
+
+Tree
+```
+sudo apt-get install tree
+```
+
+CTAGS
+```
+sudo apt-get install exuberant-ctags
+```
+
+XCLIP
+```
+sudo apt install xclip
+```
+
+ACK
+```
+sudo apt-get install ack
+```
+
+PYTHON3-DEV
+```
+sudo apt-get install python3-dev
+
+CMAKE
+```
+sudo apt-get install cmake
+```
+
+MAKE
+```
+sudo apt-get install make
+```
