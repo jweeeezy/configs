@@ -66,7 +66,8 @@ nmap <buffer> <silent> <leader> ,PN
 "   AUTOPAIR Plugin
 "   Set CTRL+P to toggle AutoPair Plugin
 let g:AutoPairsShortcutToggle = '<C-P>'
-normal <c-p>
+"   Disable on Startup
+let b:autopairs_enabled = 0
 
 "   FSWITCH Plugin
 au! BufEnter *.cpp let b:fswitchdst = 'hpp,h'
@@ -152,7 +153,7 @@ nnoremap <c-h> :set hlsearch!<cr>
 set expandtab		" use spaces instead of tabbing
 "set smarttab
 "set autoindent
-set smartindent
+"set smartindent
 set encoding=utf8
 set nobackup
 set nowb
@@ -287,3 +288,4 @@ nnoremap <leader>cs :call MakeClassSource()<CR>
 
 nnoremap <leader>arr :windo wincmd = <CR>
 nnoremap <leader>v s<c-w>h<c-w>h
+
