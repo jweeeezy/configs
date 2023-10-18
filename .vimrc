@@ -289,3 +289,5 @@ nnoremap <leader>cs :call MakeClassSource()<CR>
 nnoremap <leader>arr :windo wincmd = <CR>
 nnoremap <leader>v s<c-w>h<c-w>h
 
+"   2Term Command (2 terminals vertically split)
+command! TT execute 'vert term' | execute 'vert term' | execute '1q'
