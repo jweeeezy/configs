@@ -1,7 +1,8 @@
 Language:             Cpp
-BasedOnStyle:         Microsoft
-AccessModifierOffset: -4
+BasedOnStyle:         LLVM
+AccessModifierOffset: -2
 BreakBeforeBraces:    Allman
-IndentWidth:          2
-TabWidth:             2
+IndentWidth:          4
+TabWidth:             4
 ColumnLimit:          80
+PointerAlignment:     Middle
