@@ -13,9 +13,10 @@ alias zshrc='vim ~/.zshrc'
 
 #	Debug compilation helpers
 alias debug_all="export DEBUG_FLAG='-g -DDEBUG=1 -fsanitize=address'"
-alias debug_mem="export DEBUG_FLAG='-g -fsanitize=address'"
-alias debug_simple="export DEBUG_FLAG='-g -DDEBUG=1'"
+alias debug_m="export DEBUG_FLAG='-g -fsanitize=address'"
+alias debug_s="export DEBUG_FLAG='-g -DDEBUG=1'"
 alias debug_g="export DEBUG_FLAG='-g'"
+alias debug_d="export DEBUG_FLAG='-DDEBUG=1'"
 alias debug_off="export DEBUG_FLAG="
 alias debug='echo "CURRENT DEBUG OPTIONS:"; echo [ $DEBUG_FLAG ]; \
 	echo ;cat ~/.zshrc | grep DEBUG_FLAG'
