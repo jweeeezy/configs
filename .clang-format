@@ -1,13 +1,12 @@
-Language:             Cpp
-BasedOnStyle:         LLVM
-AccessModifierOffset: -2
-BreakBeforeBraces:    Allman
-IndentWidth:          4
-TabWidth:             4
-ColumnLimit:          80
-
-  # places & / * with spaces around them
-PointerAlignment:     Middle
-
-  # places qualifier like const to the right
-QualifierAlignment:   Right
+Language:                     Cpp
+BasedOnStyle:                 LLVM
+AccessModifierOffset:         -2
+BreakBeforeBraces:            Allman
+IndentWidth:                  4
+TabWidth:                     4
+ColumnLimit:                  80
+PointerAlignment:             Middle
+QualifierAlignment:           Right
+AlignConsecutiveMacros:       true
+IndentCaseLabels:             true
+AlignConsecutiveDeclarations: true
