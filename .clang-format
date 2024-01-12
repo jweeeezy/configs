@@ -8,5 +8,6 @@ ColumnLimit: 80
 AlignConsecutiveMacros: true
 IndentCaseLabels: true
 AlignConsecutiveDeclarations: true
+AlignConsecutiveAssignments: true
 PointerAlignment: Middle
-#QualifierAlignment: Right
+QualifierAlignment: Right
