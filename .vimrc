@@ -159,8 +159,8 @@ set nobackup
 set nowb
 set noswapfile
 set viminfo^=%
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 set number
 set relativenumber
 nnoremap <c-w>v :vertical terminal<cr>
