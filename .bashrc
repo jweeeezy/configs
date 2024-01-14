@@ -1,6 +1,16 @@
 
 # ------------------------- self made stuff --------------------------
 
+    #   setup for school MacOS
+    alias vim="~/goinfre/.brew/bin/vim"
+    alias 42tools="cd ~/Documents/_42toolbox/"
+    alias 42dir="cd ~/Documents/42Projects/"
+    alias Sidedir="cd ~/Documents/SideProjects/"
+    alias cjdir='cd ~/Documents/coding_journal'
+    export PATH=$HOME/goinfre/.brew/bin:$PATH
+
+    #   setup for home Linux
+
     #	setup environment variables for git and header
     export USER='jwillert'
     export MAIL='@student.42heilbronn.de'
@@ -14,16 +24,12 @@
     alias setcwd='export CWD="$PWD"; echo "$PWD" > ~/.last_dir'
 
     # setup some often used directories and files as aliases
-    alias 42dir="cd ~/42Projects/"
-    alias Sidedir="cd ~/SideProjects/"
-    alias cj='vim ~/coding_journal/README.md'
-    alias cje='coding_journal'
     alias vimrc='vim ~/.vimrc'
     alias bashrc='vim ~/.bashrc'
 
     # setup for easy template cpp workdir
     alias insert_templ_cpp='cp ~/configs/templates/cpp/* ./'
-    alias insert_templ_docker='cp ~/configs/templates/docker/* ./'
+    alias insert_templ_docker='cp -r ~/configs/templates/docker/* ./'
 
     # alias norm to check the 42 norminette rules
     alias norm='norminette'

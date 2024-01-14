@@ -34,7 +34,6 @@ export MAIL='@student.42heilbronn.de'
 
 #	System specific
 alias 42dir="cd ~/Documents/42Projects/"
-alias 42tools="cd ~/Documents/_42toolbox/"
 alias Sidedir="cd ~/Documents/SideProjects/"
 alias config="cd ~/Documents/configs/"
 alias cjdir='cd ~/Documents/coding_journal'
