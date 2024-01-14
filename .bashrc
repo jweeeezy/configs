@@ -27,7 +27,6 @@
     alias setcpj='export CPJ="$PWD"; echo "$PWD" > ~/.last_pj'
     if [ -f ~/.last_pj ]; then
         export CPJ="$(cat ~/.last_pj)"
-        cd "$CPJ"
     fi
 
     # setup some often used directories and files as aliases
