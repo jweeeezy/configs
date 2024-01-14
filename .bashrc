@@ -8,6 +8,7 @@
     alias Sidedir="cd ~/Documents/SideProjects/"
     alias cjdir='cd ~/Documents/coding_journal'
     export PATH=$HOME/goinfre/.brew/bin:$PATH
+    export PATH=/usr/local/bin/:$PATH
 
     #   setup for home Linux
 
@@ -15,13 +16,19 @@
     export USER='jwillert'
     export MAIL='@student.42heilbronn.de'
 
-    #	setup cwd and setcwd to save current directory as the CWD
+    #	setup current working directory and current project
+    alias cwd='cd "$CWD"'
+    alias setcwd='export CWD="$PWD"; echo "$PWD" > ~/.last_dir'
     if [ -f ~/.last_dir ]; then
         export CWD="$(cat ~/.last_dir)"
         cd "$CWD"
     fi
-    alias cwd='cd "$CWD"'
-    alias setcwd='export CWD="$PWD"; echo "$PWD" > ~/.last_dir'
+    alias cpj='cd "$CPJ"'
+    alias setcpj='export CPJ="$PWD"; echo "$PWD" > ~/.last_pj'
+    if [ -f ~/.last_pj ]; then
+        export CPJ="$(cat ~/.last_pj)"
+        cd "$CPJ"
+    fi
 
     # setup some often used directories and files as aliases
     alias vimrc='vim ~/.vimrc'
