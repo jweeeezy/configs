@@ -24,9 +24,13 @@ cd ~/.vim/bundle
 git clone https://github.com/VundleVim/Vundle.vim.git Vundle.vim
 ```
 
+Download all plugins in vim
+
+``` :PluginInstall ```
+
 inside YouCompleteMe directory
 ```
-python3 installer.py --clangd-completer
+python3 install.py --clangd-completer
 ```
 
 # installed on school macs
