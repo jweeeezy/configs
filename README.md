@@ -1,4 +1,39 @@
-# guides
+# setup lightweight ubuntu server (18.04)
+## install vim
+sudo apt install vim
+
+## add ssh connectivity
+sudo ufw enable
+sudo ufw add 4242
+sudo apt install openssh-server
+sudo vim /etc/ssh/sshd_config (uncomment #Port 4242)
+
+## add git / setup git key / download configs repo
+ssh-keygen -t rsa -b 4096 -C “willertjakob@gmail.com”
+sudo cat ~/.ssh/id_rsa.pub (—> add to GitHub allowed ssh keys)
+sudo apt install git
+
+#setup make for configs folder
+sudo apt install make
+
+## setup personal vim
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt install python3.8
+sudo apt install cmake (needs newest version)
+https://askubuntu.com/questions/355565/how-do-i-install-the-latest-version-of-cmake-from-the-command-line
+
+sudo apt-get install g++-8
+CC=gcc-8 CXX=g++-8 python3 ./install.py
+python3.8 install.py --clangd-completer
+
+## setup docker
+get newest docker version (update repo)
+https://phoenixnap.com/kb/how-to-install-docker-on-ubuntu-18-04
+sudo systemctl start docker
+sudo systemctl enable docker
+
+# vim setup guides
 
 https://dane-bulat.medium.com/how-to-turn-vim-into-a-lightweight-ide-6185e0f47b79
 
