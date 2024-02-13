@@ -2,15 +2,18 @@
 # ------------------------- self made stuff --------------------------
 
     #   setup for school MacOS
-    alias vim="~/goinfre/.brew/bin/vim"
-    alias 42tools="cd ~/Documents/_42toolbox/"
-    alias 42dir="cd ~/Documents/42Projects/"
-    alias Sidedir="cd ~/Documents/SideProjects/"
-    alias cjdir='cd ~/Documents/coding_journal'
-    export PATH=$HOME/goinfre/.brew/bin:$PATH
-    export PATH=/usr/local/bin/:$PATH
+#    alias vim="~/goinfre/.brew/bin/vim"
+#    alias 42tools="cd ~/Documents/_42toolbox/"
+#    alias 42dir="cd ~/Documents/42Projects/"
+#    alias Sidedir="cd ~/Documents/SideProjects/"
+#    alias cjdir='cd ~/Documents/coding_journal'
+#    export PATH=$HOME/goinfre/.brew/bin:$PATH
+#    export PATH=/usr/local/bin/:$PATH
 
     #   setup for home Linux
+    alias 42dir="cd ~/42Projects"
+    alias Sidedir="cd ~/SideProjects"
+    alias cjdir="cd ~/coding_journal"
 
     #	setup environment variables for git and header
     export USER='jwillert'

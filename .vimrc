@@ -287,7 +287,13 @@ endfunction
 nnoremap <leader>cs :call MakeClassSource()<CR>
 
 nnoremap <leader>arr :windo wincmd = <CR>
-nnoremap <leader>v s<c-w>h<c-w>h
+" nnoremap <leader>v s<c-w>h<c-w>h
 
+nnoremap <leader>ss
+             \ : if exists("syntax_on") <BAR>
+             \    syntax off <BAR>
+             \ else <BAR>  
+             \    syntax enable <BAR>
+             \ endif <CR> 
 "   2Term Command (2 terminals vertically split)
 command! TT execute 'vert term' | execute 'vert term' | execute '1q'
