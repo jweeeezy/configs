@@ -1,19 +1,18 @@
 
 # ------------------------- self made stuff --------------------------
 
-    #   setup for school MacOS
-#    alias vim="~/goinfre/.brew/bin/vim"
-#    alias 42tools="cd ~/Documents/_42toolbox/"
-#    alias 42dir="cd ~/Documents/42Projects/"
-#    alias Sidedir="cd ~/Documents/SideProjects/"
-#    alias cjdir='cd ~/Documents/coding_journal'
-#    export PATH=$HOME/goinfre/.brew/bin:$PATH
-#    export PATH=/usr/local/bin/:$PATH
+    # setup for school macs
+    if [ "$(uname)" == "Darwin" ] && [ -d "$HOME/goinfre" ]; then
+        alias vim="~/goinfre/.brew/bin/vim"
+        export PATH=$HOME/goinfre/.brew/bin:$PATH
+        export PATH=/usr/local/bin/:$PATH
+    fi
 
-    #   setup for home Linux
-    alias 42dir="cd ~/42Projects"
-    alias Sidedir="cd ~/SideProjects"
-    alias cjdir="cd ~/coding_journal"
+    # setup for directories
+    alias 42tools="cd ~/_42toolbox"
+    alias 42dir="cd ~/42Projects/"
+    alias Sidedir="cd ~/SideProjects/"
+    alias cjdir='cd ~/coding_journal'
 
     #	setup environment variables for git and header
     export USER='jwillert'
@@ -24,12 +23,12 @@
     alias setcwd='export CWD="$PWD"; echo "$PWD" > ~/.last_dir'
     if [ -f ~/.last_dir ]; then
         export CWD="$(cat ~/.last_dir)"
-        cd "$CWD"
     fi
     alias cpj='cd "$CPJ"'
     alias setcpj='export CPJ="$PWD"; echo "$PWD" > ~/.last_pj'
     if [ -f ~/.last_pj ]; then
         export CPJ="$(cat ~/.last_pj)"
+        cd "$CPJ";
     fi
 
     # setup some often used directories and files as aliases
