@@ -2,9 +2,9 @@
 
 ### make sure distro is downloading the current versions (otherwise add repo)
 
-``` sudo add-apt-repository <link_to_repo> ```
+    sudo add-apt-repository <link_to_repo>
 
-``` sudo apt install vim ```
+    sudo apt install vim
 
 #### sudo_log
 
@@ -46,8 +46,6 @@
 
 #### personal vim
 
-- add newest vim version
-
     sudo add-apt-repository ppa:jonathonf/vim
 
     sudo apt update -y
@@ -60,11 +58,7 @@
 
     sudo apt install clangd
 
-- add python (at least 3.8)
-
     sudo apt install python
-
-- add vim plugin manager
 
     mkdir -p ~/.vim/bundle
 
@@ -72,13 +66,9 @@
 
     git clone https://github.com/VundleVim/Vundle.vim.git Vundle.vim
 
-- download vim plugins
-
     vim
 
     :PluginInstall
-
-- install YCM auto completion plugin with python3.8
 
     cd ~/.vim/plugged/YouCompleteMe/
 
