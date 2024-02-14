@@ -6,18 +6,16 @@
 #    By: jwillert@student.42heilbronn.de            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/25 20:06:35 by jwillert          #+#    #+#              #
-#    Updated: 2023/08/29 21:33:49 by jwillert         ###   ########           #
+#    Updated: 2024/02/14 12:55:36 by jwillert         ###   ########           #
 #                                                                              #
 # **************************************************************************** #
 
 #	Variables
 HOME_DIR	=	~/
-FILES		=	$(HOME_DIR).zshrc \
-				$(HOME_DIR).vimrc \
+FILES		=	$(HOME_DIR).vimrc \
 				$(HOME_DIR).clang-format \
 				$(HOME_DIR).bashrc
-_FILES		=	.zshrc \
-				.vimrc \
+_FILES		=	.vimrc \
 				.clang-format \
 				.bashrc
 HOSTNAME	=	$(shell hostname)
