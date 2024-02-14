@@ -2,9 +2,9 @@
 
 ### make sure distro is downloading the current versions (otherwise add repo)
 
-    sudo add-apt-repository <link_to_repo>
+``` sudo add-apt-repository <link_to_repo> ```
 
-    sudo apt install vim
+``` sudo apt install vim ```
 
 #### sudo_log
 
