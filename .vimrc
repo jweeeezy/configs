@@ -13,7 +13,6 @@ call vundle#begin('~/.vim/plugged')
 " Let Vundle manage Vundle
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'sheerun/vim-polyglot'
-Plugin 'h3xx/vim-late_evening'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'preservim/nerdtree'
 Plugin 'preservim/tagbar'
@@ -177,25 +176,11 @@ let color_active = "black"
 let color_nonactive = "black"
 
     "   Font Colors
-let color_font_nonactive =249
-let color_font_active =123
-
-execute "hi VertSplit ctermfg=".color_nonactive
-execute "hi VertSplit ctermbg=".color_nonactive
-execute "hi StatusLine ctermfg=".color_font_active
-execute "hi StatusLine ctermbg=".color_active 
 execute "hi StatusLine cterm=NONE"
-execute "hi StatusLineNC ctermfg=".color_font_nonactive
-execute "hi StatusLineNC ctermbg=".color_nonactive
 execute "hi StatusLineNc cterm=NONE"
-execute "hi StatusLineTerm ctermfg=".color_font_active
-execute "hi StatusLineTerm ctermbg=".color_active
 execute "hi StatusLineTerm cterm=NONE"
-execute "hi StatusLineTermNC ctermfg=".color_font_nonactive
-execute "hi StatusLineTermNC ctermbg=".color_nonactive
 execute "hi StatusLineTermNC cterm=NONE"
-execute "hi LineNr ctermfg="123
-execute "hi EndOfBuffer ctermfg=black ctermbg=black"
+"execute "hi EndOfBuffer ctermfg=black ctermbg=black"
 
 "   Set a marker for 80 chars width
 set colorcolumn=80
@@ -297,3 +282,5 @@ nnoremap <leader>ss
              \ endif <CR> 
 "   2Term Command (2 terminals vertically split)
 command! TT execute 'vert term' | execute 'vert term' | execute '1q'
+
+colorscheme lunaperche

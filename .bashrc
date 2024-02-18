@@ -3,7 +3,7 @@
 
     # setup for school macs
     if [ "$(uname)" == "Darwin" ]; then
-        export PATH=/usr/local/bin/:$PATH
+        export PATH=/usr/local/bin:$PATH
         if [ -d "$HOME/goinfre" ]; then
             alias vim="~/goinfre/.brew/bin/vim"
             export PATH=$HOME/goinfre/.brew/bin:$PATH
