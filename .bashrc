@@ -2,10 +2,12 @@
 # ------------------------- self made stuff --------------------------
 
     # setup for school macs
-    if [ "$(uname)" == "Darwin" ] && [ -d "$HOME/goinfre" ]; then
-        alias vim="~/goinfre/.brew/bin/vim"
-        export PATH=$HOME/goinfre/.brew/bin:$PATH
+    if [ "$(uname)" == "Darwin" ]; then
         export PATH=/usr/local/bin/:$PATH
+        if [ -d "$HOME/goinfre" ]; then
+            alias vim="~/goinfre/.brew/bin/vim"
+            export PATH=$HOME/goinfre/.brew/bin:$PATH
+        fi
     fi
 
     # setup for directories
