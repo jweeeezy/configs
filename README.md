@@ -14,6 +14,8 @@
 
 #### make && cmake
 
+    sudo apt install clang
+    
     sudo apt install make
 
     sudo apt install cmake
