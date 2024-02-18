@@ -60,6 +60,8 @@
 
     sudo apt install clangd
 
+    sudo apt install clang-format
+
     sudo apt install python3-dev
 
     mkdir -p ~/.vim/bundle
