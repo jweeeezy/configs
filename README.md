@@ -58,7 +58,7 @@
 
     sudo apt install clangd
 
-    sudo apt install python
+    sudo apt install python3-dev
 
     mkdir -p ~/.vim/bundle
 
