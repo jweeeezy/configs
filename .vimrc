@@ -20,6 +20,7 @@ Plugin 'dyng/ctrlsf.vim'
 Plugin 'derekwyatt/vim-fswitch'
 Plugin 'derekwyatt/vim-protodef'
 Plugin 'ycm-core/YouCompleteMe'
+Plugin 'rainglow/vim'
 call vundle#end()
 filetype plugin indent on
 
@@ -171,9 +172,10 @@ set mouse=a
 "	own Theme
 "   Set colors
     "   Status Colors
+set termguicolors
 set background=dark
-let color_active = "black"
-let color_nonactive = "black"
+
+colorscheme lunaperche
 
     "   Font Colors
 execute "hi StatusLine cterm=NONE"
@@ -283,4 +285,3 @@ nnoremap <leader>ss
 "   2Term Command (2 terminals vertically split)
 command! TT execute 'vert term' | execute 'vert term' | execute '1q'
 
-colorscheme lunaperche
