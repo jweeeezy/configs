@@ -9,13 +9,13 @@ TIMESTAMP = $(shell date)
 
 .PHONY: upload download up dl
 upload:
-	for file in $(FILES); do cp $$file ./ ; done
+	for file in $(_FILES); do cp $$file ./ ; done
 	git add $(_FILES)
 	git commit -m "$(HOSTNAME) $(USERNAME) $(TIMESTAMP)"
 	git push
 download:
 	git pull
-	for file in $(_FILES); do cp $$file ~/.; done
+	for file in $(FILES); do cp $$file ~/.; done
 up: upload
 dl: download
 
