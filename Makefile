@@ -1,36 +1,21 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: jwillert@student.42heilbronn.de            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/04/25 20:06:35 by jwillert          #+#    #+#              #
-#    Updated: 2024/02/14 12:55:36 by jwillert         ###   ########           #
-#                                                                              #
-# **************************************************************************** #
 
-#	Variables
-HOME_DIR	=	~/
-FILES		=	$(HOME_DIR).vimrc \
-				$(HOME_DIR).clang-format \
-				$(HOME_DIR).bashrc
-_FILES		=	.vimrc \
-				.clang-format \
-				.bashrc
-HOSTNAME	=	$(shell hostname)
-USERNAME	=	$(shell whoami)
-TIMESTAMP	=	$(shell date)
+HOME_DIR  = ~/
+FILES     = .vimrc .bashrc
+_FILES    = $(addprefix $(HOME_DIR),$(FILES))
 
-#	Targets file transfer
-.PHONY: upload download dl up
+HOSTNAME  = $(shell hostname)
+USERNAME  = $(shell whoami)
+TIMESTAMP = $(shell date)
+
+.PHONY: upload download up dl
 upload:
-				for file in $(FILES); do cp $$file ./ ; done
-				git add $(_FILES)
-				git commit -m "$(HOSTNAME) $(USERNAME) $(TIMESTAMP)"
-				git push
+	for file in $(FILES); do cp $$file ./ ; done
+	git add $(_FILES)
+	git commit -m "$(HOSTNAME) $(USERNAME) $(TIMESTAMP)"
+	git push
 download:
-				git pull
-				for file in $(_FILES); do cp $$file ~/.; done
-dl:				download
-up:				upload
+	git pull
+	for file in $(_FILES); do cp $$file ~/.; done
+up: upload
+dl: download
+
