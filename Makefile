@@ -26,9 +26,6 @@ TIMESTAMP	=	$(shell date)
 .PHONY: upload download dl up
 upload:
 				for file in $(FILES); do cp $$file ./ ; done
-				git add Makefile
-				git add README.md
-				git add templates/
 				git add $(_FILES)
 				git commit -m "$(HOSTNAME) $(USERNAME) $(TIMESTAMP)"
 				git push
