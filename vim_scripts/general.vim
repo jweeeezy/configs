@@ -7,7 +7,7 @@ syntax enable
 " execute "hi ColorColumn ctermbg="123
 
 set termguicolors
-colorscheme lunaperche
+colorscheme industry
 execute "hi Search guibg=Yellow"
 execute "hi Normal guibg=NONE ctermbg=NONE"
 execute "hi EndOfBuffer ctermfg=NONE ctermbg=NONE"

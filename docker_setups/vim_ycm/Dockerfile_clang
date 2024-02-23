@@ -1,0 +1,11 @@
+FROM vim_ycm_base AS vim_ycm_clang
+
+SHELL ["/bin/bash", "-c"]
+
+# Installs clang and clangd for YCM autocompletion and syntax highlighting
+RUN apt install -y clang clangd \
+    && python3 ~/.vim/plugged/YouCompleteMe/install.py --clangd-completer --force-sudo
+
+# Adds clang.vim config to .vimrc
+RUN echo "source ~/configs/vim_scripts/clang.vim" >> ~/.vimrc
+

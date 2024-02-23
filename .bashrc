@@ -38,8 +38,8 @@
     alias bashrc='vim ~/.bashrc'
 
     # setup for easy template cpp workdir
-    alias insert_templ_cpp='cp ~/configs/templates/cpp/* ./'
-    alias insert_templ_docker='cp -r ~/configs/templates/docker/* ./'
+    alias insert_templ_cpp='cp ~/configs/project_templates/cpp/* ./'
+    alias insert_templ_docker='cp -r ~/configs/project_templates/docker/* ./'
 
     # alias norm to check the 42 norminette rules
     alias norm='norminette'

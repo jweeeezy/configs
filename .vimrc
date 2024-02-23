@@ -1,2 +1,2 @@
-source ~/configs/vimscripts/plugins.vim
-source ~/configs/vimscripts/general.vim
+source ~/configs/vim_scripts/plugins.vim
+source ~/configs/vim_scripts/general.vim

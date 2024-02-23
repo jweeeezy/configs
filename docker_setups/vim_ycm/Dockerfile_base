@@ -1,0 +1,32 @@
+FROM ubuntu:latest AS vim_ycm_base
+
+SHELL ["/bin/bash", "-c"]
+
+# Install essential packages and dependencies
+RUN apt update -y && apt install -y \
+    make \
+    cmake \
+    git \
+    tree \
+    software-properties-common \
+    python3-dev
+
+# Get the newest vim version
+RUN add-apt-repository ppa:jonathonf/vim -y \
+    && apt install vim -y \
+    && apt clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set up SSH key for git and clone configs repository
+RUN mkdir /root/.ssh/ \
+    && ssh-keyscan github.com >>~/.ssh/known_hosts \
+    && git clone https://github.com/jweeeezy/configs.git ~/configs
+WORKDIR /root/configs
+RUN make download
+WORKDIR /root/
+
+# Install Vundle.vim (Plugin Manager) and download plugins
+RUN mkdir -p ~/.vim/bundle \
+    && git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim \
+    && vim +PluginInstall +qall
+
