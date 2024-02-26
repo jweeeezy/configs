@@ -33,6 +33,10 @@ set tabstop=4
 
 set incsearch
 set nohlsearch
+
+let mapleader = ","
+
+nnoremap <leader>arr :windo wincmd = <CR>
 nnoremap <c-h> :set hlsearch!<cr>
 
 nnoremap <c-w>v :vertical terminal<cr>
@@ -45,8 +49,6 @@ nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
-
-let mapleader = ","
 
 command! SS :mksession! ~/session.vim
 command! SSO :source ~/session.vim

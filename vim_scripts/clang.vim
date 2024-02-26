@@ -11,7 +11,8 @@ let g:ycm_clangd_uses_ycmd_caching = 0
 let g:ycm_clangd_binary_path = exepath("clangd")
 
 " Mappings to close the completion menu and invoke it
-let g:ycm_key_list_stop_completion = '<C-Space>'
+nnoremap '<C-e>'
+let g:ycm_key_list_stop_completion = '<C-e>'
 let g:ycm_key_invoke_completion = '<C-Space>'
 
 let g:ycm_key_detailed_diagnostics = '<C-f>'
@@ -22,7 +23,7 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 
 " Mapping to look up the definition or declaration of the word under the cursor
-map <C-x> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Highlight bad whitespaces as red
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h,*.cpp,*.hpp match BadWhitespace /\s\+$/
