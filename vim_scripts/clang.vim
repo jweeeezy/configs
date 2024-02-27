@@ -11,8 +11,8 @@ let g:ycm_clangd_uses_ycmd_caching = 0
 let g:ycm_clangd_binary_path = exepath("clangd")
 
 " Mappings to close the completion menu and invoke it
-nnoremap '<C-e>'
-let g:ycm_key_list_stop_completion = '<C-e>'
+nnoremap '<c-e>' <nop>
+let g:ycm_key_list_stop_completion = '<c-e>'
 let g:ycm_key_invoke_completion = '<C-Space>'
 
 let g:ycm_key_detailed_diagnostics = '<C-f>'
