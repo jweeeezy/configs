@@ -1,7 +1,6 @@
 syntax enable
 
 set termguicolors
-colorscheme late_evening
 
 set colorcolumn=81
 highlight colorcolumn       guibg=white
@@ -12,7 +11,7 @@ highlight StatusLineNc      guibg=bg guifg=darkgray term=NONE cterm=NONE
 highlight StatusLineTerm    guibg=bg guifg=bg
 highlight StatusLineTermNC  guibg=bg guifg=bg
 highlight vertsplit         guibg=bg guifg=bg
-highlight Search guibg=Yellow
+highlight Search            guibg=Yellow
 
 set mouse=a "enables some mouse support features
 set encoding=utf8
@@ -37,7 +36,7 @@ let mapleader = ","
 
 nnoremap <leader>no :set nonumber norelativenumber<cr>
 nnoremap <leader>nn :set number relativenumber<cr>
-nnoremap <leader>arr :windo wincmd<cr>
+nnoremap <leader>arr :windo wincmd = <cr>
 nnoremap <leader>pad :execute 'topleft' ((&columns - &textwidth) / 2 - 1) . 'vsplit _paddding_' <cr> | wincmd p
 
 nnoremap <c-h> :set hlsearch!<cr>
