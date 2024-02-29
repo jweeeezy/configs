@@ -2,7 +2,7 @@ syntax enable
 
 set termguicolors
 colorscheme late_evening
-set colorcolumn=81
+set colorcolumn=80
 highlight colorcolumn       guibg=Grey23
 highlight EndOfBuffer       guibg=bg guifg=bg
 highlight LineNr            guifg=Grey50 guibg=bg
@@ -17,6 +17,7 @@ highlight PmenuSel          guibg=black
 highlight Constant          guifg=Gold
 highlight Statement         guifg=#ff5f87
 highlight Visual            cterm=NONE guibg=Grey30
+highlight Comment           guifg=Wheat1
 
 set mouse=a "enables some mouse support features
 set encoding=utf8
