@@ -13,9 +13,9 @@ let g:ycm_clangd_binary_path = exepath("clangd")
 " Mappings to close the completion menu and invoke it
 nnoremap '<c-e>' <nop>
 let g:ycm_key_invoke_completion = '<C-Space>'
-
+let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_key_detailed_diagnostics = '<C-f>'
-nmap <C-x> <plug>(YCMHover)
+nnoremap <C-x> <plug>(YCMHover)
 
 let g:ycm_auto_hover = ''
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
