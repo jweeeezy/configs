@@ -1,18 +1,18 @@
 syntax enable
 
-" execute "hi StatusLine cterm=NONE"
-" execute "hi StatusLineNc cterm=NONE"
-" execute "hi StatusLineTerm cterm=NONE"
-" execute "hi StatusLineTermNC cterm=NONE"
-" execute "hi ColorColumn ctermbg="123
-
 set termguicolors
-colorscheme industry
-execute "hi Search guibg=Yellow"
-execute "hi Normal guibg=NONE ctermbg=NONE"
-execute "hi EndOfBuffer ctermfg=NONE ctermbg=NONE"
-set background=dark
-set colorcolumn=80
+colorscheme late_evening
+
+set colorcolumn=81
+highlight colorcolumn       guibg=white
+highlight EndOfBuffer       guibg=bg guifg=bg
+highlight LineNr            guifg=white guibg=bg
+highlight StatusLine        guibg=bg guifg=white term=NONE cterm=NONE
+highlight StatusLineNc      guibg=bg guifg=darkgray term=NONE cterm=NONE
+highlight StatusLineTerm    guibg=bg guifg=bg
+highlight StatusLineTermNC  guibg=bg guifg=bg
+highlight vertsplit         guibg=bg guifg=bg
+highlight Search guibg=Yellow
 
 set mouse=a "enables some mouse support features
 set encoding=utf8
@@ -20,8 +20,7 @@ set nobackup
 set nowb
 set noswapfile
 set viminfo^=%
-set number
-set relativenumber
+set numberwidth=6
 set splitbelow splitright
 set fillchars+=vert:\
 
@@ -36,11 +35,15 @@ set nohlsearch
 
 let mapleader = ","
 
-nnoremap <leader>arr :windo wincmd = <CR>
+nnoremap <leader>no :set nonumber norelativenumber<cr>
+nnoremap <leader>nn :set number relativenumber<cr>
+nnoremap <leader>arr :windo wincmd<cr>
+nnoremap <leader>pad :execute 'topleft' ((&columns - &textwidth) / 2 - 1) . 'vsplit _paddding_' <cr> | wincmd p
+
 nnoremap <c-h> :set hlsearch!<cr>
 
-nnoremap <c-w>v :vertical terminal<cr>
-nnoremap <c-w>s :terminal<cr>
+nnoremap <c-w>gs :vertical terminal<cr>
+nnoremap <c-w>gi :terminal<cr>
 
 nnoremap <c-w>t :hi Normal guibg=NONE ctermbg=NONE<cr>
 nnoremap <c-w>b :set background=dark<cr>
