@@ -14,10 +14,11 @@ highlight vertsplit         guibg=bg guifg=bg
 highlight Search            guibg=Yellow
 highlight Pmenu             guifg=MistyRose2 guibg=Grey23
 highlight PmenuSel          guibg=black
+highlight String            guifg=Wheat2
 highlight Constant          guifg=Gold
+highlight Comment           guifg=Gold cterm=italic
 highlight Statement         guifg=#ff5f87
 highlight Visual            cterm=NONE guibg=Grey30
-highlight Comment           guifg=Wheat1
 
 set mouse=a "enables some mouse support features
 set encoding=utf8
