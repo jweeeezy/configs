@@ -1,31 +1,30 @@
 
 # ------------------------- self made stuff --------------------------
 
-    # setup for school macs
+    # 42 school MacOs specific
     if [ "$(uname)" == "Darwin" ]; then
         export PATH=/usr/local/bin:$PATH
+        alias norm='norminette'
         if [ -d "$HOME/goinfre" ]; then
             alias vim="~/goinfre/.brew/bin/vim"
             export PATH=$HOME/goinfre/.brew/bin:$PATH
         fi
     fi
 
-    # setup for directories
+    # Directories
     alias 42tools="cd ~/_42toolbox"
     alias 42dir="cd ~/42Projects/"
     alias Sidedir="cd ~/SideProjects/"
     alias cjdir='cd ~/coding_journal'
 
-    #	setup environment variables for git and header
-    export USER='jwillert'
-    export MAIL='@student.42heilbronn.de'
-
-    #	setup current working directory and current project
+    # alias 'Current Working Directory' (cwd)
     alias cwd='cd "$CWD"'
     alias setcwd='export CWD="$PWD"; echo "$PWD" > ~/.last_dir'
     if [ -f ~/.last_dir ]; then
         export CWD="$(cat ~/.last_dir)"
     fi
+
+    # alias 'Current Project Directory' (cpj)
     alias cpj='cd "$CPJ"'
     alias setcpj='export CPJ="$PWD"; echo "$PWD" > ~/.last_pj'
     if [ -f ~/.last_pj ]; then
@@ -33,18 +32,16 @@
         cd "$CPJ";
     fi
 
-    # setup some often used directories and files as aliases
+    # alias config files
     alias vimrc='vim ~/.vimrc'
     alias bashrc='vim ~/.bashrc'
 
-    # setup for easy template cpp workdir
-    alias insert_templ_cpp='cp ~/configs/project_templates/cpp/* ./'
-    alias insert_templ_docker='cp -r ~/configs/project_templates/docker/* ./'
+    # alias project templates
+    alias insert_proj_cpp='cp ~/configs/project_templates/cpp/* ./'
+    alias insert_proj_docker='cp -r ~/configs/project_templates/docker/* ./'
+    alias insert_proj_python='cp -r ~/configs/project_templates/python/* ./'
 
-    # alias norm to check the 42 norminette rules
-    alias norm='norminette'
-
-    # debug compilation helpers
+    # alias debug environment variables
     alias debug_a="export DEBUG_FLAG='-g -DDEBUG=1 -fsanitize=address'"
     alias debug_m="export DEBUG_FLAG='-g -fsanitize=address'"
     alias debug_s="export DEBUG_FLAG='-g -DDEBUG=1'"
