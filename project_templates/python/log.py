@@ -1,4 +1,10 @@
 
+from datetime import datetime
+
+# returns current timestamp
+def get_time() -> str:
+    return datetime.now().strftime('%Y/%m/%d')
+
 # logs <message> in red to stdin
 def err(message):
     print(f'\033[91mError: {message}\033[0m')
