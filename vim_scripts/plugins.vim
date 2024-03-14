@@ -13,6 +13,7 @@ Plugin 'preservim/tagbar'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'ycm-core/YouCompleteMe'
+Plugin 'dense-analysis/ale'
 
 call vundle#end()
 filetype plugin indent on

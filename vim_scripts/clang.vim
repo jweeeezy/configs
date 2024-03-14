@@ -1,4 +1,17 @@
 
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin('~/.vim/plugged')
+
+Plugin 'tell-k/vim-autopep8'
+
+call vundle#end()
+filetype plugin indent on
+
+" Enables Autopep8 formatting with default mapping gq (visual mode)
+au FileType python setlocal formatprg=autopep8\ -
+
 " Sets global py config file and disables the confirm window on startup
 let g:ycm_global_ycm_extra_conf = '~/configs/vim_scripts/global_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
