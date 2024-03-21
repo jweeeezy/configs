@@ -8,11 +8,11 @@
         if [ -d "$HOME/goinfre" ]; then
             alias vim="~/goinfre/.brew/bin/vim"
             export PATH=$HOME/goinfre/.brew/bin:$PATH
+            alias 42tools="cd ~/_42toolbox"
         fi
     fi
 
     # Directories
-    alias 42tools="cd ~/_42toolbox"
     alias 42dir="cd ~/42Projects/"
     alias Sidedir="cd ~/SideProjects/"
     alias cjdir='cd ~/coding_journal'
@@ -40,6 +40,7 @@
     alias insert_proj_cpp='cp ~/configs/project_templates/cpp/* ./'
     alias insert_proj_docker='cp -r ~/configs/project_templates/docker/* ./'
     alias insert_proj_python='cp -r ~/configs/project_templates/python/* ./'
+    alias insert_proj_web='cp -r ~/configs/project_templates/web/* ./'
 
     # alias debug environment variables
     alias debug_a="export DEBUG_FLAG='-g -DDEBUG=1 -fsanitize=address'"

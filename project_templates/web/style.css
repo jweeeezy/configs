@@ -1,0 +1,10 @@
+:root {
+    --MAIN_COLOR:        black;
+    --MAIN_COLOR_HELPER: DarkSlateBlue;
+    --MAIN_ANTI_COLOR:   AntiqueWhite;
+    --MAIN_FONT:         "Monaco";
+}
+
+* { 
+    box-sizing: border-box;
+}
