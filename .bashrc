@@ -40,7 +40,7 @@
     alias insert_proj_cpp='cp ~/configs/project_templates/cpp/* ./'
     alias insert_proj_docker='cp -r ~/configs/project_templates/docker/* ./'
     alias insert_proj_python='cp -r ~/configs/project_templates/python/* ./'
-    alias insert_proj_web='cp -r ~/configs/project_templates/web/* ./'
+    alias insert_proj_webdev='cp -r ~/configs/project_templates/web/* ./'
 
     # alias debug environment variables
     alias debug_a="export DEBUG_FLAG='-g -DDEBUG=1 -fsanitize=address'"
