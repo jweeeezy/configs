@@ -72,6 +72,8 @@
 
     vim
 
+download with only plugins.vim as vim source first!
+
     :PluginInstall
 
     cd ~/.vim/plugged/YouCompleteMe/
@@ -86,15 +88,12 @@
 
     sudo apt install openssh-server
 
-    sudo vim /etc/ssh/sshd_config (uncomment #Port 4242)
+    sudo vim /etc/ssh/sshd_config (uncomment #Port 22)
 
 #### docker
 
-    sudo apt install docker
+depending on host OS. Read documentation
 
-    sudo systemctl start docker
-
-    sudo systemctl enable docker
 
 # vim setup guides
 
