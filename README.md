@@ -2,29 +2,30 @@
 
 This repository contains most of the tools/configs I use for daily developing
 
-## .bashrc
+## __bash scripts
+useful bash scripts
 
-my .bashrc with some aliases for navigating, debugging in linux / 42 macos
+## __cheatsheets
+cheatsheets for setup or useful commands for specific topics like git, docker or bash
 
-## __ bash scripts
-
-self-written useful bash scripts
-
-## __ docker setups
-
+## __docker setups
 self written docker images for fast dev environment deployment
 
-## __ project_templates
-
+## __project_templates
 simple project builder that are linked to the .bashrc via alias command
 (e.g.: insert_proj_cpp) for quick starting
 
-## __ vim
-
+## __vim
 vim scripts for multiple purposes aswell as my favorite vim colorschemes
 
-## .vimrc
+## .clang-format
+my clang-format settings used in 42 projects
 
+## .bashrc
+my .bashrc with some aliases for navigating, debugging in linux / 42 macos
+
+## .vimrc
 vim config file that will source the scripts in vim/vim_scripts
 
-
+## Makefile
+use ` make download ` to install .bashrc and .vimrc on your system or ` make colors `to copy vim colorschemes from vim/vim_color to your system
