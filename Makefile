@@ -7,15 +7,15 @@ HOSTNAME  = $(shell hostname)
 USERNAME  = $(shell whoami)
 TIMESTAMP = $(shell date)
 
-.PHONY: upload download up dl colors
+.PHONY: download upload up dl colors
+download:
+	git pull
+	for file in $(FILES); do cp $$file ~/.; done
 upload:
 	for file in $(_FILES); do cp $$file ./ ; done
 	git add $(_FILES)
 	git commit -m "$(HOSTNAME) $(USERNAME) $(TIMESTAMP)"
 	git push
-download:
-	git pull
-	for file in $(FILES); do cp $$file ~/.; done
 up: upload
 dl: download
 colors:
