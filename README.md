@@ -1,102 +1,30 @@
-# dev environment
+# Personal dev environment
 
-### make sure distro is downloading the current versions (otherwise add repo)
+This repository contains most of the tools/configs I use for daily developing
 
-    sudo add-apt-repository <link_to_repo>
+## .bashrc
 
-    sudo apt install vim
+my .bashrc with some aliases for navigating, debugging in linux / 42 macos
 
-#### sudo_log
+## __ bash scripts
 
-    sudo vim /etc/sudoers/
+self-written useful bash scripts
 
-- add Defaults logfile="/var/log/sudo.log"
+## __ docker setups
 
-#### make && cmake
+self written docker images for fast dev environment deployment
 
-    sudo apt install clang
-    
-    sudo apt install make
+## __ project_templates
 
-    sudo apt install cmake
+simple project builder that are linked to the .bashrc via alias command
+(e.g.: insert_proj_cpp) for quick starting
 
-#### git
+## __ vim
 
-    sudo apt install git
+vim scripts for multiple purposes aswell as my favorite vim colorschemes
 
-    git config --global user.name "Jakob Willert"
+## .vimrc
 
-    git config --global user.email "willertjakob@gmail.com"
-
-    ssh-keygen -t rsa -b 4096 -C "willertjakob@gmail.com"
-
-    sudo cat ~/.ssh/id_rsa.pub
-
---> add to GitHub allowed ssh keys
-
-#### bashrc
-
-    git clone git@github.com:jweeeezy/configs.git
-
-    cd configs
-
-    make download
-
-#### cl-tools
-
-    sudo apt install tree
-
-#### personal vim
-
-    sudo add-apt-repository ppa:jonathonf/vim
-
-    sudo apt update -y
-
-    sudo apt upgrade -y
-
-    sudo apt install ctags
-
-    sudo apt install ack
-
-    sudo apt install clangd
-
-    sudo apt install clang-format
-
-    sudo apt install python3-dev
-
-    mkdir -p ~/.vim/bundle
-
-    cd ~/.vim/bundle
-
-    git clone https://github.com/VundleVim/Vundle.vim.git Vundle.vim
-
-    vim
-
-download with only plugins.vim as vim source first!
-
-    :PluginInstall
-
-    cd ~/.vim/plugged/YouCompleteMe/
-
-    python3 install.py --clangd-completer
-
-#### openssh
-
-    sudo ufw enable
-
-    sudo ufw add 4242
-
-    sudo apt install openssh-server
-
-    sudo vim /etc/ssh/sshd_config (uncomment #Port 22)
-
-#### docker
-
-depending on host OS. Read documentation
+vim config file that will source the scripts in vim/vim_scripts
 
 
-# vim setup guides
-
-https://dane-bulat.medium.com/how-to-turn-vim-into-a-lightweight-ide-6185e0f47b79
-
-https://dane-bulat.medium.com/vim-setting-up-a-build-system-and-code-completion-for-c-and-c-eb263c0a19a1
