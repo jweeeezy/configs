@@ -14,6 +14,10 @@ Plugin 'dyng/ctrlsf.vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'dense-analysis/ale'
+Plugin 'tell-k/vim-autopep8'
+Plugin 'mattn/emmet-vim'
+Plugin 'AndrewRadev/tagalong.vim'
+Plugin 'tpope/vim-surround'
 
 call vundle#end()
 filetype plugin indent on

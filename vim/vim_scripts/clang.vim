@@ -1,14 +1,4 @@
 
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-
-call vundle#begin('~/.vim/plugged')
-
-Plugin 'tell-k/vim-autopep8'
-
-call vundle#end()
-filetype plugin indent on
-
 " Enables Autopep8 formatting with default mapping gq (visual mode)
 au FileType python setlocal formatprg=autopep8\ -
 
