@@ -13,6 +13,8 @@ Plugin 'preservim/nerdtree'
 Plugin 'preservim/tagbar'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'dense-analysis/ale'
@@ -56,6 +58,9 @@ let g:ctrlsf_default_root = 'cwd'
 nmap <C-f> <Plug>CtrlSFPrompt
 nmap <C-f>w <Plug>CtrlSFCwordPath
 
+"   Fuzzy Finder Plugin
+nnoremap <c-q> :FZF<cr>
+
 "   YouCompleteMe Plugin
 " Set filetypes where YCM will be turned on
 let g:ycm_filetype_whitelist = { 'cpp':1, 'h':2, 'hpp':3, 'c':4, 'cxx':5 , 'py':6, 'python':7, 'html':8, 'css':9 }
@@ -75,3 +80,4 @@ map <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "   ALE Plugin
 nnoremap <C-l> :ALEToggle<CR>
+let g:ale_enabled = 0
