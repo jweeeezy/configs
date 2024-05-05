@@ -21,7 +21,8 @@ ctags \
 ack \
 python3-dev \
 openssh-server \
-tree
+tree \
+grip
 ```
 ```
 git config --global user.name "Jakob Willert"
