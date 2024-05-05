@@ -8,13 +8,17 @@ call vundle#begin('~/.vim/plugged')
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'rainglow/vim'
+
 Plugin 'preservim/nerdtree'
 Plugin 'preservim/tagbar'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'sheerun/vim-polyglot'
+
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'dense-analysis/ale'
+
 Plugin 'tell-k/vim-autopep8'
+
 Plugin 'mattn/emmet-vim'
 Plugin 'AndrewRadev/tagalong.vim'
 Plugin 'tpope/vim-surround'
