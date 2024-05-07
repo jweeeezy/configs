@@ -17,6 +17,9 @@
     alias Sidedir="cd ~/SideProjects/"
     alias cjdir='cd ~/coding_journal'
 
+    # bash history
+    HISTTIMEFORMAT="%Y-%m-%d %T "
+
     # alias 'Current Working Directory' (cwd)
     alias cwd='cd "$CWD"'
     alias setcwd='export CWD="$PWD"; echo "$PWD" > ~/.last_dir'
