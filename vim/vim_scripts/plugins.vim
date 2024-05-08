@@ -82,6 +82,9 @@ map <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "   ALE Plugin
 nnoremap <C-l> :ALEToggle<CR>
 let g:ale_enabled = 0
+let g:ale_linters = {
+  \   'javascript': ['eslint'],
+  \}
 
-"   ALE Plugin
+"   Prettier vim Plugin
 nnoremap <c-p> :Prettier<cr>
