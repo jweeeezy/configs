@@ -16,7 +16,7 @@
 | :-------------- | :----------- |
 | git log --oneline --graph --decorate --all (-n10)| overview of all branches and commit history |
 | git blame | check who and when changed a line of a file |
-| git diff (--staged) | check the differences between two versions of a file (by default current change vs. last commit) |
+| git diff (--staged / HEAD~1 HEAD) | check the differences between two versions of a file (by default current change vs. last commit) |
 | git stash (list/drop/apply) | stash current changes locally |
 | git add -p | walkthrough changes and add them partially |
 | git tag -a v0.1 | tag a commit with a referencable version number tag
