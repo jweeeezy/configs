@@ -29,10 +29,10 @@ vim config file that will source the scripts in vim/vim_scripts
 
 ## Makefile
 
-    ` make download `
+    make download
 
 to install .bashrc and .vimrc on your system
 
-    ` make colors `
+    make colors
 
 to copy vim colorschemes from vim/vim_color to your system
