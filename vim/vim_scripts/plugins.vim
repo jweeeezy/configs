@@ -63,7 +63,7 @@ nnoremap <c-q> :FZF<cr>
 
 "   YouCompleteMe Plugin
 " Set filetypes where YCM will be turned on
-let g:ycm_filetype_whitelist = { 'cpp':1, 'h':2, 'hpp':3, 'c':4, 'cxx':5 , 'py':6, 'python':7, 'html':8, 'css':9 }
+let g:ycm_filetype_whitelist = { 'cpp':1, 'h':2, 'hpp':3, 'c':4, 'cxx':5 , 'py':6, 'python':7, 'html':8, 'css':9, 'js':10, 'jsx':11}
 
 let g:ycm_key_invoke_completion = '<C-Space>'
 let g:ycm_autoclose_preview_window_after_insertion = 1

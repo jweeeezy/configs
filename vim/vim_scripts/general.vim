@@ -52,6 +52,7 @@ nnoremap <leader>arr :windo wincmd = <cr>
 nnoremap <leader>pad :execute 'topleft' ((&columns - &textwidth) / 2 - 1) . 'vsplit _paddding_' <cr> | wincmd p
 
 nnoremap <c-h> :set hlsearch!<cr>
+nnoremap <c-b> :b 
 
 nnoremap <c-w>gs :vertical terminal<cr>
 nnoremap <c-w>gi :terminal<cr>
