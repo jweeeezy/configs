@@ -28,4 +28,11 @@ my .bashrc with some aliases for navigating, debugging in linux / 42 macos
 vim config file that will source the scripts in vim/vim_scripts
 
 ## Makefile
-use ` make download ` to install .bashrc and .vimrc on your system or ` make colors `to copy vim colorschemes from vim/vim_color to your system
+
+    ` make download `
+
+to install .bashrc and .vimrc on your system
+
+    ` make colors `
+
+to copy vim colorschemes from vim/vim_color to your system
