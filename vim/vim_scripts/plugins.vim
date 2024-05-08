@@ -24,6 +24,7 @@ Plugin 'tell-k/vim-autopep8'
 Plugin 'mattn/emmet-vim'
 Plugin 'AndrewRadev/tagalong.vim'
 Plugin 'tpope/vim-surround'
+Plugin 'prettier/vim-prettier'
 
 call vundle#end()
 filetype plugin indent on
@@ -81,3 +82,6 @@ map <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "   ALE Plugin
 nnoremap <C-l> :ALEToggle<CR>
 let g:ale_enabled = 0
+
+"   ALE Plugin
+nnoremap <c-p> :Prettier<cr>
