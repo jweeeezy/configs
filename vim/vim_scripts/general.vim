@@ -67,6 +67,9 @@ nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
 
+command! W write
+command! Q quit
+
 command! RELOAD :source ~/.vimrc
 command! SS :mksession! ~/session.vim
 command! SSO :source ~/session.vim

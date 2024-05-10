@@ -12,6 +12,9 @@
         fi
     fi
 
+    # Fuzzy Finder
+    export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git node_modules'
+
     # Directories
     alias 42dir="cd ~/42Projects/"
     alias Sidedir="cd ~/SideProjects/"
