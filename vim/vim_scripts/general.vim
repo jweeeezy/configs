@@ -44,6 +44,8 @@ set tabstop=4
 set incsearch
 set nohlsearch
 
+set noesckeys
+
 let mapleader = ","
 
 nnoremap <leader>no :set nonumber norelativenumber<cr>

@@ -22,8 +22,8 @@ Plugin 'dense-analysis/ale'
 Plugin 'tell-k/vim-autopep8'
 
 Plugin 'mattn/emmet-vim'
-Plugin 'AndrewRadev/tagalong.vim'
 Plugin 'tpope/vim-surround'
+Plugin 'AndrewRadev/tagalong.vim'
 Plugin 'prettier/vim-prettier'
 
 call vundle#end()
