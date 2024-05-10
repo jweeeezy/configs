@@ -13,7 +13,7 @@ Plugin 'preservim/nerdtree'
 Plugin 'preservim/tagbar'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'sheerun/vim-polyglot'
-Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'junegunn/fzf.vim'
 
 Plugin 'ycm-core/YouCompleteMe'
@@ -60,7 +60,7 @@ nmap <C-f> <Plug>CtrlSFPrompt
 nmap <C-f>w <Plug>CtrlSFCwordPath
 
 "   Fuzzy Finder Plugin
-nnoremap <c-q> :FZF<cr>
+nnoremap <c-q> :GFiles<cr>
 
 "   YouCompleteMe Plugin
 " Set filetypes where YCM will be turned on
