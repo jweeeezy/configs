@@ -11,5 +11,5 @@ let g:ycm_clangd_uses_ycmd_caching = 0
 let g:ycm_clangd_binary_path = exepath("clangd")
 
 " Highlight bad whitespaces as red
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h,*.cpp,*.hpp match BadWhitespace /\s\+$/
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h,*.cpp,*.hpp,*.js,*.jsx,*.html,*.css match BadWhitespace /\s\+$/
 highlight BadWhitespace ctermbg=red guibg=red

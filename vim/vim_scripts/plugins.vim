@@ -5,7 +5,6 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin('~/.vim/plugged')
-
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'rainglow/vim'
 
