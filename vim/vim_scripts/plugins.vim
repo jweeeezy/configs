@@ -56,7 +56,6 @@ let g:ctrlsf_position = 'right'
 let g:ctrlsf_winsize = '46'
 let g:ctrlsf_default_root = 'cwd'
 nmap <C-f> <Plug>CtrlSFPrompt
-nmap <C-f>w <Plug>CtrlSFCwordPath
 
 "   Fuzzy Finder Plugin
 nnoremap <c-q> :GFiles<cr>
