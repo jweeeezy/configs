@@ -62,9 +62,9 @@ nnoremap <c-q> :GFiles<cr>
 
 "   YouCompleteMe Plugin
 " Set filetypes where YCM will be turned on
-let g:ycm_filetype_whitelist = { 'cpp':1, 'h':2, 'hpp':3, 'c':4, 'cxx':5 , 'py':6, 'python':7, 'html':8, 'css':9, 'js':10, 'jsx':11}
-
+let g:ycm_filetype_whitelist = {'*': 1}
 let g:ycm_key_invoke_completion = '<C-Space>'
+let g:ycm_enable_semantic_highlighting = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_key_detailed_diagnostics = '<C-x>'
 let g:ycm_enable_diagnostic_signs = 0
@@ -79,7 +79,7 @@ map <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "   ALE Plugin
 nnoremap <C-l> :ALEToggle<CR>
-" let g:ale_enabled = 0
+let g:ale_enabled = 0
 let g:ale_linters = {
   \   'javascript': ['eslint'],
   \}
