@@ -59,6 +59,7 @@ nmap <C-f> <Plug>CtrlSFPrompt
 
 "   Fuzzy Finder Plugin
 nnoremap <c-q> :GFiles<cr>
+nnoremap <c-p> :Files<cr>
 
 "   YouCompleteMe Plugin
 " Set filetypes where YCM will be turned on
@@ -85,4 +86,4 @@ let g:ale_linters = {
   \}
 
 "   Prettier vim Plugin
-nnoremap <c-p> :Prettier<cr>
+nnoremap <leader>pret :Prettier<cr>
