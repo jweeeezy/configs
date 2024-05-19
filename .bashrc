@@ -2,15 +2,7 @@
 # ------------------------- self made stuff --------------------------
 
     # 42 school MacOs specific
-    if [ "$(uname)" == "Darwin" ]; then
-        export PATH=/usr/local/bin:$PATH
-        alias norm='norminette'
-        if [ -d "$HOME/goinfre" ]; then
-            alias vim="~/goinfre/.brew/bin/vim"
-            export PATH=$HOME/goinfre/.brew/bin:$PATH
-            alias 42tools="cd ~/_42toolbox"
-        fi
-    fi
+    alias norm='norminette'
 
     # Fuzzy Finder
     export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git node_modules'
