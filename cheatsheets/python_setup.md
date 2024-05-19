@@ -8,18 +8,20 @@
 
 ## package manager
 - ` http://www.pypi.com ` for external libraries
-- use ` requirements.txt ` for a log of dependencies
 
 | command | description |
 | :-------------- | :----------- |
-| (env) $: ` python -m pip search some_module ` | cli-tool to search for libs on pypi
-| (env) $: ` python -m pip install some_module` | cli-tool to install libs from pypi
-| (env) $: ` python -m pip freeze > requirements.txt ` | log all installed libs to file
-| (env) $: ` python -m pip install -r requirements.txt ` | install all logged libs from file
+| (env) $: ` python -m pip search some_module ` | cli-tool to search for libs
+| (env) $: ` python -m pip install some_module` | cli-tool to install libs
+| (env) $: ` python -m pip freeze > requirements.txt ` | log all installed libs
+| (env) $: ` python -m pip install -r requirements.txt ` | install all listed libs
+
+## Files
+| ` __init__.py ` | empty file that marks a python package
+| ` requirements.txt` | list of project-specific dependencies
 
 ## .gitignore
-- *.pyc
-- pycache
+https://djangowaves.com/tips-tricks/gitignore-for-a-django-project/
 
 ## VSCode extensions
 -   Python
@@ -29,6 +31,53 @@
 ## Frameworks
 
 ### Django
+
+#### Setup
+| command | description |
+| :-------------- | :----------- |
+| ` django-admin startproject mysite ` | creates a django project
+| (mysite/) $: ` python manage.py runserver ` | starts project on localhost
+| (mysite/) $: ` python manage.py startapp polls ` | creates new application <polls>
+
+#### Files (project)
+| file | description |
+| :-------------- | :----------- |
+| ` mysite/` | root / outer directory for django project
+| ` mysite/manage.py ` | command-line-utility to interact iwth mysite
+| ` mysite/mysite/ ` |  dir of actual python package, that needs to be imported
+| ` mysite/mysite/settings.py ` | config file for the mysite package/project
+| ` mysite/mysite/urls.py ` | URL / table of contents for the project
+| ` mysite/mysite/asgi.py ` | entry point for asgi-compatible webservers
+| ` mysite/mysite/wsgi.py ` | entry point for asgi-compatible webservers
+
+#### Files (app)
+| file | description |
+| :-------------- | :----------- |
+| ` polls/` | root / outer directory for django application
+| ` polls/admin.py ` |
+| ` polls/apps.py ` |
+| ` polls/migrations.py ` |
+| ` polls/models.py ` |
+| ` polls/tests.py ` |
+| ` polls/views.py ` |
+
+#### Create a view
+- define a function in polls/views.py like:
+
+` def index(request):
+    return HttpResponse("Hello!") `
+
+- add a path to the urlpatters list in polls/urls.py
+
+` urlpatterns = [
+    path("", views.index, name="index"),
+] `
+
+- add a path to the urlpatterns of mysite/urls.py
+
+` urlpatterns = [
+    path("polls/", include("polls.urls")),
+]`
 
 #### Migrations
 | command | description |
