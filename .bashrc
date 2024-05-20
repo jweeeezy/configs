@@ -11,6 +11,7 @@
     alias 42dir="cd ~/42Projects/"
     alias Sidedir="cd ~/SideProjects/"
     alias cjdir='cd ~/coding_journal'
+    alias cfg='cd ~/configs'
 
     # bash history
     HISTTIMEFORMAT="%Y-%m-%d %T "
