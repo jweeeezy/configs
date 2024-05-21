@@ -7,14 +7,14 @@
     # Fuzzy Finder
     export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git node_modules'
 
+    # bash history
+    HISTTIMEFORMAT="%Y-%m-%d %T "
+
     # Directories
     alias 42dir="cd ~/42Projects/"
     alias Sidedir="cd ~/SideProjects/"
     alias cjdir='cd ~/coding_journal'
     alias cfg='cd ~/configs'
-
-    # bash history
-    HISTTIMEFORMAT="%Y-%m-%d %T "
 
     # alias 'Current Working Directory' (cwd)
     alias cwd='cd "$CWD"'
@@ -28,12 +28,7 @@
     alias setcpj='export CPJ="$PWD"; echo "$PWD" > ~/.last_pj'
     if [ -f ~/.last_pj ]; then
         export CPJ="$(cat ~/.last_pj)"
-        cd "$CPJ";
     fi
-
-    # alias config files
-    alias vimrc='vim ~/.vimrc'
-    alias bashrc='vim ~/.bashrc'
 
     # alias project templates
     alias insert_proj_cpp='cp ~/configs/project_templates/cpp/* ./'
@@ -50,6 +45,9 @@
     alias debug_off="export DEBUG_FLAG="
     alias debug='echo "CURRENT DEBUG OPTIONS:"; echo [ $DEBUG_FLAG ]; \
       echo ;cat ~/.zshrc | grep DEBUG_FLAG'
+
+    # init commands
+    cfg
 
 # -------------------------------------------------------------------
 
