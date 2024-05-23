@@ -1,29 +1,8 @@
 syntax enable
+filetype plugin indent on
 
 set termguicolors
-colorscheme late_evening
 set colorcolumn=80
-
-highlight SignColumn            guibg=Grey30
-highlight ALEVirtualTextError   guibg=Red guifg=white cterm=italic
-highlight ALEVirtualTextWarning guifg=Yellow guibg=bg cterm=italic
-highlight ALEWarning            guibg=Yellow guifg=Grey23 cterm=italic
-highlight colorcolumn           guibg=Grey23
-highlight EndOfBuffer           guibg=bg guifg=bg
-highlight LineNr                guifg=Grey50 guibg=bg
-highlight StatusLine            guibg=bg guifg=white term=NONE cterm=NONE
-highlight StatusLineNc          guibg=bg guifg=darkgray term=NONE cterm=NONE
-highlight StatusLineTerm        guibg=bg guifg=bg
-highlight StatusLineTermNC      guibg=bg guifg=bg
-highlight vertsplit             guibg=bg guifg=bg
-highlight Search                guibg=Yellow
-highlight Pmenu                 guifg=MistyRose2 guibg=Grey23
-highlight PmenuSel              guibg=black
-highlight String                guifg=Wheat2
-highlight Constant              guifg=Gold
-highlight Comment               guifg=Plum cterm=italic guibg=bg
-highlight Statement             guifg=#ff5f87
-highlight Visual                cterm=NONE guibg=Grey30
 
 set mouse=a "enables some mouse support features
 set encoding=utf8
