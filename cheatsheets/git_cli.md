@@ -11,7 +11,7 @@
 | .gitignore | place this into root directory of repository to list all files that should be ignored by git |
 | .gitsubmodule | keeps track of submodules used inside a repository
 
-## GIt useful commands
+## Git useful commands
 | command    | description |
 | :-------------- | :----------- |
 | git log --oneline --graph --decorate --all (-n10)| overview of all branches and commit history |
