@@ -2,11 +2,11 @@
 set nocompatible
 
 filetype off
+filetype plugin indent off
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin('~/.vim/plugged')
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'rainglow/vim'
 
 Plugin 'preservim/nerdtree'
 Plugin 'preservim/tagbar'
@@ -26,7 +26,6 @@ Plugin 'AndrewRadev/tagalong.vim'
 Plugin 'prettier/vim-prettier'
 
 call vundle#end()
-filetype plugin indent on
 
 "   NERDTREE Plugin settings
 let NERDTreeShowBookmarks = 0   " Show the bookmarks table
