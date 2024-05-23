@@ -7,7 +7,9 @@ HOSTNAME  = $(shell hostname)
 USERNAME  = $(shell whoami)
 TIMESTAMP = $(shell date)
 
-.PHONY: download upload up dl colors
+.PHONY: cp download upload up dl colors
+cp:
+	for file in $(FILES); do cp $$file ~/.; done
 download:
 	git pull
 	for file in $(FILES); do cp $$file ~/.; done
@@ -19,4 +21,4 @@ upload:
 up: upload
 dl: download
 colors:
-	cp -r ./vim/vim_colors ~/.vim/colors
+	cp -r ./vim/colors ~/.vim/colors
