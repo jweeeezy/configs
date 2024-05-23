@@ -5,7 +5,7 @@
     alias norm='norminette'
 
     # Fuzzy Finder
-    export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git node_modules'
+    #export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow'
 
     # bash history
     HISTTIMEFORMAT="%Y-%m-%d %T "
