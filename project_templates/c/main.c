@@ -8,7 +8,7 @@
 //                                                                            //
 // -------------------------------------------------------------------------- //
 
-#include <cstdlib> // needed for MACROS
+#include <stdlib.h> // needed for MACROS
 
 #define EXPECTED_ARGC 2
 
