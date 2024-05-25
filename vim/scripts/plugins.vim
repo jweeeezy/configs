@@ -60,6 +60,11 @@ nmap <C-f> <Plug>CtrlSFPrompt
 nnoremap <c-q> :GFiles<cr>
 nnoremap <c-p> :Files<cr>
 
+let g:fzf_action = {
+      \ 'ctrl-e': 'vertical split',
+      \ 'ctrl-x': 'split',
+      \ }
+
 "   YouCompleteMe Plugin
 " Set filetypes where YCM will be turned on
 let g:ycm_filetype_whitelist = {'*': 1}
