@@ -61,7 +61,8 @@ nnoremap <c-q> :GFiles<cr>
 nnoremap <c-p> :Files<cr>
 
 let g:fzf_action = {
-      \ 'ctrl-e': 'vertical split',
+      \ 'ctrl-e': 'edit',
+      \ 'ctrl-r': 'vertical split',
       \ 'ctrl-x': 'split',
       \ }
 
