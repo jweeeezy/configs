@@ -13,6 +13,7 @@
     alias cjdir='cd ~/coding_journal'
     alias cfg='cd ~/configs'
     alias fd="cd ~ && cd \$(find * -type d | fzf)"
+    alias cdf="cd ~ && cd \$(find * -type d | fzf)"
     [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
     # alias 'Current Working Directory' (cwd)
