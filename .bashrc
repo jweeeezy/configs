@@ -4,9 +4,6 @@
     # 42 school MacOs specific
     alias norm='norminette'
 
-    # Fuzzy Finder
-    #export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow'
-
     # bash history
     HISTTIMEFORMAT="%Y-%m-%d %T "
 
@@ -15,6 +12,8 @@
     alias Sidedir="cd ~/SideProjects/"
     alias cjdir='cd ~/coding_journal'
     alias cfg='cd ~/configs'
+    alias fd="cd ~ && cd \$(find * -type d | fzf)"
+    [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
     # alias 'Current Working Directory' (cwd)
     alias cwd='cd "$CWD"'
@@ -48,7 +47,6 @@
       echo ;cat ~/.zshrc | grep DEBUG_FLAG'
 
     # init commands
-    cfg
 
 # -------------------------------------------------------------------
 
