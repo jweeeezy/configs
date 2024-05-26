@@ -1,11 +1,12 @@
 " << PLUGIN MANAGER >>
-set nocompatible
 
+set nocompatible
 filetype off
 filetype plugin indent off
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin('~/.vim/plugged')
+
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'preservim/nerdtree'
@@ -26,6 +27,7 @@ Plugin 'AndrewRadev/tagalong.vim'
 Plugin 'prettier/vim-prettier'
 
 call vundle#end()
+filetype plugin indent on
 
 "   NERDTREE Plugin settings
 let NERDTreeShowBookmarks = 0   " Show the bookmarks table
@@ -35,13 +37,6 @@ let NERDTreeMinimalMenu = 1     " Use the minimal menu (m)
 let NERDTreeWinPos = 'left'     " Panel opens on the left side
 let NERDTreeWinSize = 31        " Set panel width to 31 columns
 nmap <c-n> :NERDTreeToggle<CR>
-
-"   TAGBAR Plugin
-let g:tagbar_autofocus = 1 " Focus the panel when opening it
-let g:tagbar_autoshowtag = 1 " Highlight the active tag
-let g:tagbar_position = 'botright vertical' " Make panel vertical and right
-nnoremap <c-t> <nop>
-nmap <c-t> :TagbarToggle<CR>
 
 "   CTRLSF Plugin
 let g:ctrlsf_backend = 'ack'
@@ -66,6 +61,13 @@ let g:fzf_action = {
       \ 'ctrl-x': 'split',
       \ }
 
+"   TAGBAR Plugin
+let g:tagbar_autofocus = 1 " Focus the panel when opening it
+let g:tagbar_autoshowtag = 1 " Highlight the active tag
+let g:tagbar_position = 'botright vertical' " Make panel vertical and right
+nnoremap <c-t> <nop>
+nmap <c-t> :TagbarToggle<CR>
+
 "   YouCompleteMe Plugin
 " Set filetypes where YCM will be turned on
 let g:ycm_filetype_whitelist = {'*': 1}
@@ -79,9 +81,7 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_error_symbol = '>>'
 let g:ycm_warning_symbol = '!'
-nnoremap '<c-e>' <nop>
 nnoremap <C-x> <plug>(YCMHover)
-map <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "   ALE Plugin
 nnoremap <C-l> :ALEToggle<CR>
@@ -91,4 +91,3 @@ let g:ale_linters = {
   \}
 
 "   Prettier vim Plugin
-nnoremap <leader>pret :Prettier<cr>

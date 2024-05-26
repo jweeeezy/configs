@@ -5,6 +5,7 @@ highlight ALEVirtualTextWarning guifg=Yellow guibg=bg cterm=italic
 highlight ALEWarning            guibg=Yellow guifg=Grey23 cterm=italic
 highlight EndOfBuffer           guibg=bg guifg=bg
 highlight colorcolumn           guibg=Grey23
+highlight cursorline            cterm=underline guibg=black
 highlight Constant              guifg=Gold
 highlight Comment               guifg=Plum cterm=italic guibg=bg
 highlight LineNr                guifg=Grey50 guibg=bg
