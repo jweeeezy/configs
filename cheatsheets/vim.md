@@ -1,13 +1,41 @@
 # Vim useful commands and shortcuts
 
-## Git useful commands
+## vim useful commands
 | command    | description |
 | :-------------- | :----------- |
 | :only | closes all other windows |
 | :-1read | inserts content of file at cursor |
 
-## Git useful shortcuts
+## vim autocompletion
+| command    | description |
+| :-------------- | :----------- |
+| ctrl+x | triggers autocompletion context |
+| ctrl+n | next autocompletion |
+| ctrl+p | previous autocompletion |
+| ctrl+x -> ctrl+] | tag autocompletion |
+| ctrl+x -> ctrl+o | omnifunction autocompletion |
+| ctrl+x -> ctrl+l | line autocompletion |
+| ctrl+x -> ctrl+i | include autocompletion |
+
+## vim jumps
 | command    | description |
 | :-------------- | :----------- |
 | gf | jump to file under cursor |
+| ctrl+] | jump to tag definition |
+| ctrl+o | out (previous) jump |
+| ctrl+p | inside (next) jump |
+
+## vim window management
+| command    | description |
+| :-------------- | :----------- |
+| ctrl+w+= | rearrange /autosize windows |
+| ctrl+w+L | move window to the right |
+
+## vim editing
+| command    | description |
+| :-------------- | :----------- |
+| ci( | delete and insert within next bracket |
+
+## vim registers
+| ctrl+r | triggers Register |
 | "a | register to 'a' command (can chain with copy, delete) |
