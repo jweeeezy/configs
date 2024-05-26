@@ -1,11 +1,15 @@
-set nocompatible
 syntax enable
-filetype plugin indent on
 colorscheme industry
 
 " visuals
 set termguicolors
 set colorcolumn=80
+set cursorline
+augroup CursorLine
+    au!
+    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    au WinLeave * setlocal nocursorline
+augroup END
 set incsearch
 set nohlsearch
 set viminfo^=%
@@ -33,12 +37,14 @@ set tabstop=4
 " file finding
 set path+=**
 set wildmenu
+set wildmode=full
+set wildcharm=<C-n>
+nnoremap <c-b> :b<space>
 
 " leader shortcuts
 let mapleader = ","
 nnoremap <leader>no :set nonumber norelativenumber<cr>
 nnoremap <leader>nn :set number relativenumber<cr>
-nnoremap <leader>pad :execute 'topleft' ((&columns - &textwidth) / 2 - 1) . 'vsplit _paddding_' <cr> | wincmd p
 
 " ctrl shortcuts
 nnoremap <c-h> :set hlsearch!<cr>
@@ -47,6 +53,4 @@ nnoremap <c-h> :set hlsearch!<cr>
 command! W write
 command! Q quit
 command! SS :mksession! ~/session.vim
-command! F :find
 command! SSO :source ~/session.vim
-command! TT execute 'vert term' | execute 'vert term' | execute '1q'
