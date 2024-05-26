@@ -21,4 +21,4 @@ upload:
 up: upload
 dl: download
 colors:
-	cp -r ./vim/colors ~/.vim/colors
+	cp -r ./vim/colors ~/.vim/
