@@ -60,7 +60,7 @@ https://dane-bulat.medium.com/vim-setting-up-a-build-system-and-code-completion-
 mkdir -p ~/.vim/bundle
 ```
 ```
-git clone https://github.com/VundleVim/Vundle.vim.git Vundle.vim
+cd ~/.vim/bundle && git clone https://github.com/VundleVim/Vundle.vim.git Vundle.vim
 ```
 ```
 vim +PluginInstall +qall
