@@ -38,8 +38,8 @@ set tabstop=4
 set path+=**
 set wildmenu
 set wildmode=full
-set wildcharm=<C-n>
-nnoremap <c-b> :b<space>
+command! -nargs=+ -complete=file -bar Grep silent grep! -r <args> .
+autocmd QuickFixCmdPost *grep* cwindow
 
 " leader shortcuts
 let mapleader = ","
@@ -48,6 +48,9 @@ nnoremap <leader>nn :set number relativenumber<cr>
 
 " ctrl shortcuts
 nnoremap <c-h> :set hlsearch!<cr>
+nnoremap <c-g> :Grep<space>
+nnoremap <c-b> :b<space>
+set wildcharm=<C-n>
 
 " command shortcuts
 command! W write

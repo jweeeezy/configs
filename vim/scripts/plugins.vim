@@ -39,6 +39,7 @@ let NERDTreeWinSize = 31        " Set panel width to 31 columns
 nmap <c-n> :NERDTreeToggle<CR>
 
 "   CTRLSF Plugin
+let g:ctrlsf_default_view_mode = 'compact'
 let g:ctrlsf_backend = 'ack'
 let g:ctrlsf_auto_close = { "normal":0, "compact":0 }
 let g:ctrlsf_auto_focus = { "at":"start" }
@@ -57,8 +58,8 @@ nnoremap <c-p> :Files<cr>
 
 let g:fzf_action = {
       \ 'ctrl-e': 'edit',
-      \ 'ctrl-r': 'vertical split',
-      \ 'ctrl-x': 'split',
+      \ 'ctrl-s': 'vertical split',
+      \ 'ctrl-i': 'split',
       \ }
 
 "   TAGBAR Plugin
