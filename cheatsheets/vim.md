@@ -31,6 +31,11 @@
 | ctrl+w+= | rearrange /autosize windows |
 | ctrl+w+L | move window to the right |
 
+## vim commandline
+| command    | description |
+| :-------------- | :----------- |
+| ctrl+d | show a list of all available commands/files/buffers/dirs |
+
 ## vim editing
 | command    | description |
 | :-------------- | :----------- |
@@ -39,3 +44,4 @@
 ## vim registers
 | ctrl+r | triggers Register |
 | "a | register to 'a' command (can chain with copy, delete) |
+| . | will repeat the last action under cursor
