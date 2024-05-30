@@ -1,5 +1,8 @@
 # Vim useful commands and shortcuts
 
+##
+vim-gtk enables clipboard
+
 ## vim useful commands
 | command    | description |
 | :-------------- | :----------- |
@@ -17,13 +20,15 @@
 | ctrl+x -> ctrl+l | line autocompletion |
 | ctrl+x -> ctrl+i | include autocompletion |
 
-## vim jumps
+## vim jumps / navigation / marks
 | command    | description |
 | :-------------- | :----------- |
 | gf | jump to file under cursor |
 | ctrl+] | jump to tag definition |
 | ctrl+o | out (previous) jump |
 | ctrl+p | inside (next) jump |
+| ma // mA | marks line to local a or global A |
+| 'a // 'A | jumps to local a or global A (can use <backtick> too) |
 
 ## vim window management
 | command    | description |
@@ -34,14 +39,12 @@
 ## vim commandline
 | command    | description |
 | :-------------- | :----------- |
-| ctrl+d | show a list of all available commands/files/buffers/dirs |
+| :<ctrl+d> | show a list of all available commands/files/buffers/dirs |
+| :marks | shows a list of all set marks |
+| :reg | shows all registers |
 
-## vim editing
-| command    | description |
-| :-------------- | :----------- |
-| ci( | delete and insert within next bracket |
-
-## vim registers
+## vim editing / registers
 | ctrl+r | triggers Register |
 | "a | register to 'a' command (can chain with copy, delete) |
-| . | will repeat the last action under cursor
+| . | will repeat the last action under cursor |
+| ci( | delete and insert within next bracket |

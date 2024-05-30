@@ -50,6 +50,7 @@ nnoremap <leader>nn :set number relativenumber<cr>
 nnoremap <c-h> :set hlsearch!<cr>
 nnoremap <c-g> :Grep<space>
 nnoremap <c-b> :b<space>
+nnoremap <c-m> :marks<cr>
 set wildcharm=<C-n>
 
 " command shortcuts
