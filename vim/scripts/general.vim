@@ -21,6 +21,7 @@ set encoding=utf8
 set mouse=a "enables some mouse support features
 set splitbelow splitright
 set noesckeys
+set clipboard+=unamedplus "requires vim-gtk (+ xclipboard)
 
 " file saving
 set noswapfile
