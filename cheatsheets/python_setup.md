@@ -39,6 +39,19 @@ https://djangowaves.com/tips-tricks/gitignore-for-a-django-project/
 | (mysite/) $: ` python manage.py runserver ` | starts project on localhost
 | (mysite/) $: ` python manage.py startapp polls ` | creates new application <polls>
 
+#### Testing
+- files that match test*.py are run
+`
+import django.test import TestCase
+
+class SomeTestCaseClass(TestCase):
+    def setUp(self):
+        # setup the class
+
+    def test_case_one:
+        # define steps for a test case
+`
+
 #### Files (project)
 | file | description |
 | :-------------- | :----------- |
