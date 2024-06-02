@@ -3,6 +3,8 @@ colorscheme late_evening
 highlight ALEVirtualTextError   guibg=Red guifg=white cterm=italic
 highlight ALEVirtualTextWarning guifg=Yellow guibg=bg cterm=italic
 highlight ALEWarning            guibg=Yellow guifg=Grey23 cterm=italic
+highlight LspWarningHighlight   cterm=underline ctermul=yellow
+highlight LspErrorHighlight     cterm=underline ctermul=red
 highlight EndOfBuffer           guibg=bg guifg=bg
 highlight colorcolumn           guibg=Grey23
 highlight cursorline            cterm=underline guibg=black
