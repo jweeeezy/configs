@@ -45,8 +45,12 @@ https://djangowaves.com/tips-tricks/gitignore-for-a-django-project/
 import django.test import TestCase
 
 class SomeTestCaseClass(TestCase):
+
+    def setUpTestData(cls):
+        # setup the class data (each test suite)
+
     def setUp(self):
-        # setup the class
+        # setup the class instance (each test)
 
     def test_case_one:
         # define steps for a test case
@@ -78,19 +82,22 @@ class SomeTestCaseClass(TestCase):
 - define a function in polls/views.py like:
 
 ` def index(request):
-    return HttpResponse("Hello!") `
+    return HttpResponse("Hello!")
+`
 
 - add a path to the urlpatters list in polls/urls.py
 
 ` urlpatterns = [
     path("", views.index, name="index"),
-] `
+]
+`
 
 - add a path to the urlpatterns of mysite/urls.py
 
 ` urlpatterns = [
     path("polls/", include("polls.urls")),
-]`
+]
+`
 
 #### Migrations
 | command | description |
