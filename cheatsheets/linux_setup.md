@@ -100,3 +100,9 @@ sudo chmod a+r /etc/apt/keyrings/docker.asc
 ```
 sudo apt-get update -y
 ```
+
+## fzf
+```
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+```
