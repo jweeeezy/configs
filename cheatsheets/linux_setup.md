@@ -46,7 +46,7 @@ git clone https://github.com/jweeeezy/configs.git ~/configs \
 sudo ufw enable
 ```
 ```
-sudo ufw add ssh
+sudo ufw allow ssh
 ```
 --> enable Port 22 (  /etc/ssh/sshd_config  )
 
