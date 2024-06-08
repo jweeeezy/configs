@@ -58,9 +58,28 @@ nnoremap <c-h> :set hlsearch!<cr>
 nnoremap <c-g> :Grep<space>
 nnoremap <c-b> :b<space>
 nnoremap <c-m> :marks<cr>
-nnoremap <c-j> :bp!<cr>
-nnoremap <c-k> :bn!<cr>
 nnoremap <c-e> :!cat %<cr>
+
+" Initialize the global variable
+let g:toggle_state = 1
+" Define the toggle function
+function! ToggleMappings()
+    if g:toggle_state == 0
+        " Set the mappings for the first state
+        nnoremap <silent> <c-j> :cprev<CR>
+        nnoremap <silent> <c-k> :cnext<CR>
+        let g:toggle_state = 1
+        echo "State: Quickfix Navigation"
+    else
+        " Set the mappings for the second state
+        nnoremap <silent> <c-j> :bprev<CR>
+        nnoremap <silent> <c-k> :bnext<CR>
+        let g:toggle_state = 0
+        echo "State: Buffer Navigation"
+    endif
+endfunction
+" Map the Tab key to call the toggle function
+nnoremap <silent> <Tab> :call ToggleMappings()<CR>
 
 set wildcharm=<C-n>
 

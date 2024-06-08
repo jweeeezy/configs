@@ -50,6 +50,7 @@ let g:ctrlsf_regex_pattern = 0
 let g:ctrlsf_position = 'right'
 let g:ctrlsf_winsize = '46'
 let g:ctrlsf_default_root = 'cwd'
+let g:ctrlsf_populate_qflist = 1
 nmap <C-f> <Plug>CtrlSFPrompt
 
 "   Fuzzy Finder Plugin
