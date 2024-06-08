@@ -58,8 +58,9 @@ nnoremap <c-h> :set hlsearch!<cr>
 nnoremap <c-g> :Grep<space>
 nnoremap <c-b> :b<space>
 nnoremap <c-m> :marks<cr>
-nnoremap <c-j> :cprev<cr>
-nnoremap <c-k> :cnext<cr>
+nnoremap <c-j> :bp!<cr>
+nnoremap <c-k> :bn!<cr>
+nnoremap <c-e> :!cat %<cr>
 
 set wildcharm=<C-n>
 
