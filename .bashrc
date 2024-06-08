@@ -16,6 +16,8 @@
     alias cdf="cd ~ && cd \$(find * -type d | fzf)"
     [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+    alias v="vim"
+
     # alias 'Current Working Directory' (cwd)
     alias cwd='cd "$CWD"'
     alias setcwd='export CWD="$PWD"; echo "$PWD" > ~/.last_dir'
