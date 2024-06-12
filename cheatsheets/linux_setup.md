@@ -22,7 +22,8 @@ ack \
 python3-dev \
 openssh-server \
 tree \
-grip
+grip \
+vim-gtk
 ```
 ```
 git config --global user.name "jweeeezy"
@@ -103,6 +104,17 @@ sudo apt-get update -y
 ```
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
+
+#### Docker to sudo (security concern, good while developing):
+https://docs.docker.com/engine/install/linux-postinstall/
+
+```
+sudo groupadd docker
+```
+```
+sudo usermod -aG docker $USER
+```
+log in and out to experience changes
 
 
 ## fzf
