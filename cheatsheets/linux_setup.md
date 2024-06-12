@@ -25,7 +25,7 @@ tree \
 grip
 ```
 ```
-git config --global user.name "Jakob Willert"
+git config --global user.name "jweeeezy"
 ```
 ```
 git config --global user.email "willertjakob@gmail.com"

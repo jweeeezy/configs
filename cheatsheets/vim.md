@@ -51,6 +51,8 @@ vim-gtk enables clipboard
 | ctrl+w+L | move window to the right |
 
 ## vim editing / jumping
+| command    | description |
+| :-------------- | :----------- |
 | ctrl+r | triggers Register |
 | . | will repeat the last action under cursor |
 | ci( | delete and insert within next bracket |
