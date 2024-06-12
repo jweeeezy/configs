@@ -1,7 +1,6 @@
 # Vim useful commands and shortcuts
 
-## Things to reguarly keep track of (if using them might be a good idea)
-
+## Things to reguarly keep track of (using them might be a good idea)
 - Windows
 - Buffers
 - Tabs
@@ -9,6 +8,7 @@
 - Jumplist
 - Marks
 - Quicklist (--> replaces a lot of needs for plugins // writing your own)
+- Localion List
 - Macros
 - Registers
 - Regex
