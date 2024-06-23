@@ -1,0 +1,10 @@
+[rerere]
+	enabled = true
+[includeIf "gitdir:~/configs/"]
+	path = "~/.gitconfig-personal"
+[includeIf "gitdir:~/SideProjects/"]
+	path = "~/.gitconfig-personal"
+[includeIf "gitdir:~/42Projects/"]
+	path = "~/.gitconfig-42"
+[remote "origin"]
+	prune = true
