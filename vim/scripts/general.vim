@@ -60,23 +60,23 @@ nnoremap <c-b> :b<space>
 nnoremap <c-m> :marks<cr>
 nnoremap <c-e> :!cat %<cr>
 
-nnoremap <silent> <c-j> :bprev<CR>
-nnoremap <silent> <c-k> :bnext<CR>
+nnoremap <silent> <c-j> :bprev!<CR>
+nnoremap <silent> <c-k> :bnext!<CR>
 let g:toggle_state = 0
 function! ToggleMappings()
     if g:toggle_state == 0
-        nnoremap <silent> <c-j> :cprev<CR>
-        nnoremap <silent> <c-k> :cnext<CR>
+        nnoremap <silent> <c-j> :cprev!<CR>
+        nnoremap <silent> <c-k> :cnext!<CR>
         let g:toggle_state = 1
         echo "State: Quickfix Navigation"
     elseif g:toggle_state == 1
-        nnoremap <silent> <c-j> :lprev<CR>
-        nnoremap <silent> <c-k> :lnext<CR>
+        nnoremap <silent> <c-j> :lprev!<CR>
+        nnoremap <silent> <c-k> :lnext!<CR>
         let g:toggle_state = 2
         echo "State: Location List Navigation"
     else
-        nnoremap <silent> <c-j> :bprev<CR>
-        nnoremap <silent> <c-k> :bnext<CR>
+        nnoremap <silent> <c-j> :bprev!<CR>
+        nnoremap <silent> <c-k> :bnext!<CR>
         let g:toggle_state = 0
         echo "State: Buffer Navigation"
     endif
