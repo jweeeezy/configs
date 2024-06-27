@@ -60,6 +60,9 @@ nnoremap <c-b> :b<space>
 nnoremap <c-m> :marks<cr>
 nnoremap <c-e> :!cat %<cr>
 
+set wildcharm=<C-n>
+nnoremap <silent> <Tab> :call ToggleMappings()<CR>
+nnoremap <c-w>t :vertical terminal<cr>
 nnoremap <silent> <c-j> :bprev!<CR>
 nnoremap <silent> <c-k> :bnext!<CR>
 let g:toggle_state = 0
@@ -81,9 +84,6 @@ function! ToggleMappings()
         echo "State: Buffer Navigation"
     endif
 endfunction
-nnoremap <silent> <Tab> :call ToggleMappings()<CR>
-
-set wildcharm=<C-n>
 
 " command shortcuts
 command! W write
