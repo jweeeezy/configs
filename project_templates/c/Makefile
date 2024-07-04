@@ -3,7 +3,7 @@
 NAME      = program
 SRC_FILES = main.c
 OBJ_FILES = $(SRC_FILES:.cpp=.o)
-CC        = c++
+CC        = gcc
 DEBUG_FLAG= $(shell echo $$DEBUG_FLAG)
 CFLAGS    = -Wall -Wextra -Werror $(DEBUG_FLAG)
 
@@ -12,7 +12,7 @@ CFLAGS    = -Wall -Wextra -Werror $(DEBUG_FLAG)
 all:        $(NAME)
 $(NAME):    $(OBJ_FILES)
 				$(CC) $(CFLAGS) $(OBJ_FILES) -o $(NAME)
-%.o:        %.cpp
+%.o:        %.c
 				$(CC) $(CFLAGS) -c $< -o $@
 clean:
 				rm -rf $(OBJ_FILES)
