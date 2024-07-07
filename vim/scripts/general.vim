@@ -58,7 +58,7 @@ nnoremap <c-h> :set hlsearch!<cr>
 nnoremap <c-g> :Grep<space>
 nnoremap <c-b> :b<space>
 nnoremap <c-m> :marks<cr>
-nnoremap <c-e> :!cat %<cr>
+nnoremap <c-e> :!cat % \| less -R<cr>:redraw!<cr>
 
 set wildcharm=<C-n>
 nnoremap <silent> <Tab> :call ToggleMappings()<CR>
