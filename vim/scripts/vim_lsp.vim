@@ -18,7 +18,6 @@ Plugin 'tell-k/vim-autopep8'
 call vundle#end()
 
 filetype plugin indent on
-set timeoutlen=1
 
 "   Fuzzy Finder Plugin
 nnoremap <c-q> :GFiles<cr>
@@ -41,6 +40,7 @@ let g:ctrlsf_regex_pattern = 0
 let g:ctrlsf_position = 'right'
 let g:ctrlsf_winsize = '46'
 let g:ctrlsf_default_root = 'cwd'
+let g:ctrlsf_populate_qflist = 1
 nmap <C-f> <Plug>CtrlSFPrompt
 
 "   NERDTREE Plugin settings
@@ -88,7 +88,6 @@ let g:lsp_settings = {
 \}
 
 let g:autopep8_max_line_length=119
-nnoremap <c-;> :!cat %
 
 source ~/configs/vim/scripts/general.vim
 source ~/configs/vim/scripts/theme.vim
