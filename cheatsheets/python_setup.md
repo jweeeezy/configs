@@ -8,6 +8,8 @@
 
 ## package manager
 - ` http://www.pypi.com ` for external libraries
+-   rye
+-   poetry
 
 | command | description |
 | :-------------- | :----------- |

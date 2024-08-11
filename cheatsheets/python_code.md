@@ -4,6 +4,14 @@
 ` import this ` (for python ethics)
 
 ## general
+- use typing:
+```
+    some_variable: int = 4
+    other_variable: str = "hello"
+
+    some function(argument: int, other_argument: str) -> None:
+        raise NotImplemented("not implemented yet")
+```
 - check truthiness with ` is ` for ` None, True, False ` or ` bool() `
 - use context managers like ` with open("some_file") as file: `
 - use ` from module import function ` instead of ` import module `
