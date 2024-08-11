@@ -15,6 +15,8 @@ Plugin 'prabirshrestha/asyncomplete.vim'
 Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 Plugin 'tell-k/vim-autopep8'
 
+Plugin 'editorconfig/editorconfig-vim'
+
 call vundle#end()
 
 filetype plugin indent on
@@ -88,6 +90,3 @@ let g:lsp_settings = {
 \}
 
 let g:autopep8_max_line_length=119
-
-source ~/configs/vim/scripts/general.vim
-source ~/configs/vim/scripts/theme.vim

@@ -18,6 +18,8 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'tell-k/vim-autopep8'
 Plugin 'prettier/vim-prettier'
 
+Plugin 'editorconfig/editorconfig-vim'
+
 call vundle#end()
 filetype plugin indent on
 

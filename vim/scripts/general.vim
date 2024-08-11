@@ -2,6 +2,7 @@ syntax enable
 colorscheme industry
 
 " visuals
+set backspace=indent,eol,start
 set termguicolors
 set colorcolumn=80
 set cursorline
