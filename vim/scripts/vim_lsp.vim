@@ -68,17 +68,6 @@ augroup END
 let g:lsp_diagnostics_signs_insert_mode_enabled=0
 nnoremap <c-q> :LspDocumentDiagnostics<cr>
 
-let g:lsp_status=1
-function! ToggleLsp()
-    if g:lsp_status
-        execute 'LspStopServer'
-    else
-        execute 'e'
-    endif
-    let g:lsp_status = !g:lsp_status
-endfunction
-nnoremap <c-l> :call ToggleLsp()<CR>
-
 let g:lsp_settings = {
 \   'pylsp-all': {
 \     'workspace_config': {

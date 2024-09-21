@@ -22,7 +22,7 @@ set encoding=utf8
 set mouse=a "enables some mouse support features
 set splitbelow splitright
 set noesckeys
-"set clipboard+=unamedplus "requires vim-gtk (+ xclipboard)
+set clipboard+=unamedplus "requires vim-gtk (+ xclipboard)
 set scrolloff=8
 
 " file saving
