@@ -1,10 +1,5 @@
 colorscheme late_evening
 
-highlight ALEVirtualTextError   guibg=Red guifg=white cterm=italic
-highlight ALEVirtualTextWarning guifg=Yellow guibg=bg cterm=italic
-highlight ALEWarning            guibg=Yellow guifg=Grey23 cterm=italic
-highlight LspWarningHighlight   cterm=underline ctermul=yellow
-highlight LspErrorHighlight     cterm=underline ctermul=red
 highlight EndOfBuffer           guibg=bg guifg=bg
 highlight colorcolumn           guibg=Grey23
 highlight cursorline            cterm=underline guibg=black
@@ -23,3 +18,18 @@ highlight StatusLineTermNC      guibg=bg guifg=bg
 highlight String                guifg=Wheat2
 highlight vertsplit             guibg=bg guifg=bg
 highlight Visual                cterm=NONE guibg=Grey30
+
+colorscheme apprentice
+
+highlight LspWarningHighlight     cterm=underline guifg=yellow ctermul=yellow
+highlight LspWarningText          guibg=yellow guifg=black
+highlight LspWarningVirtualText   cterm=italic guibg=bg guifg=yellow
+
+highlight LspErrorVirtualText     cterm=italic guibg=bg guifg=red
+highlight LspErrorText            guibg=red guifg=black
+highlight LspErrorHighlight       cterm=underline guifg=red ctermul=red
+
+highlight LspHintHighlight        cterm=underline guifg=LightPink1
+highlight LspHintText             guibg=LightPink1 guifg=black
+highlight LspHintVirtualText      cterm=italic guibg=bg guifg=LightPink1
+
