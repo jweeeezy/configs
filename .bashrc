@@ -7,16 +7,21 @@
     # bash history
     HISTTIMEFORMAT="%Y-%m-%d %T "
 
+    alias v="vim"
+
     # Directories
     alias 42dir="cd ~/42Projects/"
     alias Sidedir="cd ~/SideProjects/"
     alias cjdir='cd ~/coding_journal'
     alias cfg='cd ~/configs'
-    alias fd="cd ~ && cd \$(find * -type d | fzf)"
-    alias cdf="cd ~ && cd \$(find * -type d | fzf)"
-    [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-    alias v="vim"
+        # Fuzzy Finder
+        export FZF_DEFAULT_OPTS="--walker-skip='.git,*venv,node_modules'"
+        export FZF_DEFAULT_IGNORES="-not -path '*/\.git/*' -not -path '*/node_modules/*' -not -path '*/*venv/*'"
+        export FZF_DEFAULT_COMMAND="find . -type f $FZF_DEFAULT_IGNORES"
+        alias fd="cd ~ && cd \$(find * -type d $FZF_DEFAULT_IGNORES | fzf)"
+        alias cdf="cd ~ && cd \$(find * -type d $FZF_DEFAULT_IGNORES | fzf)"
+        [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
     # alias 'Current Working Directory' (cwd)
     alias cwd='cd "$CWD"'
