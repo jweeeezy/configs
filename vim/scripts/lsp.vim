@@ -31,18 +31,18 @@ let g:fzf_action = {
       \ }
 
 "   CTRLSF Plugin
-let g:ctrlsf_default_view_mode = 'compact'
 let g:ctrlsf_backend = 'ack'
-let g:ctrlsf_auto_close = { "normal":0, "compact":0 }
-let g:ctrlsf_auto_focus = { "at":"start" }
-let g:ctrlsf_auto_preview = 0
-let g:ctrlsf_case_sensitive = 'smart'
-let g:ctrlsf_default_view = 'compact'
-let g:ctrlsf_regex_pattern = 0
-let g:ctrlsf_position = 'right'
-let g:ctrlsf_winsize = '46'
 let g:ctrlsf_default_root = 'cwd'
+let g:ctrlsf_ignore_dir = [".venv"]
+let g:ctrlsf_case_sensitive = 'smart'
+let g:ctrlsf_regex_pattern = 0
+let g:ctrlsf_default_view_mode = 'compact'
 let g:ctrlsf_populate_qflist = 1
+let g:ctrlsf_auto_close = { "normal":0, "compact":0 }
+let g:ctrlsf_auto_focus = { "at":"none" }
+let g:ctrlsf_auto_preview = 0
+let g:ctrlsf_winsize = '46'
+let g:ctrlsf_position = 'right'
 nmap <C-f> <Plug>CtrlSFPrompt
 
 "   NERDTREE Plugin settings
