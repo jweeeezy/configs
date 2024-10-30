@@ -65,7 +65,9 @@ augroup lsp_install
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 
+let g:lsp_diagnostics_highlights_insert_mode_enabled=0
 let g:lsp_diagnostics_signs_insert_mode_enabled=0
+let g:lsp_diagnostics_virtual_text_insert_mode_enabled=0
 nnoremap <c-q> :LspDocumentDiagnostics<cr>
 
 let g:lsp_settings = {
