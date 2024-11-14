@@ -21,6 +21,7 @@
         export FZF_DEFAULT_COMMAND="find . -type f $FZF_DEFAULT_IGNORES"
         alias fd="cd ~ && cd \$(find * -type d $FZF_DEFAULT_IGNORES | fzf)"
         alias cdf="cd ~ && cd \$(find * -type d $FZF_DEFAULT_IGNORES | fzf)"
+        alias cdd="cd ~ && cd \$(find * -type d $FZF_DEFAULT_IGNORES | fzf)"
         [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
     # alias 'Current Working Directory' (cwd)
