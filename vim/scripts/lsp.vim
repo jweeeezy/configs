@@ -14,6 +14,9 @@ Plugin 'mattn/vim-lsp-settings'
 Plugin 'prabirshrestha/asyncomplete.vim'
 Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 Plugin 'tell-k/vim-autopep8'
+Plugin 'psf/black'
+Plugin 'junegunn/goyo.vim'
+Plugin 'prettier/vim-prettier'
 
 Plugin 'editorconfig/editorconfig-vim'
 
@@ -53,6 +56,11 @@ let NERDTreeMinimalMenu = 1     " Use the minimal menu (m)
 let NERDTreeWinPos = 'left'     " Panel opens on the left side
 let NERDTreeWinSize = 31        " Set panel width to 31 columns
 nmap <c-n> :NERDTreeToggle<CR>
+
+"   Goyo
+let g:goyo_width  = 120
+let g:goyo_height = 95
+let g:goyo_linenr = 0
 
 "   lsp
 function!  s:on_lsp_buffer_enabled() abort
