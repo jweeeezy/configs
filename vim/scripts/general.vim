@@ -1,5 +1,4 @@
 syntax enable
-colorscheme industry
 
 " visuals
 set backspace=indent,eol,start
@@ -62,29 +61,46 @@ nnoremap <c-m> :marks<cr>
 nnoremap <c-e> :!cat % \| less -R<cr>:redraw!<cr>
 
 set wildcharm=<C-n>
-nnoremap <silent> <Tab> :call ToggleMappings()<CR>
 nnoremap <c-w>t :vertical terminal<cr>
+
 nnoremap <silent> <c-j> :bprev!<CR>
 nnoremap <silent> <c-k> :bnext!<CR>
-let g:toggle_state = 0
-function! ToggleMappings()
-    if g:toggle_state == 0
+
+let g:navigation_state_index = 0
+let g:navigation_states = ['Buffer', 'Quickfix', 'Location List', 'Colorscheme']
+
+function! NavigationState()
+    if g:navigation_state_index == 0
+        echo "Navigation State: Quickfix"
         nnoremap <silent> <c-j> :cprev!<CR>
         nnoremap <silent> <c-k> :cnext!<CR>
-        let g:toggle_state = 1
-        echo "State: Quickfix Navigation"
-    elseif g:toggle_state == 1
+    elseif g:navigation_state_index == 1
+        echo "Navigation State: Location List"
         nnoremap <silent> <c-j> :lprev!<CR>
         nnoremap <silent> <c-k> :lnext!<CR>
-        let g:toggle_state = 2
-        echo "State: Location List Navigation"
-    else
+    elseif g:navigation_state_index == 2
+        echo "Navigation State: Buffer"
         nnoremap <silent> <c-j> :bprev!<CR>
         nnoremap <silent> <c-k> :bnext!<CR>
-        let g:toggle_state = 0
-        echo "State: Buffer Navigation"
+    else
+        echo "Navigation State: Colorscheme"
+        nnoremap <silent> <c-j> :call CycleColorscheme(-1)<CR>
+        nnoremap <silent> <c-k> :call CycleColorscheme(1)<CR>
     endif
 endfunction
+
+function! CycleNavigationState(direction)
+    let g:navigation_state_index += a:direction
+    if g:navigation_state_index >= len(g:navigation_states)
+        let g:navigation_state_index = 0
+    elseif g:navigation_state_index < 0
+        let g:navigation_state_index = len(g:navigation_states) - 1
+    endif
+    :call NavigationState()
+endfunction
+
+nnoremap <silent> <Tab> :call CycleNavigationState(1)<CR>
+nnoremap <silent> <s-Tab> :call CycleNavigationState(-1)<CR>
 
 " command shortcuts
 command! W write
