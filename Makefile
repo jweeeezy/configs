@@ -1,4 +1,3 @@
-
 HOME_DIR  = ~/
 FILES     = .vimrc .bashrc
 _FILES    = $(addprefix $(HOME_DIR),$(FILES))

@@ -1,4 +1,4 @@
-let g:colorschemes = ['apprentice', 'elflord', 'industry', 'koehler', 'lunaperche', 'late_evening', 'slate']
+let g:colorschemes = ['apprentice', 'elflord', 'industry', 'koehler', 'lunaperche', 'late_evening', 'slate', 'space-vim-dark']
 let g:colorscheme_index = 0
 
 function! CycleColorscheme(direction)
@@ -28,9 +28,12 @@ function! s:tweak_colors()
 "    highlight StatusLineTermNC        guibg=bg guifg=bg
 "    highlight Visual                  cterm=NONE guibg=Grey30
 "    highlight String                  guifg=Wheat2
+
+    highlight String                  cterm=italic term=italic
+    highlight Comment                 cterm=italic term=italic
     highlight colorcolumn             guibg=Grey23
     highlight vertsplit               guibg=bg guifg=bg
-    highlight cursorline              cterm=underline guibg=black
+    highlight cursorline              cterm=underline guibg=bg
     highlight LspWarningHighlight     cterm=underline guifg=yellow ctermul=yellow
     highlight LspWarningText          guibg=yellow guifg=black
     highlight LspWarningVirtualText   cterm=italic guibg=bg guifg=yellow

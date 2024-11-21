@@ -17,8 +17,9 @@ Plugin 'tell-k/vim-autopep8'
 Plugin 'psf/black'
 Plugin 'junegunn/goyo.vim'
 Plugin 'prettier/vim-prettier'
-
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'liuchengxu/space-vim-dark'
+Plugin 'romainl/Apprentice'
 
 call vundle#end()
 
