@@ -36,7 +36,7 @@ let g:fzf_action = {
 "   CTRLSF Plugin
 let g:ctrlsf_backend = 'ack'
 let g:ctrlsf_default_root = 'cwd'
-let g:ctrlsf_ignore_dir = [".venv"]
+let g:ctrlsf_ignore_dir = [".venv", ".mypy_cache"]
 let g:ctrlsf_case_sensitive = 'smart'
 let g:ctrlsf_regex_pattern = 0
 let g:ctrlsf_default_view_mode = 'compact'
