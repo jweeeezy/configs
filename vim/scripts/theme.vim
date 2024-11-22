@@ -1,4 +1,4 @@
-let g:colorschemes = ['apprentice', 'elflord', 'industry', 'koehler', 'lunaperche', 'late_evening', 'slate', 'space-vim-dark']
+let g:colorschemes = ['apprentice', 'elflord', 'industry', 'koehler', 'lunaperche', 'late_evening', 'slate', 'space-vim-dark', 'gruvbox', 'gotham', 'iceberg']
 let g:colorscheme_index = 0
 
 function! CycleColorscheme(direction)
@@ -9,10 +9,14 @@ function! CycleColorscheme(direction)
         let g:colorscheme_index = len(g:colorschemes) - 1
     endif
     execute 'colorscheme' g:colorschemes[g:colorscheme_index]
-    call s:tweak_colors()
+    call TweakColors()
+    if exists(':Goyo')
+        execute 'Goyo'
+        execute 'Goyo'
+    endif
 endfunction
 
-function! s:tweak_colors()
+function! TweakColors()
 "    highlight EndOfBuffer             guibg=bg guifg=bg
 "    highlight Constant                guifg=Gold
 "    highlight Comment                 guifg=Plum cterm=italic guibg=bg
@@ -31,9 +35,12 @@ function! s:tweak_colors()
 
     highlight String                  cterm=italic term=italic
     highlight Comment                 cterm=italic term=italic
+
+    highlight Normal                  guibg=NONE
+    highlight vertsplit               guibg=NONE guifg=NONE
+    highlight cursorline              cterm=underline guibg=NONE
     highlight colorcolumn             guibg=Grey23
-    highlight vertsplit               guibg=bg guifg=bg
-    highlight cursorline              cterm=underline guibg=bg
+
     highlight LspWarningHighlight     cterm=underline guifg=yellow ctermul=yellow
     highlight LspWarningText          guibg=yellow guifg=black
     highlight LspWarningVirtualText   cterm=italic guibg=bg guifg=yellow
@@ -45,4 +52,6 @@ function! s:tweak_colors()
     highlight LspHintVirtualText      cterm=italic guibg=bg guifg=DeepPink1
 endfunction
 
-:call CycleColorscheme(0)
+autocmd! User GoyoLeave nested call TweakColors()
+
+call CycleColorscheme(0)
