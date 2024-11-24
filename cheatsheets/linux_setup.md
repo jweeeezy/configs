@@ -23,7 +23,8 @@ python3-dev \
 openssh-server \
 tree \
 grip \
-vim-gtk
+vim-gtk \
+direnv
 ```
 ```
 git config --global user.name "jweeeezy"
