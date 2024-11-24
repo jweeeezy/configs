@@ -1,4 +1,1 @@
-source ~/configs/vim/scripts/lsp.vim
-source ~/configs/vim/scripts/general.vim
-source ~/configs/vim/scripts/theme.vim
-source ~/configs/vim/scripts/clang.vim
+source ~/configs/vim_scripts/vim_lsp.vim
