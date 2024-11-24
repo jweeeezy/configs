@@ -36,6 +36,7 @@ call vundle#begin('~/.vim/plugged')
     Plugin 'tell-k/vim-autopep8'
     Plugin 'psf/black'
     Plugin 'prettier/vim-prettier'
+    Plugin 'rstacruz/vim-closer'
 
     " Colorschemes
     Plugin 'liuchengxu/space-vim-dark'
