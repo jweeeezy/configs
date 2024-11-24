@@ -1,15 +1,15 @@
 [rerere]
 	enabled = true
-	excludesfile = /home/willertj/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [init]
     defaultBranch = main
 [maintenance]
-    repo = /home/willertj/configs
+    repo = ~/configs
 [includeIf "gitdir:~/configs/"]
-	path = "~/.gitconfig-personal"
-[includeIf "gitdir:~/priv/"]
-	path = "~/.gitconfig-personal"
+	path = "~/.gitconfig_personal"
+[includeIf "gitdir:~/private/"]
+	path = "~/.gitconfig_personal"
 [includeIf "gitdir:~/42/"]
-	path = "~/.gitconfig-42"
+	path = "~/.gitconfig_42"
 [remote "origin"]
 	prune = true
