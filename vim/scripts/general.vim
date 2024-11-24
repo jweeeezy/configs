@@ -55,8 +55,7 @@ vnoremap K :m '<-2<CR>gv=gv
 
 " ctrl shortcuts
 nnoremap <c-h> :set hlsearch!<cr>
-nnoremap <c-g> :Grep<space>
-nnoremap <c-b> :b<space>
+nnoremap <c-b> :buffer<space>
 nnoremap <c-m> :marks<cr>
 nnoremap <c-e> :!cat % \| less -R<cr>:redraw!<cr>
 
@@ -102,8 +101,9 @@ function! CycleNavigationState(direction)
     :call NavigationState()
 endfunction
 
-nnoremap <silent> <Tab> :call CycleNavigationState(1)<CR>
-nnoremap <silent> <s-Tab> :call CycleNavigationState(-1)<CR>
+nnoremap <silent> <c-n> :call CycleNavigationState(1)<CR>
+nnoremap <silent> <c-p> :call CycleNavigationState(-1)<CR>
+" nnoremap <c-i> <C-Right>
 
 " command shortcuts
 command! W write

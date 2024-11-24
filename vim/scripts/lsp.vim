@@ -36,8 +36,8 @@ call vundle#end()
 filetype plugin indent on
 
 "   Fuzzy Finder Plugin
-nnoremap <c-q> :GFiles<cr>
-nnoremap <c-p> :Files<cr>
+" nnoremap <c-q> :GFiles<cr>
+nnoremap <c-f> :Files<cr>
 let g:fzf_action = {
       \ 'ctrl-e': 'edit',
       \ 'ctrl-s': 'vertical split',
@@ -57,7 +57,7 @@ let g:ctrlsf_auto_focus = { "at":"none" }
 let g:ctrlsf_auto_preview = 0
 let g:ctrlsf_winsize = '46'
 let g:ctrlsf_position = 'right'
-nmap <C-f> <Plug>CtrlSFPrompt
+nmap <c-g> <Plug>CtrlSFPrompt
 
 "   NERDTREE Plugin settings
 let NERDTreeShowBookmarks = 0   " Show the bookmarks table
@@ -66,17 +66,17 @@ let NERDTreeShowLineNumbers = 0 " Hide line numbers
 let NERDTreeMinimalMenu = 1     " Use the minimal menu (m)
 let NERDTreeWinPos = 'left'     " Panel opens on the left side
 let NERDTreeWinSize = 31        " Set panel width to 31 columns
-nmap <c-n> :NERDTreeToggle<CR>
+nmap <c-q> :NERDTreeToggle<CR>
 
 "   Goyo
-let g:goyo_width  = 120
-let g:goyo_height = 95
+let g:goyo_width  = 81
+let g:goyo_height = 97
 let g:goyo_linenr = 0
 
 "   lsp
 function!  s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
-    setlocal signcolumn=yes
+    setlocal signcolumn=auto
 endfunction
 
 augroup lsp_install
@@ -87,7 +87,7 @@ augroup END
 let g:lsp_diagnostics_highlights_insert_mode_enabled=0
 let g:lsp_diagnostics_signs_insert_mode_enabled=0
 let g:lsp_diagnostics_virtual_text_insert_mode_enabled=0
-nnoremap <c-q> :LspDocumentDiagnostics<cr>
+nnoremap <c-l> :LspDocumentDiagnostics<cr>
 
 let g:lsp_settings = {
 \   'pylsp-all': {
