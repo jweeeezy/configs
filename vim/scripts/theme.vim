@@ -1,57 +1,52 @@
-let g:colorschemes = ['apprentice', 'elflord', 'industry', 'koehler', 'lunaperche', 'late_evening', 'slate', 'space-vim-dark', 'gruvbox', 'gotham', 'iceberg']
-let g:colorscheme_index = 0
-
-function! CycleColorscheme(direction)
-    let g:colorscheme_index += a:direction
-    if g:colorscheme_index >= len(g:colorschemes)
-        let g:colorscheme_index = 0
-    elseif g:colorscheme_index < 0
-        let g:colorscheme_index = len(g:colorschemes) - 1
-    endif
-    execute 'colorscheme' g:colorschemes[g:colorscheme_index]
-    call TweakColors()
-    if exists(':Goyo')
-        execute 'Goyo'
-        execute 'Goyo'
-    endif
-endfunction
+let g:colors = getcompletion('', 'color')
+let g:colorscheme_file = expand('~/.vim_last_colorscheme')
 
 function! TweakColors()
-"    highlight EndOfBuffer             guibg=bg guifg=bg
-"    highlight Constant                guifg=Gold
-"    highlight Comment                 guifg=Plum cterm=italic guibg=bg
-"    highlight LineNr                  guifg=Grey50 guibg=bg
-"    highlight Pmenu                   guifg=MistyRose2 guibg=Grey23
-"    highlight PmenuSel                guibg=black
-"    highlight Search                  guibg=Yellow
-"    highlight SignColumn              guibg=Grey30
-"    highlight Statement               guifg=#ff5f87
-"    highlight StatusLine              guibg=bg guifg=white term=NONE cterm=NONE
-"    highlight StatusLineNc            guibg=bg guifg=darkgray term=NONE cterm=NONE
-"    highlight StatusLineTerm          guibg=bg guifg=bg
-"    highlight StatusLineTermNC        guibg=bg guifg=bg
-"    highlight Visual                  cterm=NONE guibg=Grey30
-"    highlight String                  guifg=Wheat2
+    " TODO put reused colors into a variable
+    " special strings (italic)
+    " background
+    " error colors
 
     highlight String                  cterm=italic term=italic
     highlight Comment                 cterm=italic term=italic
-
     highlight Normal                  guibg=NONE
     highlight vertsplit               guibg=NONE guifg=NONE
+    highlight signcolumn              guibg=NONE ctermbg=NONE
     highlight cursorline              cterm=underline guibg=NONE
     highlight colorcolumn             guibg=Grey23
 
+    " Lsp specific Settings
     highlight LspWarningHighlight     cterm=underline guifg=yellow ctermul=yellow
-    highlight LspWarningText          guibg=yellow guifg=black
+    highlight LspWarningText          guibg=NONE guifg=Yellow
     highlight LspWarningVirtualText   cterm=italic guibg=bg guifg=yellow
     highlight LspErrorVirtualText     cterm=italic guibg=bg guifg=red
-    highlight LspErrorText            guibg=red guifg=black
+    highlight LspErrorText            guibg=NONE guifg=red
     highlight LspErrorHighlight       cterm=underline guifg=red ctermul=red
     highlight LspHintHighlight        cterm=underline guifg=DeepPink1
-    highlight LspHintText             guifg=black guibg=DeepPink1
+    highlight LspHintText             guifg=NONE guifg=DeepPink1
     highlight LspHintVirtualText      cterm=italic guibg=bg guifg=DeepPink1
 endfunction
 
-autocmd! User GoyoLeave nested call TweakColors()
+function! NextColors()
+    let idx = index(g:colors, g:colors_name)
+        return (idx + 1 >= len(g:colors) ? g:colors[0] : g:colors[idx + 1])
+endfunction
 
-call CycleColorscheme(0)
+function! PrevColors()
+    let idx = index(g:colors, g:colors_name)
+        return (idx - 1 < 0 ? g:colors[-1] : g:colors[idx - 1])
+endfunction
+
+function! SaveColorscheme()
+    let l:current_colorscheme = g:colors_name
+    call writefile([l:current_colorscheme], g:colorscheme_file)
+endfunction
+
+if filereadable(g:colorscheme_file)
+    let g:old_colorscheme = readfile(g:colorscheme_file)[0]
+    exe "colorscheme " . g:old_colorscheme
+endif
+
+autocmd VimLeavePre * call SaveColorscheme()
+autocmd ColorScheme * call TweakColors()
+autocmd! User GoyoLeave nested call TweakColors()

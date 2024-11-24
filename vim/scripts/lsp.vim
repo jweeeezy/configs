@@ -24,6 +24,12 @@ Plugin 'romainl/Apprentice'
 Plugin 'morhetz/gruvbox'
 Plugin 'whatyouhide/vim-gotham'
 Plugin 'cocopon/iceberg.vim'
+Plugin 'tomasr/molokai'
+Plugin 'ayu-theme/ayu-vim'
+Plugin 'aditya-azad/candle-grey'
+Plugin 'haishanh/night-owl.vim'
+Plugin 'doki-theme/doki-theme-vim'
+Plugin 'sts10/vim-pink-moon'
 
 call vundle#end()
 

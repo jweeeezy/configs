@@ -67,25 +67,28 @@ nnoremap <silent> <c-j> :bprev!<CR>
 nnoremap <silent> <c-k> :bnext!<CR>
 
 let g:navigation_state_index = 0
-let g:navigation_states = ['Buffer', 'Quickfix', 'Location List', 'Colorscheme']
+let g:navigation_states = ['Buffer', 'Location', 'Colorscheme', 'Quickfix']
 
 function! NavigationState()
-    if g:navigation_state_index == 0
-        echo "Navigation State: Quickfix"
-        nnoremap <silent> <c-j> :cprev!<CR>
-        nnoremap <silent> <c-k> :cnext!<CR>
-    elseif g:navigation_state_index == 1
-        echo "Navigation State: Location List"
-        nnoremap <silent> <c-j> :lprev!<CR>
-        nnoremap <silent> <c-k> :lnext!<CR>
-    elseif g:navigation_state_index == 2
-        echo "Navigation State: Buffer"
-        nnoremap <silent> <c-j> :bprev!<CR>
-        nnoremap <silent> <c-k> :bnext!<CR>
+    if g:navigation_state_index >= 0 && g:navigation_state_index < len(g:navigation_states)
+        let state_name = g:navigation_states[g:navigation_state_index]
+        echo "Navigation State: " . state_name
+        if state_name == 'Buffer'
+            nnoremap <silent> <c-j> :bprev!<CR>
+            nnoremap <silent> <c-k> :bnext!<CR>
+        elseif state_name == 'Quickfix'
+            nnoremap <silent> <c-j> :cprev!<CR>
+            nnoremap <silent> <c-k> :cnext!<CR>
+        elseif state_name == 'Location'
+            nnoremap <silent> <c-j> :lprev!<CR>
+            nnoremap <silent> <c-k> :lnext!<CR>
+        elseif state_name == 'Colorscheme'
+            nnoremap <silent> <c-k> :exe "colo " .. NextColors()<CR>
+            nnoremap <silent> <c-j> :exe "colo " .. PrevColors()<CR>
+        endif
     else
-        echo "Navigation State: Colorscheme"
-        nnoremap <silent> <c-j> :call CycleColorscheme(-1)<CR>
-        nnoremap <silent> <c-k> :call CycleColorscheme(1)<CR>
+        echo "Invalid Navigation State"
+        return
     endif
 endfunction
 
