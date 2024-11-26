@@ -61,6 +61,8 @@ syntax enable
 
 set autoindent
 set backspace=indent,eol,start
+set cindent
+set cinoptions=l1,j1
 set clipboard+=unamedplus
 set colorcolumn=80
 set cursorline
@@ -68,6 +70,8 @@ set encoding=utf8
 set expandtab
 set fillchars+=vert:\
 set incsearch
+set lazyredraw
+set matchtime=3
 set mouse=a
 set nobackup
 set noesckeys
@@ -77,12 +81,14 @@ set nowb
 set numberwidth=6
 set path+=**
 set scrolloff=8
+set showmatch
 set shiftwidth=4
 set smarttab
 set splitbelow
 set splitright
 set tabstop=4
 set termguicolors
+set ttyfast
 set viminfo^=%
 set wildcharm=<C-n>
 set wildmenu
@@ -272,6 +278,7 @@ nnoremap          <c-k>      :bnext!<CR>
 nnoremap          <c-l>      :LspDocumentDiagnostics<cr>
 nnoremap          <c-b>      :buffer<space>
 nnoremap          <c-m>      :marks<cr>
+nnoremap          <c-c>      :echo expand("%:p")<cr>
 
 " Visual Mode
 vnoremap J :m '>+1<CR>gv=gv
