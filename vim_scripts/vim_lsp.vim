@@ -98,6 +98,8 @@ set wildmode=full
 
 let g:autopep8_max_line_length=119
 
+let g:black_linelength=119
+
 let s:clip = '/mnt/c/Windows/System32/clip.exe'
 
 let g:colors = getcompletion('', 'color')
