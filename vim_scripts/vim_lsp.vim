@@ -197,6 +197,21 @@ function! QuickNavCycleState(direction)
     :call s:quicknav_update_state()
 endfunction
 
+function! Format()
+    let l:filetype = &filetype
+
+    if l:filetype == "python"
+        execute "Black"
+    elseif l:filetype == "javascript"
+        execute "Prettier"
+    elseif l:filetype == "html"
+        execute "Prettier"
+    elseif l:filetype == "css"
+        execute "Prettier"
+    else
+        echo "No Formatter installed for this filetype: " . l:filetype
+    endif
+endfunction
 
 " ----- Script Private Functions -----
 
@@ -262,29 +277,32 @@ augroup LSPTriggers
     autocmd User lsp_buffer_enabled call s:lsp_init()
 augroup END
 
-" ----- Keyboard Mappings -----
+" ----- keyboard mappings -----
 
 let mapleader = " "
 
 " Normal Mode
-nnoremap <silent> <c-n>      :call QuickNavCycleState(1)<CR>
-nnoremap <silent> <c-p>      :call QuickNavCycleState(-1)<CR>
-nnoremap          <leader>no :set nonumber norelativenumber<cr>
-vnoremap          <leader>y  "+y
-nnoremap          <leader>nn :set number relativenumber<cr>
-nnoremap          <leader>Y  gg"+yG
-nnoremap          <c-q>      :NERDTreeToggle<CR>
-nnoremap          <c-w>t     :vertical terminal<cr>
-nnoremap          <c-e>      :!cat % \| less -R<cr>:redraw!<cr>
-nnoremap          <c-f>      :Files<cr>
-nnoremap          <c-g>      :CtrlSF<space>
-nnoremap          <c-h>      :set hlsearch!<cr>
-nnoremap          <c-j>      :bprev!<CR>
-nnoremap          <c-k>      :bnext!<CR>
-nnoremap          <c-l>      :LspDocumentDiagnostics<cr>
-nnoremap          <c-b>      :buffer<space>
-nnoremap          <c-m>      :marks<cr>
-nnoremap          <c-c>      :echo expand("%:p")<cr>
+nnoremap <silent>       <c-n>      :call QuickNavCycleState(1)<CR>
+nnoremap <silent>       <c-p>      :call QuickNavCycleState(-1)<CR>
+nnoremap                <leader>no :set nonumber norelativenumber<cr>
+vnoremap                <leader>y  "+y
+nnoremap                <leader>nn :set number relativenumber<cr>
+nnoremap                <leader>Y  gg"+yG
+nnoremap                <c-q>      :NERDTreeToggle<CR>
+nnoremap                <c-w>t     :vertical terminal<cr>
+nnoremap                <c-e>      :!cat % \| less -R<cr>:redraw!<cr>
+nnoremap                <c-f>      :Files<cr>
+nnoremap                <c-g>      :CtrlSF<space>
+nnoremap                <c-h>      :set hlsearch!<cr>
+nnoremap                <c-j>      :bprev!<CR>
+nnoremap                <c-k>      :bnext!<CR>
+nnoremap                <c-l>      :LspDocumentDiagnostics<cr>
+nnoremap                <c-b>      :buffer<space>
+nnoremap                <c-m>      :marks<cr>
+nnoremap                <c-c>      :echo expand("%:p")<cr>
+nnoremap                <c-x>      <plug>(lsp-hover-preview)
+nnoremap                <c-x>      <plug>(lsp-hover-float)
+nnoremap                <c-a>      :call Format()<cr>
 
 " Visual Mode
 vnoremap J :m '>+1<CR>gv=gv
