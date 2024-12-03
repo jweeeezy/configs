@@ -128,6 +128,10 @@ let g:goyo_width  = 81
 let g:goyo_height = 97
 let g:goyo_linenr = 0
 
+let g:lsp_hover_ui = 'float'
+let g:lsp_float_max_width = 119
+let g:lsp_float_max_height = 0
+let g:lsp_preview_keep_focus = 0
 let g:lsp_diagnostics_highlights_insert_mode_enabled=0
 let g:lsp_diagnostics_signs_insert_mode_enabled=0
 let g:lsp_diagnostics_virtual_text_insert_mode_enabled=0
