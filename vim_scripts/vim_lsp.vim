@@ -290,6 +290,7 @@ nnoremap                <leader>nn :set number relativenumber<cr>
 nnoremap                <leader>Y  gg"+yG
 nnoremap                <c-q>      :NERDTreeToggle<CR>
 nnoremap                <c-w>t     :vertical terminal<cr>
+nnoremap                <c-w>g     :Goyo<cr>
 nnoremap                <c-e>      :!cat % \| less -R<cr>:redraw!<cr>
 nnoremap                <c-f>      :Files<cr>
 nnoremap                <c-g>      :CtrlSF<space>
