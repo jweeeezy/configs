@@ -3,6 +3,7 @@
 - commit shortly and concisely
 - use rebase to combine small commits into one feature/subject
 - use rebase instead of merging (cleaner history)
+- never change history of a public branch (use pull requests / merges)
 
 ## Git config commands
 - git config --global rerere.enabled true (enables easier rebasing trough "caching" already resolved conflicts)
@@ -20,7 +21,7 @@
 | git log --oneline --graph --decorate --all (-n10)| overview of all branches and commit history |
 | git blame | check who and when changed a line of a file |
 | git diff (--staged / HEAD~1 HEAD) | check the differences between two versions of a file (by default current change vs. last commit) |
-| git stash (list/drop/apply) | stash current changes locally |
+| git stash (list/drop/apply) -m "commit-message" | stash current changes locally |
 | git add -p | walkthrough changes and add them partially |
 | git tag -a v0.1 | tag a commit with a referencable version number tag
 | git push --tags | push tags into remote repository |
