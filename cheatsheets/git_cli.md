@@ -18,6 +18,7 @@
 ## Git commands
 | command    | description |
 | :-------------- | :----------- |
+| git bisect | search mode for breaking change that can even use commands to automate and binary search for the commit that broke a certain behaviour |
 | git log --oneline --graph --decorate --all (-n10)| overview of all branches and commit history |
 | git log --grep="search_keyword" | display only logs that have search_keyword in it |
 | git log -- filename.txt | display only logs that changed that file |
