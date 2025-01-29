@@ -19,6 +19,9 @@
 | command    | description |
 | :-------------- | :----------- |
 | git log --oneline --graph --decorate --all (-n10)| overview of all branches and commit history |
+| git log --grep="search_keyword" | display only logs that have search_keyword in it |
+| git log -- filename.txt | display only logs that changed that file |
+| git log -p | display logs + their changes |
 | git blame | check who and when changed a line of a file |
 | git diff (--staged / HEAD~1 HEAD) | check the differences between two versions of a file (by default current change vs. last commit) |
 | git stash (list/drop/apply) -m "commit-message" | stash current changes locally |
