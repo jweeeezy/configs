@@ -12,4 +12,6 @@
 [includeIf "gitdir:~/42/"]
 	path = "~/.gitconfig_42"
 [remote "origin"]
-	prune = true
+    prune = true
+[core]
+    editor = vim
