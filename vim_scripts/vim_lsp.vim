@@ -51,6 +51,9 @@ call vundle#begin('~/.vim/plugged')
     Plugin 'sts10/vim-pink-moon'
     Plugin 'doki-theme/doki-theme-vim'
 
+    Plugin 'iamcco/markdown-preview.nvim'
+    " :call 'mkdp#util#install()', needs yarn
+
 call vundle#end()
 
 filetype plugin indent on
