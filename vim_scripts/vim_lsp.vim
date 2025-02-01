@@ -140,6 +140,11 @@ let g:chat_gpt_lang = 'English'
 let g:chat_gpt_split_direction = 'vertical'
 let g:split_ratio=4
 
+let g:mkdp_auto_start = 0
+let g:mkdp_auto_close = 0
+let g:mkdp_filetypes = ['markdown']
+let g:mkdp_theme = 'dark'
+
 let g:goyo_width  = 121
 let g:goyo_height = 97
 let g:goyo_linenr = 0
