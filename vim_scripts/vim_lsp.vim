@@ -52,7 +52,12 @@ call vundle#begin('~/.vim/plugged')
     Plugin 'doki-theme/doki-theme-vim'
 
     Plugin 'iamcco/markdown-preview.nvim'
-    " :call 'mkdp#util#install()', needs yarn
+    " Hint: needs yarn
+    " Hint: :call 'mkdp#util#install()'
+
+    Plugin 'CoderCookE/vim-chatgpt'
+    " Hint: needs token credit and $OPENAI_API_KEY
+    " Hint: pip install openai
 
 call vundle#end()
 
@@ -127,7 +132,15 @@ let g:fzf_action = {
       \ 'ctrl-i': 'split',
       \ }
 
-let g:goyo_width  = 81
+let g:chat_gpt_model = 'gpt-4o-mini'
+let g:chat_gpt_max_tokens=2000
+let g:chat_gpt_session_mode=0
+let g:chat_gpt_temperature = 0.7
+let g:chat_gpt_lang = 'English'
+let g:chat_gpt_split_direction = 'vertical'
+let g:split_ratio=4
+
+let g:goyo_width  = 121
 let g:goyo_height = 97
 let g:goyo_linenr = 0
 
