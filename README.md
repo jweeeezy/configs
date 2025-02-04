@@ -1,20 +1,21 @@
 # Personal dev environment
 
 ## Description
-This repository contains most of the tools/configs I use for daily developing
+This repository contains tools and configs, that I use for in my daily development environment
 
-* /bash scripts      - useful bash scripts
-* /cheatsheets       - cheatsheets for setup or useful commands for specific topics like git, docker or bash
-* /docker setups     - self written docker images for fast dev environment deployment
-* /dot_files         - config files of various types for global settings ( bash, vim, git )
-* /project_templates - simple project builder that are linked to the .bashrc via alias command (e.g.: insert_proj_cpp) for quick starting
-* /vim_scripts       - vim scripts for multiple purposes aswell as my favorite vim colorschemes
+| Directory          | Description |
+| :----------------- | :---------- |
+| cheatsheets/       | cheatsheets for setup or useful commands for specific topics like git, docker or bash |
+| docker setups/     | self written docker images for fast dev environment deployment |
+| dot_files/         | config files of various types for global settings ( bash, vim, git ) |
+| project_templates/ | project blueprints that can be easily created by alias in .bashrc |
+| tools/             | small tools and scripts to automate tasks |
+| vim_scripts/       | my personal vim scripts/configs |
 
 ## Get Started
 Prerequisites: GNU make
 
-Run
+Copy all .dotfiles onto your system
 
-    ` make install `
+    make install
 
-copies all dotfiles onto the system
