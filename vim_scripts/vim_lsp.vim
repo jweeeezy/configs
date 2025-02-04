@@ -142,7 +142,8 @@ let g:split_ratio=4
 
 let g:mkdp_auto_start = 0
 let g:mkdp_auto_close = 0
-let g:mkdp_filetypes = ['markdown']
+" Hint: check filetype with :set filetype?
+let g:mkdp_filetypes = ['markdown', 'asciidoc']
 let g:mkdp_theme = 'dark'
 
 let g:goyo_width  = 121
