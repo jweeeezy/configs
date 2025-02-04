@@ -31,7 +31,6 @@ function has_credential() {
 while IFS= read -r line
 do
     if has_credential "$line"; then
-        echo "Line with Credential found:"
         BUFFER_CREDENTIALS+="$line"$'\n'
     else
         BUFFER_CLEAN+="$line"$'\n'
@@ -40,7 +39,13 @@ done < $(eval echo "$HISTORY_FILE")
 
 
 # Step 2: User Prompt with Results
-# Show User lines with credentials found and prompt wether deletion is wanted
+# Show User lines with credentials found and prompt whether deletion is wanted
+# If no credentials were found exit the program
+if [[ -z "$BUFFER_CREDENTIALS" ]]; then
+    echo "No credentials found in history."
+    exit 0
+fi
+echo -e "Lines with credentials found:\n"
 echo "$BUFFER_CREDENTIALS"
 read -p "Do you want to remove these lines from your history? (y/N): " choice
 choice="${choice,,}"
