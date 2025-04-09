@@ -146,7 +146,7 @@ let g:mkdp_auto_close = 0
 let g:mkdp_filetypes = ['markdown', 'asciidoc']
 let g:mkdp_theme = 'dark'
 
-let g:goyo_width  = 121
+let g:goyo_width  = 90
 let g:goyo_height = 97
 let g:goyo_linenr = 0
 
