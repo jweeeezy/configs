@@ -1,7 +1,7 @@
 CHECK_GIT_STATUSES_FILEP="$HOME/configs/tools/bash/check_git_statuses.sh"
 
 if [ -f $CHECK_GIT_STATUSES_FILEP ]; then
-    $CHECK_GIT_STATUSES_FILEP ~/iss ~/private/ ~/configs/ | column -t
+    $CHECK_GIT_STATUSES_FILEP -ct ~/iss ~/private/ ~/configs/ | column -t
 fi
 
 echo "Are you sure you want to exit? Press Ctrl-C to cancel"
