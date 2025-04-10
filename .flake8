@@ -1,0 +1,11 @@
+[flake8]
+filename = *.py
+max-line-length = 81
+exclude = .git,
+          .venv,
+          input,
+          output,
+          __pycache__,
+          migrations
+inline-quotes = double
+max-complexity = 12
