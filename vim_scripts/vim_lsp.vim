@@ -33,7 +33,6 @@ call vundle#begin('~/.vim/plugged')
     Plugin 'editorconfig/editorconfig-vim'
 
     " File formatter
-    Plugin 'tell-k/vim-autopep8'
     Plugin 'psf/black'
     Plugin 'prettier/vim-prettier'
     Plugin 'rstacruz/vim-closer'
@@ -104,9 +103,7 @@ set wildmode=full
 
 " ----- Global Variables ----
 
-let g:autopep8_max_line_length=119
-
-let g:black_linelength=119
+let g:black_linelength=81
 
 let s:clip = '/mnt/c/Windows/System32/clip.exe'
 
