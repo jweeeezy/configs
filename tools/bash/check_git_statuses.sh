@@ -43,7 +43,7 @@ list_git_repos_with_status() {
 
     if [[ $use_color -eq 1 ]]; then
         if [[ $show_status -eq 1 ]]; then
-            echo -e "${color}${dir}${RESET} ${color}${status}${RESET}"
+            echo -e "${dir} ${color}${status}${RESET}"
         else
             echo -e "${color}${dir}${RESET}"
         fi
