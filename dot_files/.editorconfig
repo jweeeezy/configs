@@ -6,6 +6,9 @@ indent_style = space
 indent_size = 4
 line_length = 81
 
+[Makefile]
+indent_style = tab
+
 [*.js]
 indent_size = 2
 line_length = 119
