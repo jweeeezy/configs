@@ -11,9 +11,6 @@
     # newest go version
     export PATH=$PATH:/usr/local/go/bin
 
-    # 42 school MacOs specific
-    alias norm='norminette'
-
     # bash history
     # don't put duplicate lines or lines starting with space in the history.
     # See bash(1) for more options
@@ -26,19 +23,12 @@
 
     alias v="vim"
 
-    # Directories
-    alias 42dir="cd ~/42Projects/"
-    alias Sidedir="cd ~/SideProjects/"
-    alias cjdir='cd ~/coding_journal'
-    alias cfg='cd ~/configs'
-
     # Fuzzy Finder
     export FZF_DEFAULT_OPTS="--walker-skip='.git,*venv,node_modules'"
     export FZF_DEFAULT_IGNORES="-not -path '*/*cache*/*' -not -path '*/\.git/*' -not -path '*/node_modules/*' -not -path '*/*venv/*'"
     export FZF_DEFAULT_COMMAND="find . -type f $FZF_DEFAULT_IGNORES"
-    alias fd="cd ~ && cd \$(find * -type d $FZF_DEFAULT_IGNORES | fzf)"
     alias cdf="cd ~ && cd \$(find * -type d $FZF_DEFAULT_IGNORES | fzf)"
-    alias cdd="cd ~ && cd \$(find * -type d $FZF_DEFAULT_IGNORES | fzf)"
+    alias cdg="cd \$(check_git_statuses $HOME/configs $HOME/private $HOME/iss | fzf)"
     [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
     # alias 'Current Working Directory' (cwd)
@@ -58,22 +48,7 @@
     # alias project templates
     alias insert_proj="~/configs/bash_scripts/insert_template_project.sh"
 
-    # alias debug environment variables
-    alias debug_a="export DEBUG_FLAG='-g -DDEBUG=1 -fsanitize=address'"
-    alias debug_m="export DEBUG_FLAG='-g -fsanitize=address'"
-    alias debug_s="export DEBUG_FLAG='-g -DDEBUG=1'"
-    alias debug_g="export DEBUG_FLAG='-g'"
-    alias debug_d="export DEBUG_FLAG='-DDEBUG=1'"
-    alias debug_off="export DEBUG_FLAG="
-    alias debug='echo "CURRENT DEBUG OPTIONS:"; echo [ $DEBUG_FLAG ]; \
-      echo ;cat ~/.zshrc | grep DEBUG_FLAG'
-
-    alias ll='ls -alF'
-    alias la='ls -A'
-    alias l='ls -CF'
-
     # Tab Completion
-
     # If there are multiple matches for completion, Tab should cycle through them
     bind 'TAB:menu-complete'
     # And Shift-Tab should cycle backwards
