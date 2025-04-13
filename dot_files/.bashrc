@@ -23,12 +23,14 @@
 
     alias v="vim"
 
+    WORKING_DIRS='$HOME/iss $HOME/private $HOME/configs'
+
     # Fuzzy Finder
     export FZF_DEFAULT_OPTS="--walker-skip='.git,*venv,node_modules'"
     export FZF_DEFAULT_IGNORES="-not -path '*/*cache*/*' -not -path '*/\.git/*' -not -path '*/node_modules/*' -not -path '*/*venv/*'"
     export FZF_DEFAULT_COMMAND="find . -type f $FZF_DEFAULT_IGNORES"
     alias cdf="cd ~ && cd \$(find * -type d $FZF_DEFAULT_IGNORES | fzf)"
-    alias cdd="cd \$(check_git_statuses -d $HOME/configs $HOME/private $HOME/iss | fzf)"
+    alias cdd="cd \$(check_git_statuses -d $WORKING_DIRS | fzf)"
     [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
     # alias 'Current Working Directory' (cwd)
@@ -44,9 +46,6 @@
     if [ -f ~/.last_pj ]; then
         export CPJ="$(cat ~/.last_pj)"
     fi
-
-    # alias project templates
-    alias insert_proj="~/configs/bash_scripts/insert_template_project.sh"
 
     # Tab Completion
     # If there are multiple matches for completion, Tab should cycle through them
@@ -148,3 +147,5 @@
 
     # Make sure this is after all other prompting changes
     eval "$(direnv hook bash)"
+
+    eval check_git_statuses -dtc $WORKING_DIRS | column -t
