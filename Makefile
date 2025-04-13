@@ -1,17 +1,26 @@
 SHELL := /bin/bash
 
-DOTFILES_DIR = ./dot_files/
+DOTFILES_DIR = ./dot_files
 _DOTFILES = $(shell ls -A $(DOTFILES_DIR))
-_DOTFILES_BLACKLIST = .bashrc
+_DOTFILES_BLACKLIST = .gitconfig
 
+# The Install command will create symbolic links in your home directory for all
+# files in the dot_files directory except the filename is listed in the
+# _DTOFILES_BLACKLIST, which will be copied instead.
+# If there is already a file in your home directory, a backup will be created.
 .PHONY: install
 install:
-	@echo "Copying Dot Files..."
+	@echo "Linking Dot Files..."
 	@for file in $(_DOTFILES); do \
-		if [[ ! " $(_DOTFILES_BLACKLIST) " =~ " $$file " ]]; then \
-			cp $(DOTFILES_DIR)$$file ~/; \
-		fi \
+		if echo "$(_DOTFILES_BLACKLIST)" | grep -qw "$$file"; then \
+			echo "Copying blacklisted file: $$file"; \
+			cp $(DOTFILES_DIR)/$$file $(HOME)/$$file; \
+		else \
+			if [ -f $(HOME)/$$file ] && [ ! -L $(HOME)/$$file ]; then \
+				echo "Backing up existing $$file to $$file.bak"; \
+				mv $(HOME)/$$file $(HOME)/$$file.bak; \
+			fi; \
+			echo "Linking $$file"; \
+			ln -sfn $(HOME)/configs/$(DOTFILES_DIR)/$$file $(HOME)/$$file; \
+		fi; \
 	done
-	@echo "Setting up Symbolic Link to configs/dotfiles/.bashrc ..."
-	@rm $(HOME)/.bashrc || true
-	@ln -s $(PWD)/dot_files/.bashrc $(HOME)/.bashrc 
