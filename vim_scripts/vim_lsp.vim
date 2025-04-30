@@ -103,7 +103,7 @@ set wildmode=full
 
 " ----- Global Variables ----
 
-let g:black_linelength=81
+let g:black_linelength=119
 
 let s:clip = '/mnt/c/Windows/System32/clip.exe'
 
