@@ -4,8 +4,8 @@ GREEN="\033[92m"
 RED="\033[91m"
 RESET="\033[0m"
 
-# Checks if a git repository is clean (no changes)
-# Returns 0 if clean, 1 if dirty
+# Check if a git repository is clean (no changes)
+# Return 0 if clean, 1 if dirty
 get_git_status() {
     local repo_dir="$1"
     if [[ -z $(git -C "$repo_dir" status --porcelain 2>/dev/null) ]]; then
@@ -15,7 +15,7 @@ get_git_status() {
     fi
 }
 
-# Lists the given directory if it's a git repo and reports its status
+# List the given directory if it's a git repo and report its status
 # Parameters:
 # $1: directory
 # $2: show status (1 = show, 0 = hide)
@@ -56,15 +56,15 @@ list_git_repos_with_status() {
     fi
 }
 
-# Prints usage/help message
+# Print usage/help message
 print_help() {
     cat <<EOF
 Usage: $0 [options] <dir1> [dir2 ... dirN]
 
-Recursively scans given directories for Git repositories and shows their status.
+Recursively scan given directory/ies for Git repositories.
 
 Options:
-  -t      Show 'clean' or 'dirty' status next to each repo.
+  -t      Show 'clean' or 'dirty' git status next to each repo.
   -d      Show only dirty repositories (hide clean ones).
   -c      Use colored output (green for clean, red for dirty).
   -h      Show this help message and exit.
@@ -75,7 +75,7 @@ Examples:
 EOF
 }
 
-# Main function: parses arguments and executes the core logic (see --help message)
+# Main function: parse arguments and execute the core logic (see --help message)
 main() {
     local FLAG_STATUS=0
     local FLAG_DIRTY_ONLY=0
