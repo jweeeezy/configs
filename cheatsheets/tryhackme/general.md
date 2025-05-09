@@ -1,12 +1,14 @@
 # Overview
 
 ## Table of Contents
-1. [Setup](#setup)
-2. [Tools](#tools)
-   * [Scouting](#scouting)
-   * [BruteForce](#bruteforcing)
-   * [WordLists](#wordlists)
-   * [ReverseShell](#reverseshell)
+* [Setup](#setup)
+* [Tools](#tools)
+   1. [Notes](#notes)
+   2. [Scouting](#scouting)
+   3. [BruteForce](#bruteforcing)
+   4. [WordLists](#wordlists)
+   5. [TargetInteraction](#targetinteraction)
+   6. [ReverseShell](#reverseshell)
 
 ## Setup
 1. Setup Kali Linux VM
@@ -16,7 +18,7 @@
 
 ## Tools
 
-### Note Apps
+### Notes
 * cherry tree
 * vim/markdown
 
@@ -88,8 +90,17 @@
 * /usr/share/wordlists
 * /usr/share/seclists
 
+### TargetInteraction
+* ssh
+* scp
+* linpeas
+
 ### ReverseShell
 * netcat
    ```sh
    nc -lnvp <listening_port>
+   ```
+* simple http webserver
+   ```sh
+   python3 -m http.server <listening_port>
    ```
