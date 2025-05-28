@@ -233,18 +233,18 @@ function! Format()
 endfunction
 
 function! InsertGitTicket()
-  let tickets = systemlist("git log -n 50 --pretty=format:%s | grep -o '\\[[^]]\\+\\]' | sort | uniq")
-  call fzf#run(fzf#wrap({
-        \ 'source': tickets,
-        \ 'sink':   function('s:insert_git_ticket_at_cursor'),
-        \ 'options': '--prompt "Tickets> "'
-        \ }))
+    let tickets = systemlist("git log -n 50 --oneline --graph --decorate --all")
+    call fzf#run(fzf#wrap({
+                \ 'source': tickets,
+                \ 'sink':   function('s:insert_git_ticket_at_cursor'),
+                \ 'options': '--prompt "Tickets> "'
+                \ }))
 endfunction
 
 " ----- Script Private Functions -----
-
 function! s:insert_git_ticket_at_cursor(ticket)
-  execute "normal! i" . a:ticket
+    let clean_ticket = matchstr(a:ticket, '\[[^]]\+\]')
+    execute "normal! i" . clean_ticket
 endfunction
 
 function! s:colorscheme_save_current()
