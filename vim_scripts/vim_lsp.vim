@@ -232,7 +232,20 @@ function! Format()
     endif
 endfunction
 
+function! InsertGitTicket()
+  let tickets = systemlist("git log -n 50 --pretty=format:%s | grep -o '\\[[^]]\\+\\]' | sort | uniq")
+  call fzf#run(fzf#wrap({
+        \ 'source': tickets,
+        \ 'sink':   function('s:insert_git_ticket_at_cursor'),
+        \ 'options': '--prompt "Tickets> "'
+        \ }))
+endfunction
+
 " ----- Script Private Functions -----
+
+function! s:insert_git_ticket_at_cursor(ticket)
+  execute "normal! i" . a:ticket
+endfunction
 
 function! s:colorscheme_save_current()
     let l:current_colorscheme = g:colors_name
@@ -307,6 +320,7 @@ nnoremap                <leader>no :set nonumber norelativenumber<cr>
 vnoremap                <leader>y  "+y
 nnoremap                <leader>nn :set number relativenumber<cr>
 nnoremap                <leader>Y  gg"+yG
+nnoremap                <leader>t  :call InsertGitTicket()<CR>
 nnoremap                <c-q>      :NERDTreeToggle<CR>
 nnoremap                <c-w>t     :vertical terminal<cr>
 nnoremap                <c-w>g     :Goyo<cr>
