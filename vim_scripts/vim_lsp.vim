@@ -318,7 +318,7 @@ nnoremap                <c-h>      :set hlsearch!<cr>
 nnoremap                <c-j>      :bprev!<CR>
 nnoremap                <c-k>      :bnext!<CR>
 nnoremap                <c-l>      :LspDocumentDiagnostics<cr>
-nnoremap                <c-b>      :buffer<space>
+nnoremap                <c-b>      :Buffer<cr>
 nnoremap                <c-m>      :marks<cr>
 nnoremap                <c-c>      :echo expand("%:p")<cr>
 nnoremap                <c-x>      <plug>(lsp-hover-preview)
