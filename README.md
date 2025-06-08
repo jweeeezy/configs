@@ -15,7 +15,7 @@ This repository contains various templates, tools and configs for my workflow.
 
 ## Prerequisites
 
-* Linux (tested on Ubuntu WSL)
+* Linux (tested on Ubuntu 22.04. WSL2)
 * GNU Make
 * Bash
 
