@@ -2,7 +2,8 @@
         PATH="$HOME/.local/bin:$PATH"
     fi
 
-    PATH="/usr/local/bin/:$PATH"
+    export PATH="/usr/local/bin/:$PATH"
+    export PATH="/usr/local/go/bin:$PATH"
 
     if [ -d "$HOME/bin" ] ; then
         PATH="$HOME/bin:$PATH"
@@ -11,7 +12,6 @@
     . "$HOME/.rye/env"
     
     # newest go version
-    export PATH=$PATH:/usr/local/go/bin
 
     # bash history
     # don't put duplicate lines or lines starting with space in the history.
@@ -24,6 +24,7 @@
     HISTFILESIZE=2000
 
     alias v="vim"
+    alias vi="vim"
 
     WORKING_DIRS='$HOME/iss $HOME/private $HOME/configs'
 
