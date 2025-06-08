@@ -1,11 +1,11 @@
 SHELL := /bin/bash
 
-DOTFILES_DIR = ./dot_files
+DOTFILES_DIR = dot-files
 _DOTFILES = $(shell ls -A $(DOTFILES_DIR))
 _DOTFILES_BLACKLIST = .gitconfig
 
 # The Install command will create symbolic links in your home directory for all
-# files in the dot_files directory except the filename is listed in the
+# files in the dot-files directory except the filename is listed in the
 # _DTOFILES_BLACKLIST, which will be copied instead.
 # If there is already a file in your home directory, a backup will be created.
 .PHONY: install

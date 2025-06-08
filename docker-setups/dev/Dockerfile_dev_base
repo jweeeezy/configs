@@ -1,0 +1,13 @@
+FROM ubuntu:22.04 AS dev_base
+
+SHELL ["/bin/bash", "-c"]
+
+RUN apt update -y && apt install -y \
+    software-properties-common \
+    make \
+    git \
+    tree \
+    python3-dev \
+    && add-apt-repository ppa:jonathonf/vim -y \
+    && apt update -y && apt install -y vim \
+    && rm -rf /var/lib/apt/lists/*
