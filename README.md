@@ -7,7 +7,7 @@ This repository contains various templates, tools and configs for my workflow.
 | Directory          | Description |
 | :----------------- | :---------- |
 | cheatsheets/       | self-made cheatsheets of various types |
-| docker setups/     | self-made docker images of various types |
+| docker-setups/     | self-made docker images of various types |
 | dot-files/         | self-made config/dot files of various types |
 | project-templates/ | self-made project templates that can be inserted via alias |
 | tools/             | self-made tools that can automate various tasks |
