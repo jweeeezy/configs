@@ -2,6 +2,8 @@
         PATH="$HOME/.local/bin:$PATH"
     fi
 
+    PATH="/usr/local/bin/:$PATH"
+
     if [ -d "$HOME/bin" ] ; then
         PATH="$HOME/bin:$PATH"
     fi
