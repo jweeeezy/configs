@@ -11,6 +11,8 @@
 	path = "~/.gitconfig_personal"
 [includeIf "gitdir:~/42/"]
 	path = "~/.gitconfig_42"
+[includeIf "gitdir:~/iss/"]
+	path = "~/.gitconfig_iss"
 [remote "origin"]
     prune = true
 [core]
