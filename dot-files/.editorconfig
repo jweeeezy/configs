@@ -1,4 +1,9 @@
 root = true
+charset = utf-8
+indent_style = space
+
+end_of_line = lf
+insert_final_newline = false
 
 [Makefile]
 indent_style = tab
@@ -6,7 +11,6 @@ indent_size = 4
 
 [*.js]
 indent_size = 2
-line_length = 119
 
 [*.html]
 indent_size = 2
@@ -15,20 +19,10 @@ indent_size = 2
 indent_size = 2
 
 [*.py]
-line_length = 119
-charset = utf-8
-indent_style = space
 indent_size = 4
 
 [*.json]
-indent_style = space
 indent_size = 4
 
 [*.md]
-charset = utf-8
-indent_style = space
 indent_size = 4
-line_length = 81
-
-end_of_line = lf
-insert_final_newline = false
