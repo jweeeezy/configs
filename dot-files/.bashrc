@@ -9,7 +9,7 @@
         PATH="$HOME/bin:$PATH"
     fi
 
-    . "$HOME/.rye/env"
+    export PIP_REQUIRE_VIRTUALENV=true
     
     # newest go version
 
