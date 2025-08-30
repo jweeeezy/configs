@@ -8,6 +8,7 @@ _DOTFILES_BLACKLIST = .gitconfig
 # files in the dot-files directory except the filename is listed in the
 # _DTOFILES_BLACKLIST, which will be copied instead.
 # If there is already a file in your home directory, a backup will be created.
+# Also intalls useful bash scripts as symlinks in your /usr/local/bin/
 .PHONY: install
 install:
 	@echo "Linking Dot Files..."
@@ -24,3 +25,5 @@ install:
 			ln -sfn $(HOME)/configs/$(DOTFILES_DIR)/$$file $(HOME)/$$file; \
 		fi; \
 	done
+	@echo "Installing Check Git Statuses Tool (needs sudo authorization)..."
+	@sudo ln -s $(HOME)/configs/tools/bash/check_git_statuses.sh /usr/local/bin/check_git_statuses
