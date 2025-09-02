@@ -30,7 +30,8 @@ call vundle#begin('~/.vim/plugged')
     Plugin 'junegunn/goyo.vim'
 
     " Editorconfig vim support
-    Plugin 'editorconfig/editorconfig-vim'
+    " Comes bundled with Vim 9
+    " Plugin 'editorconfig/editorconfig-vim'
 
     " File formatter
     Plugin 'psf/black'
