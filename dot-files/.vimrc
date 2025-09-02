@@ -1,1 +1,1 @@
-source ~/configs/vim-scripts/vim-lsp.vim
+source ~/configs/vim-scripts/lsp.vim
