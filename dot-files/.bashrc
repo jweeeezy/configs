@@ -148,7 +148,9 @@
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+    echo "Git Repositories Status Report:"
+    eval check_git_statuses -ct $WORKING_DIRS | column -t
+    echo ""
+
     # Make sure this is after all other prompting changes
     eval "$(direnv hook bash)"
-
-    eval check_git_statuses -dtc $WORKING_DIRS | column -t
