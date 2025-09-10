@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-DOTFILES_DIR = dot-files
+DOTFILES_DIR = dotfiles
 _DOTFILES = $(shell ls -A $(DOTFILES_DIR))
 _DOTFILES_BLACKLIST = .gitconfig
 
@@ -26,4 +26,4 @@ install:
 		fi; \
 	done
 	@echo "Installing Check Git Statuses Tool (needs sudo authorization)..."
-	@sudo ln -s $(HOME)/configs/tools/bash/check_git_statuses.sh /usr/local/bin/check_git_statuses
+	@sudo ln -sf $(HOME)/configs/tools/bash/check_git_statuses.sh /usr/local/bin/check_git_statuses
