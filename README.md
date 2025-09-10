@@ -15,16 +15,16 @@ This repository contains various templates, tools and configs for my workflow.
 
 ## Prerequisites
 
-* Linux (tested on Ubuntu 22.04. WSL2)
+* Linux (tested on WSL2, Ubuntu 22.04. & Ubuntu 24.04)
 * GNU Make
 * Bash
 
 ## Get Started
 
->Following the `one source of truth` principle, installed files will mostly link
-to the files in this repository. This ensures better consistency and easier maintainablity.
+>Following the `one source of truth` principle, installed files will be created
+as symlinks to this repository. This ensures better consistency and easier maintainablity.
 
-* Install .dotfiles on your system as symlinks, backup existing files.
+* Install .dotfiles on your system as symlinks in `/home/$USER/` or `/usr/local/bin/`, backup existing files.
 
    ```sh
    make install
