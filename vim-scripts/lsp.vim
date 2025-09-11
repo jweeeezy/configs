@@ -144,7 +144,7 @@ let g:mkdp_auto_close = 0
 let g:mkdp_filetypes = ['markdown', 'asciidoc']
 let g:mkdp_theme = 'dark'
 
-let g:goyo_width  = 90
+let g:goyo_width  = 120
 let g:goyo_height = 97
 let g:goyo_linenr = 0
 
@@ -155,15 +155,8 @@ let g:lsp_preview_keep_focus = 0
 let g:lsp_diagnostics_highlights_insert_mode_enabled=0
 let g:lsp_diagnostics_signs_insert_mode_enabled=0
 let g:lsp_diagnostics_virtual_text_insert_mode_enabled=0
-let g:lsp_settings = {
-\   'pylsp-all': {
-\     'workspace_config': {
-\       'pylsp': {
-\         'configurationSources': ['flake8']
-\       }
-\     }
-\   },
-\}
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/.vim-lsp.log')
 
 let g:navigation_state_index = 0
 let g:navigation_states = ['Buffer', 'Location', 'Colorscheme', 'Quickfix']
@@ -356,4 +349,14 @@ endif
 if filereadable(g:colorscheme_file)
     let g:old_colorscheme = readfile(g:colorscheme_file)[0]
     execute "colorscheme " . g:old_colorscheme
+endif
+
+" Register Ruff Language Server
+if executable('ruff')
+    " pip install python-lsp-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'ruff server',
+        \ 'cmd': {server_info->['ruff', 'server', '-v']},
+        \ 'allowlist': ['python'],
+        \ })
 endif
