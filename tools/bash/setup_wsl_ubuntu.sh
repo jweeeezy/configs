@@ -10,7 +10,8 @@ sudo apt-get install -y \
     git \
     make \
     tree \
-    direnv
+    direnv \
+    ack
 
 # Install Configs Repository (Dotfiles, Bash Scripts)
 echo "Installing Personal Config Repository including .dotfiles and Bash scripts..."
