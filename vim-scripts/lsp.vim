@@ -157,6 +157,15 @@ let g:lsp_diagnostics_signs_insert_mode_enabled=0
 let g:lsp_diagnostics_virtual_text_insert_mode_enabled=0
 let g:lsp_log_verbose = 1
 let g:lsp_log_file = expand('~/.vim-lsp.log')
+let g:lsp_settings = {
+\   'pylsp-all': {
+\     'workspace_config': {
+\       'pylsp': {
+\         'configurationSources': ['flake8']
+\       }
+\     }
+\   },
+\}
 
 let g:navigation_state_index = 0
 let g:navigation_states = ['Buffer', 'Location', 'Colorscheme', 'Quickfix']
