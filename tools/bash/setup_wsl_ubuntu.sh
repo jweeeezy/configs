@@ -11,7 +11,8 @@ sudo apt-get install -y \
     make \
     tree \
     direnv \
-    ack
+    ack \
+    python3-pip
 
 # Install Configs Repository (Dotfiles, Bash Scripts)
 echo "Installing Personal Config Repository including .dotfiles and Bash scripts..."
@@ -41,3 +42,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 nvm install --lts
+
+# Install pipx
+echo "Installing Pipx..."
+python3 -m pip install --user pipx
+python3 -m pipx ensurepath

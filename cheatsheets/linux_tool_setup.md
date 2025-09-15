@@ -16,6 +16,16 @@ cd ~/.vim/bundle && git clone https://github.com/VundleVim/Vundle.vim.git Vundle
 vim +PluginInstall +qall
 ```
 
+### Get Pylsp + Ruff for Vim
+
+> https://github.com/python-lsp/python-lsp-server
+> https://github.com/python-lsp/python-lsp-ruff
+
+```bash
+pipx install python-lsp-server
+pipx inject python-lsp-server python-lsp-ruff
+```
+
 ## SSH
 
 ## SSH Key for GitHub
