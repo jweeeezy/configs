@@ -34,7 +34,6 @@ call vundle#begin('~/.vim/plugged')
     " Plugin 'editorconfig/editorconfig-vim'
 
     " File formatter
-    Plugin 'psf/black'
     Plugin 'prettier/vim-prettier'
     Plugin 'rstacruz/vim-closer'
 
@@ -225,16 +224,14 @@ endfunction
 function! Format()
     let l:filetype = &filetype
 
-    if l:filetype == "python"
-        execute "Black"
-    elseif l:filetype == "javascript"
+    if l:filetype == "javascript"
         execute "Prettier"
     elseif l:filetype == "html"
         execute "Prettier"
     elseif l:filetype == "css"
         execute "Prettier"
     else
-        echo "No Formatter installed for this filetype: " . l:filetype
+        execute "LspDocumentFormat"
     endif
 endfunction
 
