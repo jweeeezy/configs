@@ -275,14 +275,14 @@ function! s:quicknav_update_state()
     let state_name = g:navigation_states[g:navigation_state_index]
     echo "Navigation State: " . state_name
     if state_name == 'Buffer'
-        nnoremap <silent> <c-j> :bprev!<CR>
-        nnoremap <silent> <c-k> :bnext!<CR>
+        nnoremap <silent> <c-j> <cmd>bprev!<CR>
+        nnoremap <silent> <c-k> <cmd>bnext!<CR>
     elseif state_name == 'Quickfix'
-        nnoremap <silent> <c-j> :cprev!<CR>
-        nnoremap <silent> <c-k> :cnext!<CR>
+        nnoremap <silent> <c-j> <cmd>cprev!<CR>
+        nnoremap <silent> <c-k> <cmd>cnext!<CR>
     elseif state_name == 'Location'
-        nnoremap <silent> <c-j> :lprev!<CR>
-        nnoremap <silent> <c-k> :lnext!<CR>
+        nnoremap <silent> <c-j> <cmd>lprev!<CR>
+        nnoremap <silent> <c-k> <cmd>lnext!<CR>
     elseif state_name == 'Colorscheme'
         nnoremap <silent> <c-k> :execute "colorscheme " .. ColorschemeGetNext()<CR>
         nnoremap <silent> <c-j> :execute "colorscheme " .. ColorschemeGetPrevious()<CR>
@@ -328,30 +328,28 @@ augroup END
 let mapleader = " "
 
 " Normal Mode
-nnoremap <silent>       <c-n>      :call QuickNavCycleState(1)<CR>
-nnoremap <silent>       <c-p>      :call QuickNavCycleState(-1)<CR>
-nnoremap                <leader>no :set nonumber norelativenumber<cr>
-vnoremap                <leader>y  "+y
-nnoremap                <leader>nn :set number<cr>
-nnoremap                <leader>Y  gg"+yG
-nnoremap                <leader>t  :call InsertGitTicket()<CR>
-nnoremap                <c-q>      :NERDTreeToggle<CR>
-nnoremap                <c-w>t     :vertical terminal<cr>
-nnoremap                <c-w>g     :Goyo<cr>
-nnoremap                <c-w>m     :MarkdownPreview<cr>
-nnoremap                <c-e>      :!cat % \| less -R<cr>:redraw!<cr>
-nnoremap                <c-f>      :Files<cr>
+nnoremap <silent>       <c-n>      <cmd>call QuickNavCycleState(1)<CR>
+nnoremap <silent>       <c-p>      <cmd>call QuickNavCycleState(-1)<CR>
+nnoremap                <leader>no <cmd>set nonumber norelativenumber<cr>
+nnoremap                <leader>nn <cmd>set number<cr>
+nnoremap                <leader>t  <cmd>call InsertGitTicket()<CR>
+nnoremap                <c-q>      <cmd>NERDTreeToggle<CR>
+nnoremap                <c-w>t     <cmd>vertical terminal<cr>
+nnoremap                <c-w>g     <cmd>Goyo<cr>
+nnoremap                <c-w>m     <cmd>MarkdownPreview<cr>
+nnoremap                <c-e>      <cmd>!cat % \| less -R<cr>:redraw!<cr>
+nnoremap                <c-f>      <cmd>Files<cr>
 nnoremap                <c-g>      :CtrlSF<space>
-nnoremap                <c-h>      :set hlsearch!<cr>
-nnoremap                <c-j>      :bprev!<CR>
-nnoremap                <c-k>      :bnext!<CR>
-nnoremap                <c-l>      :Lines<cr>
-nnoremap                <c-b>      :Buffer<cr>
-nnoremap                <c-m>      :Marks<cr>
-nnoremap                <c-c>      :echo expand("%:p")<cr>
+nnoremap                <c-h>      <cmd>set hlsearch!<cr>
+nnoremap                <c-j>      <cmd>bprev!<CR>
+nnoremap                <c-k>      <cmd>bnext!<CR>
+nnoremap                <c-l>      <cmd>Lines<cr>
+nnoremap                <c-b>      <cmd>Buffer<cr>
+nnoremap                <c-m>      <cmd>Marks<cr>
+nnoremap                <c-c>      <cmd>echo expand("%:p")<cr>
 nnoremap                <c-x>      <plug>(lsp-hover-preview)
 nnoremap                <c-x>      <plug>(lsp-hover-float)
-nnoremap                <c-a>      :call Format()<cr>
+nnoremap                <c-a>      <cmd>call Format()<cr>
 nnoremap                <silent> J <cmd>LspPreviousDiagnostic<cr>
 nnoremap                <silent> K <cmd>LspNextDiagnostic<cr>
 
