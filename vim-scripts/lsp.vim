@@ -41,14 +41,13 @@ call vundle#begin('~/.vim/plugged')
     Plugin 'liuchengxu/space-vim-dark'
     Plugin 'romainl/Apprentice'
     Plugin 'morhetz/gruvbox'
-    Plugin 'whatyouhide/vim-gotham'
     Plugin 'cocopon/iceberg.vim'
     Plugin 'tomasr/molokai'
     Plugin 'ayu-theme/ayu-vim'
     Plugin 'aditya-azad/candle-grey'
     Plugin 'haishanh/night-owl.vim'
     Plugin 'sts10/vim-pink-moon'
-    Plugin 'doki-theme/doki-theme-vim'
+    Plugin 'joshdick/onedark.vim'
 
     Plugin 'iamcco/markdown-preview.nvim'
     " Hint: needs yarn
