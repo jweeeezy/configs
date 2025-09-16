@@ -350,6 +350,7 @@ nnoremap                <c-c>      <cmd>echo expand("%:p")<cr>
 nnoremap                <c-x>      <plug>(lsp-hover-preview)
 nnoremap                <c-x>      <plug>(lsp-hover-float)
 nnoremap                <c-a>      <cmd>call Format()<cr>
+nnoremap                <leader>k  K
 nnoremap                <silent> J <cmd>LspPreviousDiagnostic<cr>
 nnoremap                <silent> K <cmd>LspNextDiagnostic<cr>
 
