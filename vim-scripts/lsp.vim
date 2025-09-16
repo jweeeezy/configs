@@ -147,15 +147,26 @@ let g:goyo_width  = 120
 let g:goyo_height = 97
 let g:goyo_linenr = 0
 
-let g:lsp_hover_ui = 'float'
-let g:lsp_float_max_width = 119
-let g:lsp_float_max_height = 0
-let g:lsp_preview_keep_focus = 0
-let g:lsp_diagnostics_highlights_insert_mode_enabled=0
-let g:lsp_diagnostics_signs_insert_mode_enabled=0
-let g:lsp_diagnostics_virtual_text_insert_mode_enabled=0
-let g:lsp_log_verbose = 1
-let g:lsp_log_file = expand('~/.vim-lsp.log')
+let g:lsp_semantic_enabled                             = 0
+let g:lsp_use_native_client                            = 1
+let g:lsp_diagnostics_enabled                          = 1
+let g:lsp_diagnostics_echo_cursor                      = 1
+let g:lsp_diagnostics_echo_delay                       = 200
+let g:lsp_diagnostics_float_cursor                     = 0
+let g:lsp_diagnostics_float_delay                      = 200
+let g:lsp_diagnostics_highlights_enabled               = 1
+let g:lsp_diagnostics_highlights_delay                 = 200
+let g:lsp_diagnostics_highlights_insert_mode_enabled   = 1
+let g:lsp_diagnostics_signs_enabled                    = 1
+let g:lsp_diagnostics_signs_delay                      = 200
+let g:lsp_diagnostics_signs_insert_mode_enabled        = 1
+let g:lsp_diagnostics_virtual_text_enabled             = 0
+let g:lsp_hover_ui                                     = 'float'
+let g:lsp_float_max_width                              = 119
+let g:lsp_float_max_height                             = 0
+let g:lsp_preview_keep_focus                           = 0
+let g:lsp_log_verbose                                  = 1
+let g:lsp_log_file                                     = expand('~/.vim-lsp.log')
 let g:lsp_settings = {
             \   'pylsp': {
             \         'configurationSources': ['flake8'],
@@ -321,7 +332,7 @@ nnoremap <silent>       <c-n>      :call QuickNavCycleState(1)<CR>
 nnoremap <silent>       <c-p>      :call QuickNavCycleState(-1)<CR>
 nnoremap                <leader>no :set nonumber norelativenumber<cr>
 vnoremap                <leader>y  "+y
-nnoremap                <leader>nn :set number relativenumber<cr>
+nnoremap                <leader>nn :set number<cr>
 nnoremap                <leader>Y  gg"+yG
 nnoremap                <leader>t  :call InsertGitTicket()<CR>
 nnoremap                <c-q>      :NERDTreeToggle<CR>
@@ -341,6 +352,8 @@ nnoremap                <c-c>      :echo expand("%:p")<cr>
 nnoremap                <c-x>      <plug>(lsp-hover-preview)
 nnoremap                <c-x>      <plug>(lsp-hover-float)
 nnoremap                <c-a>      :call Format()<cr>
+nnoremap                <silent> J <cmd>LspPreviousDiagnostic<cr>
+nnoremap                <silent> K <cmd>LspNextDiagnostic<cr>
 
 " Visual Mode
 vnoremap J :m '>+1<CR>gv=gv
