@@ -48,3 +48,7 @@ install_dev_deps:
 	@pip install -r dev-requirements.txt
 	@pre-commit install
 	@pre-commit autoupdate
+
+.PHONY: quality_gate
+quality_gate:
+	@pre-commit run --all-files

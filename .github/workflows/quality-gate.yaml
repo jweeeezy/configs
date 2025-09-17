@@ -1,0 +1,37 @@
+---
+name: Quality Gate
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  run-checks:
+    name: quality gate
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+
+      - name: set up python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ (cat('.python-version') || '3.12') }}
+
+      - name: install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential
+
+      - name: install python dependencies
+        run: |
+          make install_dev_deps
+        shell: bash
+
+      - name: run quality gate checks
+        run: |
+          make quality_gate
+        shell: bash
