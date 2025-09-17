@@ -1,0 +1,46 @@
+---
+name: Quality Gate
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  run-checks:
+    name: quality gate
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+
+
+      - name: read .python-version file
+        id: python
+        run: |
+          echo "python_version=$(cat .python-version)" >> $GITHUB_OUTPUT
+
+      - name: set up python version
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ steps.python.outputs.python_version }}
+
+      - name: install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential
+
+      - name: install development dependencies
+        run: |
+          make venv
+          source .venv/bin/activate
+          make install_dev_deps
+        shell: bash
+
+      - name: run quality gate checks
+        run: |
+          source .venv/bin/activate
+          make quality_gate
+        shell: bash

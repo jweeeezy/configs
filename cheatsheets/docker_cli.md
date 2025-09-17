@@ -1,9 +1,9 @@
 # Docker useful commands / files
 - each Dockerfile layer results in a bigger size
 - remove cache of package manager to save size
-- ENTRYPOINT (cant be overwritten) vs. CMD (can be overwritten)
+- ENTRYPOINT (can't be overwritten) vs. CMD (can be overwritten)
 - COPY --chmod=755 to copy while giving permission
-- WORKDIR creates a dir (if neccessary) and sets it as default dir
+- WORKDIR creates a dir (if necessary) and sets it as default dir
 
 ## docker
 | command    | description |

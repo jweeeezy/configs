@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 GREEN="\033[92m"
 RED="\033[91m"
@@ -6,9 +6,22 @@ RESET="\033[0m"
 
 # Check if a git repository is clean (no changes)
 # Return 0 if clean, 1 if dirty
-get_git_status() {
+is_clean_git_repo() {
     local repo_dir="$1"
     if [[ -z $(git -C "$repo_dir" status --porcelain 2>/dev/null) ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Check if a git repository has unpushed commits
+# Return 0 if none, return 1 if yes
+has_unpushed_commits() {
+    local repo_dir="$1"
+    if git -C "$repo_dir" log \
+        --branches --not --remotes --oneline -1 >/dev/null
+    then
         return 0
     else
         return 1
@@ -29,7 +42,7 @@ list_git_repos_with_status() {
 
     [[ -d "$dir/.git" ]] || return
 
-    get_git_status "$dir"
+    is_clean_git_repo "$dir"
     local is_clean=$?
 
     if [[ $is_clean -eq 0 ]]; then
@@ -70,8 +83,8 @@ Options:
   -h      Show this help message and exit.
 
 Examples:
-  $0 -t ~/projects           # Show status for all repos under ~/projects
-  $0 -dc ~/code ~/work       # Show only dirty repos in color under both directories
+  $0 -t ~/projects       # Show status for all repos under ~/projects
+  $0 -dc ~/code ~/work   # Show only dirty repos in color under both directories
 EOF
 }
 
@@ -110,11 +123,14 @@ main() {
             continue
         fi
 
-        list_git_repos_with_status "$root" $FLAG_STATUS $FLAG_DIRTY_ONLY $FLAG_COLOR
+        list_git_repos_with_status "$root" \
+            $FLAG_STATUS $FLAG_DIRTY_ONLY $FLAG_COLOR
 
-        find "$root" -mindepth 2 -type d -name ".git" 2>/dev/null | while read -r gitdir; do
+        find "$root" -mindepth 2 -type d -name ".git" 2>/dev/null | \
+        while read -r gitdir; do
             repo_dir=$(dirname "$gitdir")
-            list_git_repos_with_status "$repo_dir" $FLAG_STATUS $FLAG_DIRTY_ONLY $FLAG_COLOR
+            list_git_repos_with_status "$repo_dir" \
+                $FLAG_STATUS $FLAG_DIRTY_ONLY $FLAG_COLOR
         done
     done
 }

@@ -41,14 +41,13 @@ call vundle#begin('~/.vim/plugged')
     Plugin 'liuchengxu/space-vim-dark'
     Plugin 'romainl/Apprentice'
     Plugin 'morhetz/gruvbox'
-    Plugin 'whatyouhide/vim-gotham'
     Plugin 'cocopon/iceberg.vim'
     Plugin 'tomasr/molokai'
     Plugin 'ayu-theme/ayu-vim'
     Plugin 'aditya-azad/candle-grey'
     Plugin 'haishanh/night-owl.vim'
     Plugin 'sts10/vim-pink-moon'
-    Plugin 'doki-theme/doki-theme-vim'
+    Plugin 'joshdick/onedark.vim'
 
     Plugin 'iamcco/markdown-preview.nvim'
     " Hint: needs yarn
@@ -180,15 +179,23 @@ let g:lsp_settings = {
             \   },
             \}
 
+if executable('bash-language-server')
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'bash-language-server',
+        \ 'cmd': {server_info->['bash-language-server', 'start']},
+        \ 'allowlist': ['sh', 'bash'],
+        \ })
+endif
+
 let g:navigation_state_index = 0
 let g:navigation_states = ['Buffer', 'Location', 'Colorscheme', 'Quickfix']
 
-let NERDTreeShowBookmarks = 0   
-let NERDTreeShowHidden = 1      
-let NERDTreeShowLineNumbers = 0 
-let NERDTreeMinimalMenu = 1     
-let NERDTreeWinPos = 'left'     
-let NERDTreeWinSize = 31        
+let NERDTreeShowBookmarks = 0
+let NERDTreeShowHidden = 1
+let NERDTreeShowLineNumbers = 0
+let NERDTreeMinimalMenu = 1
+let NERDTreeWinPos = 'left'
+let NERDTreeWinSize = 31
 
 " ----- Global Functions ----
 

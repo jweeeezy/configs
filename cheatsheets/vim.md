@@ -1,6 +1,6 @@
 # Vim useful commands and shortcuts
 
-## Things to reguarly keep track of (using them might be a good idea)
+## Things to regularly keep track of (using them might be a good idea)
 - Windows
 - Buffers
 - Tabs
@@ -67,7 +67,7 @@ vim-gtk enables clipboard
 | o | add newline and insert after cursor line |
 | O | add newline and insert before cursor line |
 | s | delete (like x) and insert at cursor |
-| S | delete whole line and insert (respecting indendation) |
+| S | delete whole line and insert (respecting indentation) |
 | qa | record macro @ a |
 | q | stop recording macro |
 | @a | do macro @ a |

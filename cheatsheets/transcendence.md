@@ -57,7 +57,7 @@ _ connect
 
 models.py:
 - GameResult class
-    - user_profile, opponent_profile, user_score, opponent_score, is_win, date_played 
+    - user_profile, opponent_profile, user_score, opponent_score, is_win, date_played
 
 routing.py:
 
