@@ -134,6 +134,7 @@ FZF_DEFAULT_IGNORES=(
     -not -path "*/.git/*"
     -not -path "*/node_modules/*"
     -not -path "*/venv/*"
+    -not -path "*/.venv/*"
     -not -path "*/cache/*"
 )
 export FZF_DEFAULT_COMMAND="find . -type f ${FZF_DEFAULT_IGNORES[*]}"
