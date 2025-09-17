@@ -32,12 +32,15 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y build-essential
 
-      - name: install python dependencies
+      - name: install development dependencies
         run: |
+          make venv
+          source .venv/bin/activate
           make install_dev_deps
         shell: bash
 
       - name: run quality gate checks
         run: |
+          source .venv/bin/activate
           make quality_gate
         shell: bash
