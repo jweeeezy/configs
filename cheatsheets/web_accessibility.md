@@ -14,7 +14,7 @@
 
 # Tooling / Testing
 
-## General accesibility
+## General accessibility
 - check for syntax errors - finding them obv. helps with accessibility
 - w3c markup checker (html): https://validator.w3.org/
 
@@ -31,7 +31,7 @@
 
 ### MacOS
 - System Preferences
-- Accessbility
+- Accessibility
 - VoiceOver
 - Enable VoiceOver
 - cmd + f5
@@ -127,9 +127,9 @@
 
 ## Tabbing
 - pro tip (single-page-app): save current focus / active element in a var!
-- tabindex attribut can be used for making elements (un-)tabable (values: -1, 0, 1)
-- https://github.com/jkup/focusable (query for all tabable elements)
-- tabable html-tags by default
+- tabindex attribute can be used for making elements (un-)tabbable (values: -1, 0, 1)
+- https://github.com/jkup/focusable (query for all tabbable elements)
+- tabbable html-tags by default
 
 | html-tag | |
 | :-------------- | :----------- |

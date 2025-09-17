@@ -1,0 +1,9 @@
+fileignoreconfig:
+- filename: dotfiles/.bashrc
+  checksum: 61f3e6a5c38e86e300fb8709f4df89ef24724c64755a6f1e6904820d21da5067
+- filename: dotfiles/.bash_profile
+  checksum: f1f0b216e72012ebe77098e7bf1268b3b8459fb11926cc6e2407357a7a0ba5e8
+- filename: dotfiles/.envrc
+  checksum: ba655949359351d8fb8983fe29f3c9a6ffa689144e2549b0e098679ecc1d8326
+- filename: tools/bash/envrcrypt.sh
+  checksum: 5b095bf909ab5f487e0e1644aac3932df78f7b454107cea94f57a486db5e395d

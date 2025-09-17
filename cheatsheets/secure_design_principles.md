@@ -2,7 +2,7 @@
 * Alice & Bob Learn: Application Security
 
 ## Security Fundamentals
-* CIA Triad: confidentality, integrity, availability 
+* CIA Triad: confidentality, integrity, availability
 * Assume Breach
     - always assume that someone is already in your system to avoid sharing sensitive data, where it is not needed
 * Insider Threat
@@ -16,7 +16,7 @@
 * Security by Obscurity
     - concept of hiding / removing parts of your software that is not used / should not be used by others
 * Attack Surface Reduction
-    - similiar to security by obscurity
+    - similar to security by obscurity
 * Hard Coding
     - always keep code generic and validate inputs / values instead of hard coding values (error prone)
 * Usable Security
@@ -41,7 +41,7 @@
 * Backup and Rollback
     - Backup System in a different physical location so rolling back in case of emergency is easy and fast
 * Framework Security Features
-    - Use framework security functionality whereever possible instead of writing your own logic
+    - Use framework security functionality wherever possible instead of writing your own logic
 * Technical Debt = Security Debt
     - making rushed decisions will haunt you and your security later
 * File Uploads
@@ -64,7 +64,7 @@
 * Server Side Validation
 * Framework Security Features
 * Security Function Isolation
-* Application Partioning
+* Application Partitioning
 * Reauthentication for Transactions (CSRF)
 * Segregation of Product Data
 * Protection of Source Code

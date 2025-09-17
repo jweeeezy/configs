@@ -22,7 +22,7 @@ This repository contains various templates, tools and configs for my workflow.
 ## Get Started
 
 >Following the `one source of truth` principle, installed files will be created
-as symlinks to this repository. This ensures better consistency and easier maintainablity.
+as symlinks to this repository. This ensures better consistency and easier maintainability.
 
 * Install `dotfiles/` and some `tools/` on your system as symlinks in `/home/$USER/` or `/usr/local/bin/`, backup existing files.
 

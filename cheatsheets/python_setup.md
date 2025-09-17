@@ -62,7 +62,7 @@ class SomeTestCaseClass(TestCase):
 | file | description |
 | :-------------- | :----------- |
 | ` mysite/` | root / outer directory for django project
-| ` mysite/manage.py ` | command-line-utility to interact iwth mysite
+| ` mysite/manage.py ` | command-line-utility to interact with mysite
 | ` mysite/mysite/ ` |  dir of actual python package, that needs to be imported
 | ` mysite/mysite/settings.py ` | config file for the mysite package/project
 | ` mysite/mysite/urls.py ` | URL / table of contents for the project

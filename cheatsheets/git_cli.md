@@ -6,7 +6,7 @@
 - never change history of a public branch (use pull requests / merges)
 
 ## Git config commands
-- git config --global rerere.enabled true (enables easier rebasing trough "caching" already resolved conflicts)
+- git config --global rerere.enabled true (enables easier rebasing through "caching" already resolved conflicts)
 
 ## Git files
 | file    | description |
@@ -27,7 +27,7 @@
 | git diff (--staged / HEAD~1 HEAD) | check the differences between two versions of a file (by default current change vs. last commit) |
 | git stash (list/drop/apply) -m "commit-message" | stash current changes locally |
 | git add -p | walkthrough changes and add them partially |
-| git tag -a v0.1 | tag a commit with a referencable version number tag
+| git tag -a v0.1 | tag a commit with a referenceable version number tag
 | git push --tags | push tags into remote repository |
 | git push --force-with-lease | push force only if remote branch hasn't changed |
 | git rebase -i HEAD~3 | clean up git history of last 3 commits |
