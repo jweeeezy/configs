@@ -16,10 +16,16 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v3
 
-      - name: set up python
+
+      - name: read .python-version file
+        id: python
+        run: |
+          echo "python_version=$(cat .python-version)" >> $GITHUB_OUTPUT
+
+      - name: set up python version
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ (cat('.python-version') || '3.12') }}
+          python-version: ${{ steps.python.outputs.python_version }}
 
       - name: install system dependencies
         run: |
