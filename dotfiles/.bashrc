@@ -49,12 +49,12 @@ if [ -n "$force_color_prompt" ]; then
 fi
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\
-        \[\033[01;32m\]\u@\h\[\033[00m\] | \
-        \[\033[01;34m\]\w\[\033[00m\]\n\
-        \[\033[01;33m\]$\[\033[00m\] '
-        else
-            PS1='${debian_chroot:+($debian_chroot)}\
-                \u | \w > '
+\[\033[01;32m\]\u@\h\[\033[00m\] | \
+\[\033[01;34m\]\w\[\033[00m\]\n\
+\[\033[01;33m\]$\[\033[00m\] '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\
+\u | \w > '
 fi
 unset color_prompt force_color_prompt
 
@@ -98,7 +98,7 @@ fi
 # -----------------------------------------------------------------------------
 
 # Variable for different use cases
-WORKING_DIRS="$HOME/iss $HOME/private $HOME/configs"
+WORKING_DIRS=("$HOME/iss" "$HOME/private" "$HOME/configs")
 
 # Function to prepend a directory to PATH if it exists and isn't already in PATH
 add_to_path() {
@@ -145,7 +145,7 @@ cdf() {
 }
 cdd() {
     local dir
-    dir=$(check_git_statuses -d "$WORKING_DIRS" | fzf) || return
+    dir=$(check_git_statuses -d "${WORKING_DIRS[@]}" | fzf) || return
     cd "$dir" || return
 }
 # shellcheck disable=SC1090
@@ -189,7 +189,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # Run check_git_statuses to get a report of all Git Repositories
 echo "Git Repositories Status Report:"
-eval check_git_statuses -ct "$WORKING_DIRS" | column -t
+check_git_statuses -ct "${WORKING_DIRS[@]}" | column -t
 echo ""
 
 # Make sure this is after all other prompting changes
