@@ -129,18 +129,28 @@ alias v="vim"
 alias vi="vim"
 
 # Fuzzy Find Setup
-export FZF_DEFAULT_OPTS="--walker-skip='.git,*venv,node_modules'"
-FZF_DEFAULT_IGNORES=(
-    -not -path "*/.git/*"
-    -not -path "*/node_modules/*"
-    -not -path "*/venv/*"
-    -not -path "*/.venv/*"
-    -not -path "*/cache/*"
-)
-export FZF_DEFAULT_COMMAND="find . -type f ${FZF_DEFAULT_IGNORES[*]}"
+export FZF_IGNORE_PATTERNS="*cache* .git node_modules __pycache__ .mypy_cache *venv*"
+build_find_command() {
+    local cmd
+    local arg
+    local pattern
+
+    cmd="find"
+    for arg in "$@"; do
+        cmd+=" $arg"
+    done
+
+    for pattern in $FZF_IGNORE_PATTERNS; do
+        cmd+=" -not -path '*/${pattern}/*' -not -name '${pattern}'"
+    done
+
+    echo "$cmd"
+}
+FZF_DEFAULT_COMMAND=$(build_find_command . -type f)
+export FZF_DEFAULT_COMMAND
 cdf() {
     local dir
-    dir=$(find . -type d "${FZF_DEFAULT_IGNORES[@]}" | fzf) || return
+    dir=$(eval "$(build_find_command "${WORKING_DIRS[@]}" -type d)" | fzf) || return
     cd "$dir" || return
 }
 cdd() {
@@ -148,6 +158,7 @@ cdd() {
     dir=$(check_git_statuses -d "${WORKING_DIRS[@]}" | fzf) || return
     cd "$dir" || return
 }
+
 # shellcheck disable=SC1090
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
