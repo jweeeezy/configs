@@ -360,6 +360,7 @@ nnoremap                <c-a>      <cmd>call Format()<cr>
 nnoremap                <leader>k  K
 nnoremap                <silent> J <cmd>LspPreviousDiagnostic<cr>
 nnoremap                <silent> K <cmd>LspNextDiagnostic<cr>
+nnoremap                <silent>L  <cmd>LspCodeAction<cr>
 
 " Visual Mode
 vnoremap J :m '>+1<CR>gv=gv
