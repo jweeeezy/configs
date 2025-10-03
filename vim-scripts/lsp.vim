@@ -301,7 +301,7 @@ endfunction
 " NOTE used for grep
 " command! -nargs=+ -complete=file -bar Grep silent grep! -r <args> .
 
-command! CloseAllBuffers :%bd|e#
+command! CloseAllBuffers execute 'normal! mZ' | %bd | e# | normal! `Z
 command! SS :mksession! ~/.session.vim
 command! SSO :source ~/.session.vim
 command! W write
