@@ -361,6 +361,7 @@ nnoremap                <leader>k  K
 nnoremap                <silent> J <cmd>LspPreviousDiagnostic<cr>
 nnoremap                <silent> K <cmd>LspNextDiagnostic<cr>
 nnoremap                <silent>L  <cmd>LspCodeAction<cr>
+nnoremap                <silent>X  <cmd>LspDefinition<cr>
 
 " Visual Mode
 vnoremap J :m '>+1<CR>gv=gv
