@@ -1,7 +1,7 @@
-WORKING_DIRS='$HOME/iss $HOME/private $HOME/configs'
+WORKING_DIRS="$HOME/iss $HOME/private $HOME/configs"
 
 echo "Git Repositories Status Report:"
-eval check_git_statuses -ct $WORKING_DIRS | column -t
+eval check_git_statuses -ct "$WORKING_DIRS" | column -t
 echo ""
 
 echo "Exiting in 5 Seconds... Press Ctrl-C to cancel"
