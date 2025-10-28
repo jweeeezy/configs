@@ -198,13 +198,21 @@ export NVM_DIR="$HOME/.nvm"
 # shellcheck disable=SC1091
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
+# Make sure this is after all other prompting changes
+eval "$(direnv hook bash)"
+
+# Login to SSH
+
+echo "Starting SSH Agent ..."
+eval "$(ssh-agent -s)" > /dev/null
+echo "Connect SSH Agent Keys ..."
+ssh-add ~/.ssh/github/id_rsa
+ssh-add ~/.ssh/iss/id_rsa
+
 # Run check_git_statuses to get a report of all Git Repositories
 echo "Git Repositories Status Report:"
 check_git_statuses -ct "${WORKING_DIRS[@]}" | column -t
 echo ""
-
-# Make sure this is after all other prompting changes
-eval "$(direnv hook bash)"
 
 # Features:
 #
