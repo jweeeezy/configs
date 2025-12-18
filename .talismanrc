@@ -1,6 +1,6 @@
 fileignoreconfig:
 - filename: dotfiles/.bashrc
-  checksum: a050e96b5c74434a8deeb865d2c49dde30aa6a84c5a24e7d759976c42d02d8a1
+  checksum: 3a5cfb7f3e7d6925ebf5bb234f94dfabcbb37dc9073844e749b160b35088708b
 - filename: dotfiles/.bash_profile
   checksum: f1f0b216e72012ebe77098e7bf1268b3b8459fb11926cc6e2407357a7a0ba5e8
 - filename: dotfiles/.envrc

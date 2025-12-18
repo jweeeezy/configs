@@ -13,7 +13,7 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/crate-ci/typos
-    rev: v1.36.2
+    rev: v1
     hooks:
       - id: typos
         args: []
@@ -34,13 +34,13 @@ repos:
       - id: yamllint
 
   - repo: https://github.com/gitleaks/gitleaks
-    rev: v8.28.0
+    rev: v8.30.0
     hooks:
       - id: gitleaks
         name: gitleaks
 
   - repo: https://github.com/trufflesecurity/trufflehog
-    rev: v3.90.6
+    rev: v3.92.3
     hooks:
       - id: trufflehog
         name: trufflehog
