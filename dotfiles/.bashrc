@@ -202,7 +202,6 @@ export NVM_DIR="$HOME/.nvm"
 eval "$(direnv hook bash)"
 
 # Login to SSH
-
 echo "Starting SSH Agent ..."
 eval "$(ssh-agent -s)" > /dev/null
 echo "Connect SSH Agent Keys ..."
