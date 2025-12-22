@@ -216,9 +216,9 @@ main() {
         # --- Set up environment for this root in a subshell ---
         (
             # check and use .envrc file
+
             if command -v direnv >/dev/null 2>&1 && [[ -f "$root/.envrc" ]]; then
-                # Load the env for *this* root only in this subshell
-                eval "$(cd "$root" && direnv export bash)"
+                eval "$(cd "$root" >/dev/null 2>&1 && direnv export bash 2>/dev/null)"
             fi
 
             # make git fail fast if authentication fails
