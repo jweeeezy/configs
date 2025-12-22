@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-unset GIT_SSH_COMMAND
-
 GREEN="\033[92m"
 RED="\033[91m"
 YELLOW="\033[93m"
@@ -34,6 +32,31 @@ git_local_status() {
     git -C "$repo_dir" rev-list --quiet "@{u}..HEAD"
 }
 
+
+# Returns:
+#   0 = update succeeded (remote-tracking branches and tags fetched/pruned)
+#   2 = no remotes configured (e.g., 'git remote' returns nothing)
+#   3 = update failed (likely authentication or network error during fetch)
+git_remote_update() {
+    local repo_dir="$1"
+
+    # Avoid interactive prompts in batch/headless runs
+    : "${GIT_TERMINAL_PROMPT:=0}"
+    : "${GIT_ASKPASS:=/bin/true}"
+
+    if ! git -C "$repo_dir" remote >/dev/null 2>&1 || [[ -z "$(git -C "$repo_dir" remote 2>/dev/null)" ]]; then
+        return 2
+    fi
+
+    git -C "$repo_dir" fetch --all --prune --tags --quiet 2>&1
+    local rc=$?
+
+    if [[ $rc -ne 0 ]]; then
+        return 3
+    fi
+    return 0
+}
+
 # Returns:
 #   0 = remote is synced (no incoming changes)
 #   1 = remote has updates available (unsynced)
@@ -43,15 +66,21 @@ git_remote_status() {
     local repo_dir="$1"
 
     git -C "$repo_dir" rev-parse --abbrev-ref "@{u}" >/dev/null 2>&1 || return 2
-    local lines=0
 
-    output=$(git -C "$repo_dir" fetch --dry-run)
-    return_status=$?
+    # Avoid interactive prompts in headless runs
+    : "${GIT_TERMINAL_PROMPT:=0}"
+    : "${GIT_ASKPASS:=/bin/true}"
+
+    local output
+    output=$(git -C "$repo_dir" fetch --dry-run 2>&1)
+    local return_status=$?
     if [[ $return_status -ne 0 ]]; then
         return 3
     fi
 
-    lines=$($output | wc -l)
+    local lines
+    lines=$(printf "%s" "$output" | wc -l)
+
     if [[ $lines -gt 0 ]]; then
         return 1
     fi
@@ -78,16 +107,28 @@ list_git_repos_with_status() {
         3) local_status="no-upstream"; local_status_color="${YELLOW}" ;;
     esac
 
+
     local remote_status=""
     local remote_status_color=""
+
     if [[ $check_remotes -eq 1 ]]; then
         git_remote_status "$dir"
         local remote_check=$?
         case $remote_check in
-            0) remote_status="synced"; remote_status_color="${GREEN}" ;;
-            1) remote_status="unsynced"; remote_status_color="${YELLOW}" ;;
-            2) remote_status="no-upstream"; remote_status_color="${RED}" ;;
-            3) remote_status="unauthenticated"; remote_status_color="${RED}" ;;
+            0) remote_status="synced";          remote_status_color="${GREEN}" ;;
+            1) remote_status="unsynced";        remote_status_color="${YELLOW}" ;;
+            2) remote_status="no-upstream";     remote_status_color="${RED}"    ;;
+            3) remote_status="unauthenticated"; remote_status_color="${RED}"    ;;
+        esac
+
+    elif [[ $check_remotes -eq 2 ]]; then
+        git_remote_update "$dir"
+        local remote_check=$?
+        case $remote_check in
+            0) remote_status="updated";         remote_status_color="${GREEN}"  ;;
+            2) remote_status="no-remotes";      remote_status_color="${YELLOW}" ;;
+            3) remote_status="update-failed";   remote_status_color="${RED}"    ;;
+            *) remote_status="update-failed";   remote_status_color="${RED}"    ;;
         esac
     fi
 
@@ -124,6 +165,7 @@ Options:
   -d      Show only 'dirty' and 'unpushed' repositories (hide clean ones).
   -c      Use colored output (green for clean, red for dirty, yellow for unpushed).
   -r      Show remote status 'synced', 'unsynced' or 'unauthenticated' (needs git authentication).
+  -u      Update remote branches and tags (needs git authentication).
   -h      Show this help message and exit.
 
 Examples:
@@ -139,12 +181,13 @@ main() {
     local FLAG_COLOR=0
     local FLAG_REMOTES=0
 
-    while getopts "tdchr" opt; do
+    while getopts "tdchru" opt; do
         case $opt in
             t) FLAG_STATUS=1 ;;
             d) FLAG_DIRTY_ONLY=1 ;;
             c) FLAG_COLOR=1 ;;
             r) FLAG_REMOTES=1 ;;
+            u) FLAG_REMOTES=2 ;;
             h)
                 print_help
                 exit 0
@@ -163,21 +206,35 @@ main() {
         exit 1
     fi
 
+
     for root in "$@"; do
         if [[ ! -d "$root" ]]; then
             echo "Error: '$root' is not a directory."
             continue
         fi
 
-        list_git_repos_with_status "$root" \
-            "$FLAG_STATUS" "$FLAG_DIRTY_ONLY" "$FLAG_COLOR" "$FLAG_REMOTES"
+        # --- Set up environment for this root in a subshell ---
+        (
+            # check and use .envrc file
+            if command -v direnv >/dev/null 2>&1 && [[ -f "$root/.envrc" ]]; then
+                # Load the env for *this* root only in this subshell
+                eval "$(cd "$root" && direnv export bash)"
+            fi
 
-        find "$root" -mindepth 2 -type d -name ".git" 2>/dev/null | \
-        while read -r gitdir; do
-            repo_dir=$(dirname "$gitdir")
-            list_git_repos_with_status "$repo_dir" \
+            # make git fail fast if authentication fails
+            : "${GIT_TERMINAL_PROMPT:=0}"
+            : "${GIT_ASKPASS:=/bin/true}"
+
+            list_git_repos_with_status "$root" \
                 "$FLAG_STATUS" "$FLAG_DIRTY_ONLY" "$FLAG_COLOR" "$FLAG_REMOTES"
-        done
+
+            find "$root" -mindepth 2 -type d -name ".git" 2>/dev/null | \
+            while read -r gitdir; do
+                repo_dir=$(dirname "$gitdir")
+                list_git_repos_with_status "$repo_dir" \
+                    "$FLAG_STATUS" "$FLAG_DIRTY_ONLY" "$FLAG_COLOR" "$FLAG_REMOTES"
+            done
+        )
     done
 }
 

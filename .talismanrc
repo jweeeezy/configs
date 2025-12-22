@@ -7,3 +7,5 @@ fileignoreconfig:
   checksum: ba655949359351d8fb8983fe29f3c9a6ffa689144e2549b0e098679ecc1d8326
 - filename: tools/bash/envrcrypt.sh
   checksum: 5b095bf909ab5f487e0e1644aac3932df78f7b454107cea94f57a486db5e395d
+- filename: tools/bash/check_git_statuses.sh
+  checksum: 56ac4da3b3536a2f577eae92c2e25bf11bddc3d21b673c6ad7cd3d4cfb5895bc
