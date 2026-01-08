@@ -27,6 +27,7 @@ repos:
     rev: 2.1.1
     hooks:
       - id: bashate
+        args: ["--max-line-length", "100"]
 
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.37.1
@@ -40,7 +41,7 @@ repos:
         name: gitleaks
 
   - repo: https://github.com/trufflesecurity/trufflehog
-    rev: v3.92.3
+    rev: v3.92.4
     hooks:
       - id: trufflehog
         name: trufflehog

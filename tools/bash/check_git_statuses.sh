@@ -28,10 +28,10 @@ git_local_status() {
         return 2
     fi
 
-    git -C "$repo_dir" rev-parse --abbrev-ref "@{u}" >/dev/null 2>&1 || return 3
+    git -C "$repo_dir" rev-parse --abbrev-ref "@{u}" >/dev/null 2>&1 ||
+        return 3
     git -C "$repo_dir" rev-list --quiet "@{u}..HEAD"
 }
-
 
 # Returns:
 #   0 = update succeeded (remote-tracking branches and tags fetched/pruned)
@@ -44,7 +44,8 @@ git_remote_update() {
     : "${GIT_TERMINAL_PROMPT:=0}"
     : "${GIT_ASKPASS:=/bin/true}"
 
-    if ! git -C "$repo_dir" remote >/dev/null 2>&1 || [[ -z "$(git -C "$repo_dir" remote 2>/dev/null)" ]]; then
+    if ! git -C "$repo_dir" remote >/dev/null 2>&1 ||
+        [[ -z "$(git -C "$repo_dir" remote 2>/dev/null)" ]]; then
         return 2
     fi
 
@@ -65,7 +66,8 @@ git_remote_update() {
 git_remote_status() {
     local repo_dir="$1"
 
-    git -C "$repo_dir" rev-parse --abbrev-ref "@{u}" >/dev/null 2>&1 || return 2
+    git -C "$repo_dir" rev-parse --abbrev-ref "@{u}" >/dev/null 2>&1 ||
+        return 2
 
     # Avoid interactive prompts in headless runs
     : "${GIT_TERMINAL_PROMPT:=0}"
@@ -101,12 +103,23 @@ list_git_repos_with_status() {
     git_local_status "$dir"
     local local_check=$?
     case $local_check in
-        0) local_status="clean"; local_status_color="${GREEN}" ;;
-        1) local_status="unpushed"; local_status_color="${YELLOW}" ;;
-        2) local_status="$DIRTY_TYPE"; local_status_color="${RED}" ;;
-        3) local_status="no-upstream"; local_status_color="${YELLOW}" ;;
+    0)
+        local_status="clean"
+        local_status_color="${GREEN}"
+        ;;
+    1)
+        local_status="unpushed"
+        local_status_color="${YELLOW}"
+        ;;
+    2)
+        local_status="$DIRTY_TYPE"
+        local_status_color="${RED}"
+        ;;
+    3)
+        local_status="no-upstream"
+        local_status_color="${YELLOW}"
+        ;;
     esac
-
 
     local remote_status=""
     local remote_status_color=""
@@ -115,25 +128,49 @@ list_git_repos_with_status() {
         git_remote_status "$dir"
         local remote_check=$?
         case $remote_check in
-            0) remote_status="synced";          remote_status_color="${GREEN}" ;;
-            1) remote_status="unsynced";        remote_status_color="${YELLOW}" ;;
-            2) remote_status="no-upstream";     remote_status_color="${RED}"    ;;
-            3) remote_status="unauthenticated"; remote_status_color="${RED}"    ;;
+        0)
+            remote_status="synced"
+            remote_status_color="${GREEN}"
+            ;;
+        1)
+            remote_status="unsynced"
+            remote_status_color="${YELLOW}"
+            ;;
+        2)
+            remote_status="no-upstream"
+            remote_status_color="${RED}"
+            ;;
+        3)
+            remote_status="unauthenticated"
+            remote_status_color="${RED}"
+            ;;
         esac
 
     elif [[ $check_remotes -eq 2 ]]; then
         git_remote_update "$dir"
         local remote_check=$?
         case $remote_check in
-            0) remote_status="updated";         remote_status_color="${GREEN}"  ;;
-            2) remote_status="no-remotes";      remote_status_color="${YELLOW}" ;;
-            3) remote_status="update-failed";   remote_status_color="${RED}"    ;;
-            *) remote_status="update-failed";   remote_status_color="${RED}"    ;;
+        0)
+            remote_status="updated"
+            remote_status_color="${GREEN}"
+            ;;
+        2)
+            remote_status="no-remotes"
+            remote_status_color="${YELLOW}"
+            ;;
+        3)
+            remote_status="update-failed"
+            remote_status_color="${RED}"
+            ;;
+        *)
+            remote_status="update-failed"
+            remote_status_color="${RED}"
+            ;;
         esac
     fi
 
     if [[ $show_only_dirty -eq 1 ]]; then
-        if [[ "$local_status" == "clean" && ( -z "$remote_status" || "$remote_status" == "synced" ) ]]; then
+        if [[ "$local_status" == "clean" && (-z "$remote_status" || "$remote_status" == "synced") ]]; then
             return
         fi
     fi
@@ -142,7 +179,8 @@ list_git_repos_with_status() {
         if [[ $show_status -eq 0 ]]; then
             echo -e "${local_status_color}${dir}${RESET}"
         else
-            echo -e "${dir} ${local_status_color}${local_status}${RESET} ${remote_status_color}${remote_status}${RESET}"
+            echo -e "${dir} ${local_status_color}${local_status}${RESET} \
+                ${remote_status_color}${remote_status}${RESET}"
         fi
     else
         if [[ $show_status -eq 0 ]]; then
@@ -183,19 +221,19 @@ main() {
 
     while getopts "tdchru" opt; do
         case $opt in
-            t) FLAG_STATUS=1 ;;
-            d) FLAG_DIRTY_ONLY=1 ;;
-            c) FLAG_COLOR=1 ;;
-            r) FLAG_REMOTES=1 ;;
-            u) FLAG_REMOTES=2 ;;
-            h)
-                print_help
-                exit 0
-                ;;
-            *)
-                print_help
-                exit 1
-                ;;
+        t) FLAG_STATUS=1 ;;
+        d) FLAG_DIRTY_ONLY=1 ;;
+        c) FLAG_COLOR=1 ;;
+        r) FLAG_REMOTES=1 ;;
+        u) FLAG_REMOTES=2 ;;
+        h)
+            print_help
+            exit 0
+            ;;
+        *)
+            print_help
+            exit 1
+            ;;
         esac
     done
     shift $((OPTIND - 1))
@@ -205,7 +243,6 @@ main() {
         print_help
         exit 1
     fi
-
 
     for root in "$@"; do
         if [[ ! -d "$root" ]]; then
@@ -218,7 +255,8 @@ main() {
             # check and use .envrc file
 
             if command -v direnv >/dev/null 2>&1 && [[ -f "$root/.envrc" ]]; then
-                eval "$(cd "$root" >/dev/null 2>&1 && direnv export bash 2>/dev/null)"
+                eval "$(cd "$root" >/dev/null 2>&1 &&
+                    direnv export bash 2>/dev/null)"
             fi
 
             # make git fail fast if authentication fails
@@ -228,12 +266,15 @@ main() {
             list_git_repos_with_status "$root" \
                 "$FLAG_STATUS" "$FLAG_DIRTY_ONLY" "$FLAG_COLOR" "$FLAG_REMOTES"
 
-            find "$root" -mindepth 2 -type d -name ".git" 2>/dev/null | \
-            while read -r gitdir; do
-                repo_dir=$(dirname "$gitdir")
-                list_git_repos_with_status "$repo_dir" \
-                    "$FLAG_STATUS" "$FLAG_DIRTY_ONLY" "$FLAG_COLOR" "$FLAG_REMOTES"
-            done
+            find "$root" -mindepth 2 -type d -name ".git" 2>/dev/null |
+                while read -r gitdir; do
+                    repo_dir=$(dirname "$gitdir")
+                    list_git_repos_with_status "$repo_dir" \
+                        "$FLAG_STATUS" \
+                        "$FLAG_DIRTY_ONLY" \
+                        "$FLAG_COLOR" \
+                        "$FLAG_REMOTES"
+                done
         )
     done
 }
