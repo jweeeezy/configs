@@ -53,7 +53,7 @@ call vundle#begin('~/.vim/plugged')
     " Hint: needs yarn
     " Hint: :call 'mkdp#util#install()'
 
-    Plugin 'CoderCookE/vim-chatgpt'
+    " Plugin 'CoderCookE/vim-chatgpt'
     " Hint: needs token credit and $OPENAI_API_KEY
     " Hint: pip install openai
 
