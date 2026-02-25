@@ -1,0 +1,11 @@
+FROM ubuntu:24.04 AS dev_base
+
+SHELL ["/bin/bash", "-c"]
+
+WORKDIR /work
+
+COPY tools/bash/setup_wsl_ubuntu.sh /work/setup.sh
+RUN chmod +x /work/setup.sh
+RUN /work/setup.sh
+
+CMD ["bash"]
