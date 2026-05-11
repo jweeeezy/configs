@@ -219,6 +219,8 @@ main() {
     local FLAG_COLOR=0
     local FLAG_REMOTES=0
 
+    local BLACKLIST_DIRS=(build .venv node-modules)
+
     while getopts "tdchru" opt; do
         case $opt in
         t) FLAG_STATUS=1 ;;
@@ -244,6 +246,14 @@ main() {
         exit 1
     fi
 
+    # Build the -prune expression for find from BLACKLIST_DIRS.
+    # Produces: -name "build" -o -name "_build" -o ... strip the leading -o
+    local prune_expr=()
+    for bl in "${BLACKLIST_DIRS[@]}"; do
+        prune_expr+=(-o -name "$bl")
+    done
+    prune_expr=("${prune_expr[@]:1}")
+
     for root in "$@"; do
         if [[ ! -d "$root" ]]; then
             echo "Error: '$root' is not a directory."
@@ -266,7 +276,8 @@ main() {
             list_git_repos_with_status "$root" \
                 "$FLAG_STATUS" "$FLAG_DIRTY_ONLY" "$FLAG_COLOR" "$FLAG_REMOTES"
 
-            find "$root" -mindepth 2 -type d -name ".git" 2>/dev/null |
+            find "$root" -mindepth 2 \( -type d -a \( "${prune_expr[@]}" \) -prune \) \
+                -o \( -type d -name ".git" -print \) |
                 while read -r gitdir; do
                     repo_dir=$(dirname "$gitdir")
                     list_git_repos_with_status "$repo_dir" \
