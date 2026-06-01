@@ -229,6 +229,33 @@ function! ColorschemeTweak()
     highlight LspHintVirtualText      cterm=italic guibg=bg guifg=DeepPink1
 endfunction
 
+function! CreateFloatingTerm()
+  let width = float2nr(&columns * 0.8)
+  let height = float2nr(&lines * 0.8)
+
+  let col = (&columns - width) / 2
+  let line = (&lines - height) / 2
+
+  let buf = term_start(&shell, #{
+        \ hidden: 1,
+        \ cwd: getcwd(),
+        \ term_finish: 'close',
+        \ env: #{
+        \   SKIP_SSH_KEY_LOADING: '1',
+        \   SKIP_CHECK_GIT_STATUSES: '1',
+        \ }
+        \ })
+
+  call popup_create(buf, #{
+        \ title: ' Terminal ',
+        \ line: line,
+        \ col: col,
+        \ minwidth: width,
+        \ minheight: height,
+        \ border: [],
+        \ })
+endfunction
+
 function! QuickNavCycleState(direction)
     let g:navigation_state_index += a:direction
     if g:navigation_state_index >= len(g:navigation_states)
@@ -341,8 +368,8 @@ nnoremap                <leader>no <cmd>set nonumber norelativenumber<cr>
 nnoremap                <leader>nn <cmd>set number<cr>
 nnoremap                <leader>t  <cmd>call InsertGitTicket()<CR>
 nnoremap                <c-q>      <cmd>NERDTreeToggle<CR>
-nnoremap                <c-w>t     <cmd>vertical terminal<cr>
 nnoremap                <c-w>g     <cmd>Goyo<cr>
+nnoremap                T          <cmd>call CreateFloatingTerm()<CR>
 nnoremap                <c-w>m     <cmd>MarkdownPreview<cr>
 nnoremap                <c-e>      <cmd>!cat % \| less -R<cr>:redraw!<cr>
 nnoremap                <c-f>      <cmd>Files<cr>
