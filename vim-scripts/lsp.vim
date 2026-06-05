@@ -229,22 +229,46 @@ function! ColorschemeTweak()
     highlight LspHintVirtualText      cterm=italic guibg=bg guifg=DeepPink1
 endfunction
 
-function! CreateFloatingTerm()
-  let width = float2nr(&columns * 0.8)
-  let height = float2nr(&lines * 0.8)
 
-  let col = (&columns - width) / 2
-  let line = (&lines - height) / 2
-
-  let buf = term_start(&shell, #{
-        \ hidden: 1,
+function! s:StartTerm(opts, cmd) abort
+  let l:default_opts = #{
         \ cwd: getcwd(),
         \ term_finish: 'close',
         \ env: #{
         \   SKIP_SSH_KEY_LOADING: '1',
         \   SKIP_CHECK_GIT_STATUSES: '1',
         \ }
-        \ })
+        \ }
+
+  return term_start(a:cmd, extend(l:default_opts, a:opts))
+endfunction
+
+function! CreateVerticalTermWithGitDiffStaged() abort
+  let width = float2nr(&columns * 0.6)
+
+  botright vsplit
+  execute 'vertical resize ' .. width
+
+  call s:StartTerm(#{ curwin: 1 }, 'git diff --staged')
+endfunction
+
+function! CreateVerticalTerm() abort
+  let width = float2nr(&columns * 0.4)
+
+  botright vsplit
+  execute 'vertical resize ' .. width
+
+  call s:StartTerm(#{ curwin: 1 }, &shell)
+endfunction
+
+function! CreateFloatingTerm() abort
+  let width = float2nr(&columns * 0.8)
+  let height = float2nr(&lines * 0.8)
+
+  let col = (&columns - width) / 2
+  let line = (&lines - height) / 2
+
+  let buf = s:StartTerm(#{ hidden: 1 }, &shell)
 
   call popup_create(buf, #{
         \ title: ' Terminal ',
@@ -370,6 +394,8 @@ nnoremap                <leader>t  <cmd>call InsertGitTicket()<CR>
 nnoremap                <c-q>      <cmd>NERDTreeToggle<CR>
 nnoremap                <c-w>g     <cmd>Goyo<cr>
 nnoremap                T          <cmd>call CreateFloatingTerm()<CR>
+nnoremap                Y          <cmd>call CreateVerticalTermWithGitDiffStaged()<CR>
+nnoremap                <c-w>t     <cmd>call CreateVerticalTerm()<CR>
 nnoremap                <c-w>m     <cmd>MarkdownPreview<cr>
 nnoremap                <c-e>      <cmd>!cat % \| less -R<cr>:redraw!<cr>
 nnoremap                <c-f>      <cmd>Files<cr>
