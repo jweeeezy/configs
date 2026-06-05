@@ -363,6 +363,11 @@ command! Q quit
 " NOTE used for grep
 " autocmd QuickFixCmdPost *grep* cwindow
 
+augroup dockerfile_ft
+  autocmd!
+  autocmd BufRead,BufNewFile *Dockerfile* setfiletype dockerfile
+augroup END
+
 augroup ColorSchemeTriggers
     autocmd!
     autocmd ColorScheme * call ColorschemeTweak()
