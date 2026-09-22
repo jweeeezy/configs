@@ -13,7 +13,8 @@ sudo apt-get install -y \
     direnv \
     ack \
     python3-pip \
-    golang-go
+    golang-go \
+    jq
 
 # Install Configs Repository (Dotfiles, Bash Scripts)
 echo "Installing Config Repository including .dotfiles and Bash scripts..."
@@ -60,7 +61,3 @@ source ~/.bashrc || true
 echo "Installing Pylsp + Ruff Plugin ..."
 pipx install python-lsp-server
 pipx inject python-lsp-server python-lsp-ruff
-
-# Install bash language server
-echo "Installing Bash Language Server ..."
-npm i -g bash-language-server
