@@ -219,6 +219,11 @@ if [[ -z "${SKIP_CHECK_GIT_STATUSES:-}" ]]; then
     echo
 fi
 
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init - bash)"
+# eval "$(pyenv virtualenv-init -)"
+
 # Features:
 #
 # v = vim
@@ -229,7 +234,8 @@ fi
 # setcwd = set current working dir
 # cdd = fuzzy find all git repos with git status == 1
 # cdf = fuzzy find all important directories
-#
+
 # - Pip is protected by virtual environment only
 # - Direnv will autoload .envrc files
+# - Pyenv will automatically load .venv and .python-versions (might need additional libraries for ubuntu)
 # - New Bash Instances will display a report of all git repositories (in $WORKING_DIRS)
