@@ -34,8 +34,9 @@ call vundle#begin('~/.vim/plugged')
     " Plugin 'editorconfig/editorconfig-vim'
 
     " File formatter
-    Plugin 'prettier/vim-prettier'
+    Plugin 'AndrewRadev/tagalong.vim'
     Plugin 'rstacruz/vim-closer'
+    Plugin 'alvan/vim-closetag'
 
     " Colorschemes
     Plugin 'liuchengxu/space-vim-dark'
