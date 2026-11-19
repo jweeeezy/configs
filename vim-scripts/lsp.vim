@@ -21,17 +21,20 @@ call vundle#begin('~/.vim/plugged')
     Plugin 'preservim/nerdtree'
 
     " Vim LSP
+    " See LSP variables for additional setup
+    " Editorconfig vim support comes bundled with Vim 9
+    " Hint: change in ~/.vim/plugged/vim-lsp/autoload/lsp.vim:
+    " 'snippetSupport': v:true
     Plugin 'prabirshrestha/vim-lsp'
     Plugin 'mattn/vim-lsp-settings'
     Plugin 'prabirshrestha/asyncomplete.vim'
     Plugin 'prabirshrestha/asyncomplete-lsp.vim'
+    Plugin 'prabirshrestha/asyncomplete-file.vim'
+    Plugin 'yami-beta/asyncomplete-omni.vim'
+    Plugin 'prabirshrestha/asyncomplete-buffer.vim'
 
     " GoYo Window Focus Tool (Zen Mode)
     Plugin 'junegunn/goyo.vim'
-
-    " Editorconfig vim support
-    " Comes bundled with Vim 9
-    " Plugin 'editorconfig/editorconfig-vim'
 
     " File formatter
     Plugin 'AndrewRadev/tagalong.vim'
@@ -53,10 +56,6 @@ call vundle#begin('~/.vim/plugged')
     Plugin 'iamcco/markdown-preview.nvim'
     " Hint: needs yarn
     " Hint: :call 'mkdp#util#install()'
-
-    " Plugin 'CoderCookE/vim-chatgpt'
-    " Hint: needs token credit and $OPENAI_API_KEY
-    " Hint: pip install openai
 
 call vundle#end()
 
@@ -139,7 +138,6 @@ let g:split_ratio=4
 
 let g:mkdp_auto_start = 0
 let g:mkdp_auto_close = 0
-" Hint: check filetype with :set filetype?
 let g:mkdp_filetypes = ['markdown', 'asciidoc']
 let g:mkdp_theme = 'dark'
 
@@ -165,28 +163,46 @@ let g:lsp_hover_ui                                     = 'float'
 let g:lsp_float_max_width                              = 119
 let g:lsp_float_max_height                             = 0
 let g:lsp_preview_keep_focus                           = 0
-let g:lsp_log_verbose                                  = 1
+let g:lsp_log_verbose                                  = 0
 let g:lsp_log_file                                     = expand('~/.vim-lsp.log')
-let g:lsp_settings = {
-            \   'pylsp': {
-            \         'configurationSources': ['flake8'],
-            \         'plugins': {
-            \           'ruff': { 'enabled': v:true },
-            \           'flake8': { 'enabled': v:true }
-            \         }
-            \       },
-            \   'ruff': {
-            \     'disabled': 1
-            \   },
-            \}
 
-if executable('bash-language-server')
-  au User lsp_setup call lsp#register_server({
-        \ 'name': 'bash-language-server',
-        \ 'cmd': {server_info->['bash-language-server', 'start']},
-        \ 'allowlist': ['sh', 'bash'],
-        \ })
-endif
+let g:lsp_settings = {
+    \ 'pylsp': {
+    \   'configurationSources': ['flake8'],
+    \   'plugins': {
+    \     'ruff': { 'enabled': v:true },
+    \     'flake8': { 'enabled': v:true }
+    \   }
+    \ },
+    \ 'ruff': {
+    \   'disabled': 1
+    \ },
+    \}
+
+autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+    \ 'name': 'buffer',
+    \ 'allowlist': ['*'],
+    \ 'completor': function('asyncomplete#sources#buffer#completor'),
+    \ 'config': {
+    \    'max_buffer_size': 100000,
+    \  },
+    \ }))
+
+autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+    \ 'name': 'file',
+    \ 'allowlist': ['*'],
+    \ 'priority': 10,
+    \ 'completor': function('asyncomplete#sources#file#completor')
+    \ }))
+
+autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
+    \ 'name': 'omni',
+    \ 'allowlist': ['*'],
+    \ 'completor': function('asyncomplete#sources#omni#completor'),
+    \ 'config': {
+    \   'show_source_kind': 1,
+    \ },
+    \ }))
 
 let g:navigation_state_index = 0
 let g:navigation_states = ['Buffer', 'Location', 'Colorscheme', 'Quickfix']
