@@ -21,21 +21,25 @@ call vundle#begin('~/.vim/plugged')
     Plugin 'preservim/nerdtree'
 
     " Vim LSP
+    " See LSP variables for additional setup
+    " Editorconfig vim support comes bundled with Vim 9
+    " Hint: change in ~/.vim/plugged/vim-lsp/autoload/lsp.vim:
+    " 'snippetSupport': v:true
     Plugin 'prabirshrestha/vim-lsp'
     Plugin 'mattn/vim-lsp-settings'
     Plugin 'prabirshrestha/asyncomplete.vim'
     Plugin 'prabirshrestha/asyncomplete-lsp.vim'
+    Plugin 'prabirshrestha/asyncomplete-file.vim'
+    Plugin 'yami-beta/asyncomplete-omni.vim'
+    Plugin 'prabirshrestha/asyncomplete-buffer.vim'
 
     " GoYo Window Focus Tool (Zen Mode)
     Plugin 'junegunn/goyo.vim'
 
-    " Editorconfig vim support
-    " Comes bundled with Vim 9
-    " Plugin 'editorconfig/editorconfig-vim'
-
     " File formatter
-    Plugin 'prettier/vim-prettier'
+    Plugin 'AndrewRadev/tagalong.vim'
     Plugin 'rstacruz/vim-closer'
+    Plugin 'alvan/vim-closetag'
 
     " Colorschemes
     Plugin 'liuchengxu/space-vim-dark'
@@ -52,10 +56,6 @@ call vundle#begin('~/.vim/plugged')
     Plugin 'iamcco/markdown-preview.nvim'
     " Hint: needs yarn
     " Hint: :call 'mkdp#util#install()'
-
-    Plugin 'CoderCookE/vim-chatgpt'
-    " Hint: needs token credit and $OPENAI_API_KEY
-    " Hint: pip install openai
 
 call vundle#end()
 
@@ -138,7 +138,6 @@ let g:split_ratio=4
 
 let g:mkdp_auto_start = 0
 let g:mkdp_auto_close = 0
-" Hint: check filetype with :set filetype?
 let g:mkdp_filetypes = ['markdown', 'asciidoc']
 let g:mkdp_theme = 'dark'
 
@@ -164,28 +163,46 @@ let g:lsp_hover_ui                                     = 'float'
 let g:lsp_float_max_width                              = 119
 let g:lsp_float_max_height                             = 0
 let g:lsp_preview_keep_focus                           = 0
-let g:lsp_log_verbose                                  = 1
+let g:lsp_log_verbose                                  = 0
 let g:lsp_log_file                                     = expand('~/.vim-lsp.log')
-let g:lsp_settings = {
-            \   'pylsp': {
-            \         'configurationSources': ['flake8'],
-            \         'plugins': {
-            \           'ruff': { 'enabled': v:true },
-            \           'flake8': { 'enabled': v:true }
-            \         }
-            \       },
-            \   'ruff': {
-            \     'disabled': 1
-            \   },
-            \}
 
-if executable('bash-language-server')
-  au User lsp_setup call lsp#register_server({
-        \ 'name': 'bash-language-server',
-        \ 'cmd': {server_info->['bash-language-server', 'start']},
-        \ 'allowlist': ['sh', 'bash'],
-        \ })
-endif
+let g:lsp_settings = {
+    \ 'pylsp': {
+    \   'configurationSources': ['flake8'],
+    \   'plugins': {
+    \     'ruff': { 'enabled': v:true },
+    \     'flake8': { 'enabled': v:true }
+    \   }
+    \ },
+    \ 'ruff': {
+    \   'disabled': 1
+    \ },
+    \}
+
+autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+    \ 'name': 'buffer',
+    \ 'allowlist': ['*'],
+    \ 'completor': function('asyncomplete#sources#buffer#completor'),
+    \ 'config': {
+    \    'max_buffer_size': 100000,
+    \  },
+    \ }))
+
+autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+    \ 'name': 'file',
+    \ 'allowlist': ['*'],
+    \ 'priority': 10,
+    \ 'completor': function('asyncomplete#sources#file#completor')
+    \ }))
+
+autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
+    \ 'name': 'omni',
+    \ 'allowlist': ['*'],
+    \ 'completor': function('asyncomplete#sources#omni#completor'),
+    \ 'config': {
+    \   'show_source_kind': 1,
+    \ },
+    \ }))
 
 let g:navigation_state_index = 0
 let g:navigation_states = ['Buffer', 'Location', 'Colorscheme', 'Quickfix']
@@ -229,6 +246,57 @@ function! ColorschemeTweak()
     highlight LspHintVirtualText      cterm=italic guibg=bg guifg=DeepPink1
 endfunction
 
+
+function! s:StartTerm(opts, cmd) abort
+  let l:default_opts = #{
+        \ cwd: getcwd(),
+        \ term_finish: 'close',
+        \ env: #{
+        \   SKIP_SSH_KEY_LOADING: '1',
+        \   SKIP_CHECK_GIT_STATUSES: '1',
+        \ }
+        \ }
+
+  return term_start(a:cmd, extend(l:default_opts, a:opts))
+endfunction
+
+function! CreateVerticalTermWithGitDiffStaged() abort
+  let width = float2nr(&columns * 0.6)
+
+  botright vsplit
+  execute 'vertical resize ' .. width
+
+  call s:StartTerm(#{ curwin: 1 }, 'git diff --staged')
+endfunction
+
+function! CreateVerticalTerm() abort
+  let width = float2nr(&columns * 0.4)
+
+  botright vsplit
+  execute 'vertical resize ' .. width
+
+  call s:StartTerm(#{ curwin: 1 }, &shell)
+endfunction
+
+function! CreateFloatingTerm() abort
+  let width = float2nr(&columns * 0.8)
+  let height = float2nr(&lines * 0.8)
+
+  let col = (&columns - width) / 2
+  let line = (&lines - height) / 2
+
+  let buf = s:StartTerm(#{ hidden: 1 }, &shell)
+
+  call popup_create(buf, #{
+        \ title: ' Terminal ',
+        \ line: line,
+        \ col: col,
+        \ minwidth: width,
+        \ minheight: height,
+        \ border: [],
+        \ })
+endfunction
+
 function! QuickNavCycleState(direction)
     let g:navigation_state_index += a:direction
     if g:navigation_state_index >= len(g:navigation_states)
@@ -241,6 +309,8 @@ endfunction
 
 function! Format()
     let l:filetype = &filetype
+
+    echo "Formatting code."
 
     if l:filetype == "javascript"
         execute "Prettier"
@@ -301,7 +371,7 @@ endfunction
 " NOTE used for grep
 " command! -nargs=+ -complete=file -bar Grep silent grep! -r <args> .
 
-command! CloseAllBuffers :%bd|e#
+command! CloseAllBuffers execute 'normal! mZ' | %bd | e# | normal! `Z
 command! SS :mksession! ~/.session.vim
 command! SSO :source ~/.session.vim
 command! W write
@@ -311,6 +381,11 @@ command! Q quit
 
 " NOTE used for grep
 " autocmd QuickFixCmdPost *grep* cwindow
+
+augroup dockerfile_ft
+  autocmd!
+  autocmd BufRead,BufNewFile *Dockerfile* setfiletype dockerfile
+augroup END
 
 augroup ColorSchemeTriggers
     autocmd!
@@ -341,8 +416,10 @@ nnoremap                <leader>no <cmd>set nonumber norelativenumber<cr>
 nnoremap                <leader>nn <cmd>set number<cr>
 nnoremap                <leader>t  <cmd>call InsertGitTicket()<CR>
 nnoremap                <c-q>      <cmd>NERDTreeToggle<CR>
-nnoremap                <c-w>t     <cmd>vertical terminal<cr>
 nnoremap                <c-w>g     <cmd>Goyo<cr>
+nnoremap                T          <cmd>call CreateFloatingTerm()<CR>
+nnoremap                Y          <cmd>call CreateVerticalTermWithGitDiffStaged()<CR>
+nnoremap                <c-w>t     <cmd>call CreateVerticalTerm()<CR>
 nnoremap                <c-w>m     <cmd>MarkdownPreview<cr>
 nnoremap                <c-e>      <cmd>!cat % \| less -R<cr>:redraw!<cr>
 nnoremap                <c-f>      <cmd>Files<cr>
@@ -360,6 +437,8 @@ nnoremap                <c-a>      <cmd>call Format()<cr>
 nnoremap                <leader>k  K
 nnoremap                <silent> J <cmd>LspPreviousDiagnostic<cr>
 nnoremap                <silent> K <cmd>LspNextDiagnostic<cr>
+nnoremap                <silent>L  <cmd>LspCodeAction<cr>
+nnoremap                <silent>X  <cmd>LspDefinition<cr>
 
 " Visual Mode
 vnoremap J :m '>+1<CR>gv=gv

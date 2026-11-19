@@ -129,18 +129,28 @@ alias v="vim"
 alias vi="vim"
 
 # Fuzzy Find Setup
-export FZF_DEFAULT_OPTS="--walker-skip='.git,*venv,node_modules'"
-FZF_DEFAULT_IGNORES=(
-    -not -path "*/.git/*"
-    -not -path "*/node_modules/*"
-    -not -path "*/venv/*"
-    -not -path "*/.venv/*"
-    -not -path "*/cache/*"
-)
-export FZF_DEFAULT_COMMAND="find . -type f ${FZF_DEFAULT_IGNORES[*]}"
+export FZF_IGNORE_PATTERNS="*cache* .git node_modules __pycache__ .mypy_cache *venv*"
+build_find_command() {
+    local cmd
+    local arg
+    local pattern
+
+    cmd="find"
+    for arg in "$@"; do
+        cmd+=" $arg"
+    done
+
+    for pattern in $FZF_IGNORE_PATTERNS; do
+        cmd+=" -not -path '*/${pattern}/*' -not -name '${pattern}'"
+    done
+
+    echo "$cmd"
+}
+FZF_DEFAULT_COMMAND=$(build_find_command . -type f)
+export FZF_DEFAULT_COMMAND
 cdf() {
     local dir
-    dir=$(find . -type d "${FZF_DEFAULT_IGNORES[@]}" | fzf) || return
+    dir=$(eval "$(build_find_command "${WORKING_DIRS[@]}" -type d)" | fzf) || return
     cd "$dir" || return
 }
 cdd() {
@@ -148,6 +158,7 @@ cdd() {
     dir=$(check_git_statuses -d "${WORKING_DIRS[@]}" | fzf) || return
     cd "$dir" || return
 }
+
 # shellcheck disable=SC1090
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
@@ -187,13 +198,31 @@ export NVM_DIR="$HOME/.nvm"
 # shellcheck disable=SC1091
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-# Run check_git_statuses to get a report of all Git Repositories
-echo "Git Repositories Status Report:"
-check_git_statuses -ct "${WORKING_DIRS[@]}" | column -t
-echo ""
-
 # Make sure this is after all other prompting changes
 eval "$(direnv hook bash)"
+
+# Login to SSH
+if [[ -z "${SKIP_SSH_KEY_LOADING:-}" ]]; then
+    echo "Starting SSH Agent ..."
+    eval "$(ssh-agent -s)" > /dev/null
+
+    echo "Connect SSH Agent Keys ..."
+    ssh-add ~/.ssh/github/id_rsa
+    ssh-add ~/.ssh/iss/id_rsa
+    echo
+fi
+
+# Run check_git_statuses to get a report of all Git Repositories
+if [[ -z "${SKIP_CHECK_GIT_STATUSES:-}" ]]; then
+    echo "Git Repositories Status Report:"
+    check_git_statuses -ct "${WORKING_DIRS[@]}" | column -t
+    echo
+fi
+
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init - bash)"
+# eval "$(pyenv virtualenv-init -)"
 
 # Features:
 #
@@ -205,7 +234,8 @@ eval "$(direnv hook bash)"
 # setcwd = set current working dir
 # cdd = fuzzy find all git repos with git status == 1
 # cdf = fuzzy find all important directories
-#
+
 # - Pip is protected by virtual environment only
 # - Direnv will autoload .envrc files
+# - Pyenv will automatically load .venv and .python-versions (might need additional libraries for ubuntu)
 # - New Bash Instances will display a report of all git repositories (in $WORKING_DIRS)

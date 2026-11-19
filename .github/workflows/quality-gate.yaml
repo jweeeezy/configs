@@ -2,13 +2,12 @@
 name: Quality Gate
 
 on:
-  push:
-    branches:
-      - feature/**
-      - development
   pull_request:
     branches:
       - main
+
+permissions:
+  contents: read
 
 jobs:
   run-checks:

