@@ -293,6 +293,8 @@ endfunction
 function! Format()
     let l:filetype = &filetype
 
+    echo "Formatting code."
+
     if l:filetype == "javascript"
         execute "Prettier"
     elseif l:filetype == "html"
