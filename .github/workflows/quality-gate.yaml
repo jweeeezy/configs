@@ -2,10 +2,6 @@
 name: Quality Gate
 
 on:
-  push:
-    branches:
-      - feature/**
-      - development
   pull_request:
     branches:
       - main
