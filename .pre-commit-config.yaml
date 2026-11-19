@@ -13,13 +13,13 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/crate-ci/typos
-    rev: v1
+    rev: v1.52.2
     hooks:
       - id: typos
         args: []
 
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.4.1
+    rev: v2.4.3
     hooks:
       - id: codespell
 
@@ -30,7 +30,7 @@ repos:
         args: ["--max-line-length", "100"]
 
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.37.1
+    rev: v1.38.0
     hooks:
       - id: yamllint
 
@@ -41,7 +41,7 @@ repos:
         name: gitleaks
 
   - repo: https://github.com/trufflesecurity/trufflehog
-    rev: v3.92.4
+    rev: v3.99.9
     hooks:
       - id: trufflehog
         name: trufflehog
